@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ScrewManufacturer extends Model
 {
-    protected $timestamps = false;
+    public $timestamps = false;
 }

@@ -9,22 +9,22 @@ class Screw extends Model
 
     public function color()
     {
-        return $this->hasOne(ScrewColor::class);
+        return $this->belongsTo(ScrewColor::class, 'screw_color_id');
     }
 
     public function length()
     {
-        return $this->hasOne(ScrewLength::class);
+        return $this->belongsTo(ScrewLength::class, 'screw_length_id');
     }
 
     public function manufacturer()
     {
-        return $this->hasOne(ScrewManufacturer::class);
+        return $this->belongsTo(ScrewManufacturer::class, 'screw_manufacturer_id');
     }
 
     public function type()
     {
-        return $this->hasOne(ScrewType::class);
+        return $this->belongsTo(ScrewType::class, 'screw_type_id');
     }
 
 }
