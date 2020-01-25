@@ -21,6 +21,7 @@ class CreateScrewsTable extends Migration
             $table->bigInteger('screw_length_id')->unsigned();
             $table->bigInteger('amount')->unsigned()->default(0);
             $table->double('cost')->unsigned();
+            $table->boolean('visible')->default(true);
             $table->timestamps();
 
             $table->foreign('screw_type_id')

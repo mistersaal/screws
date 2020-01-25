@@ -19,7 +19,8 @@ class ScrewsTableSeeder extends Seeder
                 'screw_manufacturer_id' => 1,
                 'screw_length_id' => 3,
                 'amount' => 125,
-                'cost' => 50
+                'cost' => 50,
+                'visible' => true
             ],
             [
                 'screw_type_id' => 2,
@@ -27,7 +28,8 @@ class ScrewsTableSeeder extends Seeder
                 'screw_manufacturer_id' => 3,
                 'screw_length_id' => 1,
                 'amount' => 0,
-                'cost' => 120
+                'cost' => 120,
+                'visible' => true
             ],
             [
                 'screw_type_id' => 1,
@@ -35,8 +37,18 @@ class ScrewsTableSeeder extends Seeder
                 'screw_manufacturer_id' => 2,
                 'screw_length_id' => 2,
                 'amount' => 1000,
-                'cost' => 80
+                'cost' => 80,
+                'visible' => true
             ],
+            [
+                'screw_type_id' => 1,
+                'screw_color_id' => 3,
+                'screw_manufacturer_id' => 3,
+                'screw_length_id' => 1,
+                'amount' => 20,
+                'cost' => 1500,
+                'visible' => false
+            ]
         ]);
     }
 }
