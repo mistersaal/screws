@@ -27,4 +27,16 @@ class Screw extends Model
         return $this->belongsTo(ScrewType::class, 'screw_type_id');
     }
 
+    public function getParametersTree()
+    {
+        $screws = $this->all();
+        $tree = [];
+
+        foreach ($screws as $screw) {
+            $tree[$screw->screw_type_id][$screw->screw_color_id][$screw->screw_manufacturer_id][] = $screw->screw_length_id;
+        }
+
+        return $tree;
+    }
+
 }
