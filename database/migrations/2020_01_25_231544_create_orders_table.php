@@ -21,10 +21,10 @@ class CreateOrdersTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->float('price');
-            $table->boolean('is_paid')->default(false);
+            $table->boolean('paid')->default(false);
             $table->string('payment_id')->nullable();
-            $table->boolean('is_done')->default(false);
-            $table->boolean('is_received')->default(false);
+            $table->boolean('done')->default(false);
+            $table->boolean('received')->default(false);
             $table->timestamps();
 
             $table->foreign('screw_id')

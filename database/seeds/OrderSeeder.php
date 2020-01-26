@@ -20,9 +20,9 @@ class OrderSeeder extends Seeder
                 'phone' => '+70000000000',
                 'email' => 'mister.saal@yandex.ru',
                 'price' => 1000,
-                'is_paid' => false,
-                'is_done' => false,
-                'is_received' => false
+                'paid' => false,
+                'done' => false,
+                'received' => false
             ],
             [
                 'screw_id' => 2,
@@ -31,9 +31,9 @@ class OrderSeeder extends Seeder
                 'phone' => '+70000000000',
                 'email' => 'skilef@yandex.ru',
                 'price' => 400,
-                'is_paid' => true,
-                'is_done' => false,
-                'is_received' => false
+                'paid' => true,
+                'done' => false,
+                'received' => false
             ],
             [
                 'screw_id' => 3,
@@ -42,9 +42,9 @@ class OrderSeeder extends Seeder
                 'phone' => '+70000000000',
                 'email' => 'valsinats@yandex.ru',
                 'price' => 2000,
-                'is_paid' => true,
-                'is_done' => true,
-                'is_received' => false
+                'paid' => true,
+                'done' => true,
+                'received' => false
             ],
             [
                 'screw_id' => 4,
@@ -53,9 +53,9 @@ class OrderSeeder extends Seeder
                 'phone' => '+70000000000',
                 'email' => 'lena-saal@yandex.ru',
                 'price' => 1000,
-                'is_paid' => true,
-                'is_done' => true,
-                'is_received' => true
+                'paid' => true,
+                'done' => true,
+                'received' => true
             ],
         ]);
     }
