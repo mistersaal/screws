@@ -26,20 +26,16 @@ class CreateScrewsTable extends Migration
 
             $table->foreign('screw_type_id')
                 ->references('id')
-                ->on('screw_types')
-                ->onDelete('cascade');
+                ->on('screw_types');
             $table->foreign('screw_color_id')
                 ->references('id')
-                ->on('screw_colors')
-                ->onDelete('cascade');
+                ->on('screw_colors');
             $table->foreign('screw_manufacturer_id')
                 ->references('id')
-                ->on('screw_manufacturers')
-                ->onDelete('cascade');
+                ->on('screw_manufacturers');
             $table->foreign('screw_length_id')
                 ->references('id')
-                ->on('screw_lengths')
-                ->onDelete('cascade');
+                ->on('screw_lengths');
 
             $table->unique([
                 'screw_type_id',

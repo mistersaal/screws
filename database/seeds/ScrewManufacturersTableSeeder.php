@@ -13,9 +13,10 @@ class ScrewManufacturersTableSeeder extends Seeder
     public function run()
     {
         DB::table('screw_manufacturers')->insert([
-            ['name' => 'Standers'],
-            ['name' => 'Proffix'],
-            ['name' => 'Dewalt']
+            ['name' => 'Standers', 'visible' => true],
+            ['name' => 'Proffix', 'visible' => true],
+            ['name' => 'Dewalt', 'visible' => true],
+            ['name' => 'DELETED', 'visible' => false]
         ]);
     }
 }

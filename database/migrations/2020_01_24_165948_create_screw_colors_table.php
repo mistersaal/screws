@@ -16,6 +16,7 @@ class CreateScrewColorsTable extends Migration
         Schema::create('screw_colors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
+            $table->boolean('visible')->default(true);
         });
     }
 

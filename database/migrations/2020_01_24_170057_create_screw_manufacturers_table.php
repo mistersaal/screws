@@ -16,6 +16,7 @@ class CreateScrewManufacturersTable extends Migration
         Schema::create('screw_manufacturers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
+            $table->boolean('visible')->default(true);
         });
     }
 
