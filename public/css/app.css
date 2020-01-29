@@ -3774,6 +3774,11 @@ fieldset[disabled] .button {
   width: 128px;
 }
 
+.image.is-480x480 {
+  height: 480px;
+  width: 480px;
+}
+
 .notification {
   background-color: whitesmoke;
   border-radius: 4px;
@@ -12435,11 +12440,13 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
-.header-bg {
-  background-image: url(/images/header.jpg?1ad320de31ac703c2146881769f56fd5);
-  background-position: right center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: white;
+@media (max-width: 768px) {
+  .columns.is-reversed-mobile {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+            flex-direction: column-reverse;
+    display: -webkit-box;
+    display: flex;
+  }
 }
 

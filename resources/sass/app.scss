@@ -1,9 +1,5 @@
+@import "variables";
+
 @import '~bulma';
 
-.header-bg {
-    background-image: url("./img/background/header.jpg");
-    background-position: right center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-color: white;
-}
+@import "personal";

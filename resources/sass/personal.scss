@@ -1,0 +1,6 @@
+@media (max-width: $tablet - 1) {
+    .columns.is-reversed-mobile {
+        flex-direction: column-reverse;
+        display: flex;
+    }
+}
