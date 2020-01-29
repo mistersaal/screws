@@ -6,7 +6,7 @@ $.ajaxSetup({
     }
 });
 
-import "./personal";
+import "./general";
 
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons/faFacebook';
