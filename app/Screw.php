@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Traits\HasVisibilityAttribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Screw extends Model
 {
+    use HasVisibilityAttribute;
 
     public function color()
     {
@@ -32,7 +34,7 @@ class Screw extends Model
         if ($all) {
             $screws = $this->all();
         } else {
-            $screws = $this->where('visible', true)->get();
+            $screws = $this->getVisibleItems();
         }
         $tree = [];
 
