@@ -1,0 +1,10 @@
+$configuratorIcon: 176px;
+
+.configurator-icon {
+    font-size: $configuratorIcon;
+}
+
+.icon.configurator-big-icon {
+    height: $configuratorIcon;
+    width: $configuratorIcon;
+}

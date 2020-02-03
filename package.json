@@ -24,7 +24,9 @@
         "@fortawesome/fontawesome-svg-core": "^1.2.26",
         "@fortawesome/free-brands-svg-icons": "^5.12.0",
         "@fortawesome/free-solid-svg-icons": "^5.12.0",
+        "@fortawesome/free-regular-svg-icons": "^5.12.0",
         "bulma": "^0.8.0",
+        "bulma-o-steps": "^1.0.9",
         "jquery": "^3.4.1"
     }
 }

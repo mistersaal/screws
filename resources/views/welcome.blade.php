@@ -11,9 +11,9 @@
                         <h1 class="title is-3">
                             Саморезы в ленте на заказ
                         </h1>
-                        <h2 class="subtitle is-5">
+                        <p class="subtitle is-5">
                             Саморезы любого типа и размера
-                        </h2>
+                        </p>
                     </div>
                     <div class="column">
                         <div class="box">
@@ -37,5 +37,14 @@
             </div>
         </div>
     </header>
+    <section class="section">
+        <div class="container">
+            <div class="content has-text-centered">
+                <h2 class="title is-4">Сконфигурируйте свой заказ</h2>
+                <p class="subtitle is-6">Вы можете полностью сконфигурировать саморезы, которые будут в ленте</p>
+            </div>
+            @include('components.configurator')
+        </div>
+    </section>
 
 @endsection

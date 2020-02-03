@@ -38,7 +38,7 @@ class Screw extends Model
         }
         $tree = [];
 
-        foreach ($screws as $screw) {
+        foreach ($screws as $screw) { // TODO^: PHP: Поставить производителя в конец
             $tree[$screw->screw_type_id][$screw->screw_color_id][$screw->screw_manufacturer_id][] = $screw->screw_length_id;
         }
 
