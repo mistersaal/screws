@@ -14263,16 +14263,15 @@ label.panel-block:hover {
   }
 }
 
-.is-not-visible {
-  visibility: hidden;
+.configurator-field {
+  overflow: hidden;
+  max-height: 80px;
+  -webkit-transition: max-height 0.3s ease-out;
+  transition: max-height 0.3s ease-out;
 }
 
-.configurator-icon {
-  font-size: 176px;
-}
-
-.icon.configurator-big-icon {
-  height: 176px;
-  width: 176px;
+.configurator-field.is-slim {
+  max-height: 0;
+  margin-top: -0.75rem;
 }
 

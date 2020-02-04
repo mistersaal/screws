@@ -1,10 +1,13 @@
-$configuratorIcon: 176px;
+$field-animation-time: 0.3s;
+$field-max-height: 80px;
+$field-margin-bottom: 0.75rem;
 
-.configurator-icon {
-    font-size: $configuratorIcon;
+.configurator-field {
+    overflow: hidden;
+    max-height: $field-max-height;
+    transition: max-height $field-animation-time ease-out;
 }
-
-.icon.configurator-big-icon {
-    height: $configuratorIcon;
-    width: $configuratorIcon;
+.configurator-field.is-slim {
+    max-height: 0;
+    margin-top: -$field-margin-bottom;
 }

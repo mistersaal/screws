@@ -58,11 +58,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="field">
+                <div class="field configurator-field is-slim">
+                    <label for="another_manufacturer" class="label">Свой вариант</label>
                     <div class="control">
                         <input
                             type="text"
-                            class="input is-not-visible"
+                            class="input"
                             id="another_manufacturer"
                             name="another_manufacturer"
                         >

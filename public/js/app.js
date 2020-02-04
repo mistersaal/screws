@@ -13865,10 +13865,13 @@ __webpack_require__.r(__webpack_exports__);
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('.configurator-select').change(function () {
+    var formId = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('id');
+    var $another = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#another_' + formId).closest('.field');
+
     if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() === '0') {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#another_' + jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('id')).removeClass('is-not-visible');
+      $another.removeClass('is-slim');
     } else {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#another_' + jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('id')).addClass('is-not-visible');
+      $another.addClass('is-slim');
     }
   });
 });
