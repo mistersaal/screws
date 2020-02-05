@@ -1,13 +1,13 @@
-$field-animation-time: 0.3s;
+$field-animation-time: 0.2s;
 $field-max-height: 80px;
 $field-margin-bottom: 0.75rem;
 
 .configurator-field {
-    overflow: hidden;
     max-height: $field-max-height;
     transition: max-height $field-animation-time ease-out;
 }
 .configurator-field.is-slim {
+    overflow: hidden;
     max-height: 0;
     margin-top: -$field-margin-bottom;
 }
