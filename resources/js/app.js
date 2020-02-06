@@ -8,4 +8,5 @@ $(document).ready(function() {
     });
 });
 
-import "./components";
+import "./components/navbar";
+import "./components/fontawesome";

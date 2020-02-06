@@ -1,12 +1,6 @@
 <ul class="steps has-content-centered is-small is-hidden-mobile">
-    <li class="steps-segment">
-{{-- TODO: HTML: Поставить производителя в конец, цвет -> покрытие --}}
-{{-- TODO: spb.mtk-fortuna.ru --}}
-        <span class="steps-marker"></span>
-        <div class="steps-content">
-            <p class="is-size-6">Производитель</p>
-        </div>
-    </li>
+    {{-- TODO: Перейти на vue.js --}}
+    {{-- TODO: spb.mtk-fortuna.ru --}}
     <li class="steps-segment">
         <span class="steps-marker"></span>
         <div class="steps-content">
@@ -16,7 +10,7 @@
     <li class="steps-segment is-active">
         <span class="steps-marker"></span>
         <div class="steps-content">
-            <p class="is-size-6">Цвет</p>
+            <p class="is-size-6">Покрытие</p>
         </div>
     </li>
     <li class="steps-segment">
@@ -35,6 +29,12 @@
         <span class="steps-marker"></span>
         <div class="steps-content">
             <p class="is-size-6">Оформить</p>
+        </div>
+    </li>
+    <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+            <p class="is-size-6">Производитель</p>
         </div>
     </li>
 </ul>

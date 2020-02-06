@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('head')
+    <script src="{{ mix('/js/configurator.js') }}"></script>
+@endsection
+
 @section('content')
 
     <header class="hero is-fullheight-with-navbar is-warning is-bold">

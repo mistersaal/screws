@@ -1,14 +1,15 @@
-import $ from 'jquery';
-
 $(document).ready(function() {
     setActive('manufacturer');
 
     $('.configurator-select').change(function () {
         let formId = $(this).attr('id');
-        let $another = $('#another_' + formId).closest('.field');
+        let $another_input = $('#another_' + formId);
+        let $another = $another_input.closest('.field');
         if ($(this).val() === '0') {
             $another.removeClass('is-slim');
-            setActive(formId);
+            if($another_input.val().length === 0) {
+                setActive(formId);
+            }
         } else {
             $another.addClass('is-slim');
             if (forms.indexOf(formId) + 1 < forms.length) {
@@ -20,7 +21,7 @@ $(document).ready(function() {
         let formId = $(this).attr('id');
         formId = formId.replace('another_', '');
         console.log(formId);
-        if ($(this).val() != false) {
+        if ($(this).val().length !== 0) {
             if (forms.indexOf(formId) + 1 < forms.length) {
                 setActive(forms[forms.indexOf(formId) + 1]);
             }
