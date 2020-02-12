@@ -4,13 +4,13 @@
             <a class="navbar-item">
                 <span class="title is-3">Saal</span>
             </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <a role="button" id="navbar-burger" class="navbar-burger" aria-label="menu" aria-expanded="false">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
         </div>
-        <div class="navbar-menu">
+        <div class="navbar-menu" id="navbar-menu">
             <div class="navbar-start">
                 <a href="#" class="navbar-item">
                     Home

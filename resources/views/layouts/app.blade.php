@@ -7,19 +7,21 @@
 
     <title>Саморезы в ленте СПБ</title>
 
-    <script src="{{ mix('js/app.js') }}"></script>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     @yield('head')
 
 </head>
 <body class="has-navbar-fixed-top">
+<div id="app">
 
-@include('components.navbar')
+    @include('components.navbar')
 
-@yield('content')
+    @yield('content')
 
-@include('components.footer')
+    @include('components.footer')
 
+</div>
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

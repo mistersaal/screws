@@ -4,7 +4,31 @@
         display: flex;
     }
 }
+@media (max-width: $tablet - 1) {
+    .column.is-fullwidth-mobile {
+        width: 100%;
+    }
+}
 
 .overflow {
     overflow: hidden;
+}
+
+[v-cloak] {
+    display: block;
+    padding: 50px 0;
+
+    &:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 2rem;
+        @include loader;
+    }
+
+    & > div {
+        display: none;
+    }
 }

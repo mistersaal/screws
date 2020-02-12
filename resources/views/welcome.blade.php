@@ -15,9 +15,9 @@
                             Саморезы любого типа и размера
                         </p>
                     </div>
-                    <div class="column">
+                    <div class="column is-fullwidth-mobile">
                         <div class="box">
-                            <figure class="image is-fullwidth">
+                            <figure class="image is-fullwidth is-5by3">
                                 <img src="/img/background/header.jpg" alt="">
                             </figure>
                         </div>
@@ -43,7 +43,7 @@
                 <h2 class="title is-4">Сконфигурируйте свой заказ</h2>
                 <p class="subtitle is-6">Вы можете полностью сконфигурировать саморезы, которые будут в ленте</p>
             </div>
-            @include('components.configurator')
+            <configurator v-cloak></configurator>
         </div>
     </section>
 

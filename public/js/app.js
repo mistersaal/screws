@@ -4461,6 +4461,171 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Configurator.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Configurator.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Configurator",
+  data: function data() {
+    return {
+      parameters: [{
+        id: 'type',
+        name: 'Тип',
+        inProgressBar: true,
+        value: -1,
+        another: ''
+      }, {
+        id: 'color',
+        name: 'Покрытие',
+        inProgressBar: true,
+        value: -1,
+        another: ''
+      }, {
+        id: 'length',
+        name: 'Длина',
+        inProgressBar: true,
+        value: -1,
+        another: ''
+      }, {
+        id: 'amount',
+        name: 'Кол-во',
+        inProgressBar: true,
+        value: -1,
+        another: ''
+      }, {
+        id: 'manufacturer',
+        name: 'Производитель',
+        inProgressBar: true,
+        value: -1,
+        another: ''
+      }],
+      activeIndex: 0,
+      formReady: false
+    };
+  },
+  methods: {
+    isActiveProgress: function isActiveProgress(index) {
+      if (index === this.activeIndex) {
+        return true;
+      } else if (!this.parameters[this.activeIndex].inProgressBar) {
+        for (var i = this.activeIndex - 1; i >= 0; i--) {
+          if (this.parameters[i].inProgressBar) {
+            return index === i;
+          }
+        }
+      } else {
+        return false;
+      }
+    },
+    isActiveField: function isActiveField(index) {
+      return index <= this.activeIndex;
+    },
+    percents: function percents() {
+      return (this.activeIndex + 1) / this.parameters.length * 100;
+    },
+    selectChanged: function selectChanged(value, index) {
+      if (value !== -1 && value !== 0 && index !== this.parameters.length - 1) {
+        this.activeIndex = index + 1;
+      } else {
+        this.activeIndex = index;
+        this.parameters[index].another = '';
+      }
+
+      for (var i = index + 1; i < this.parameters.length; i++) {
+        this.parameters[i].value = -1;
+        this.parameters[i].another = '';
+      }
+
+      this.checkReadiness();
+    },
+    inputChanged: function inputChanged(value, index) {
+      if (value.length !== 0 && index !== this.parameters.length - 1) {
+        this.activeIndex = index + 1;
+      } else {
+        this.activeIndex = index;
+      }
+
+      this.checkReadiness();
+    },
+    checkReadiness: function checkReadiness() {
+      var lastIndex = this.parameters.length - 1;
+      var lastEl = this.parameters[lastIndex];
+      this.formReady = (lastEl.value !== 0 && lastEl.value !== -1 || lastEl.another.length !== 0) && this.activeIndex === lastIndex;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/is-buffer/index.js":
 /*!*****************************************!*\
   !*** ./node_modules/is-buffer/index.js ***!
@@ -22067,6 +22232,324 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Configurator.vue?vue&type=template&id=f37ea6c0&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Configurator.vue?vue&type=template&id=f37ea6c0& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "ul",
+      { staticClass: "steps has-content-centered is-small is-hidden-mobile" },
+      _vm._l(_vm.parameters, function(parameter, index) {
+        return parameter.inProgressBar
+          ? _c(
+              "li",
+              {
+                staticClass: "steps-segment",
+                class: { "is-active": _vm.isActiveProgress(index) }
+              },
+              [
+                _c("span", { staticClass: "steps-marker" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "steps-content" }, [
+                  _c("p", { staticClass: "is-size-6" }, [
+                    _vm._v(_vm._s(parameter.name))
+                  ])
+                ])
+              ]
+            )
+          : _vm._e()
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c(
+      "progress",
+      {
+        staticClass: "progress is-success is-hidden-tablet",
+        attrs: { max: "100" },
+        domProps: { value: _vm.percents() }
+      },
+      [_vm._v(_vm._s(_vm.percents()) + "%")]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "columns is-centered" }, [
+      _c("div", { staticClass: "column is-half" }, [
+        _c(
+          "form",
+          {
+            staticClass: "box overflow",
+            attrs: { action: "", method: "POST", id: "conf_form" }
+          },
+          _vm._l(_vm.parameters, function(parameter, index) {
+            return _c(
+              "div",
+              { staticClass: "field", attrs: { id: parameter.id + "Form" } },
+              [
+                _c("div", { staticClass: "field" }, [
+                  _c(
+                    "label",
+                    { staticClass: "label", attrs: { for: parameter.id } },
+                    [_vm._v(_vm._s(parameter.name))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "control is-expanded" }, [
+                    _c("div", { staticClass: "select is-fullwidth" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: parameter.value,
+                              expression: "parameter.value"
+                            }
+                          ],
+                          staticClass: "configurator-select",
+                          attrs: {
+                            id: parameter.id,
+                            name: parameter.id,
+                            disabled: !_vm.isActiveField(index)
+                          },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  parameter,
+                                  "value",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                return _vm.selectChanged(parameter.value, index)
+                              }
+                            ]
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "", selected: "" },
+                              domProps: { value: -1 }
+                            },
+                            [_vm._v("-- Выбор --")]
+                          ),
+                          _vm._v(" "),
+                          _c("option", { domProps: { value: 1 } }, [
+                            _vm._v("Производитель1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { domProps: { value: 2 } }, [
+                            _vm._v("Производитель2")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { domProps: { value: 3 } }, [
+                            _vm._v("Производитель3")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { domProps: { value: 0 } }, [
+                            _vm._v("Другое")
+                          ])
+                        ]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "field configurator-field",
+                    class: { "is-slim": parameter.value !== 0 }
+                  },
+                  [
+                    _c("div", { staticClass: "control" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: parameter.another,
+                            expression: "parameter.another"
+                          }
+                        ],
+                        staticClass: "input configurator-another",
+                        attrs: {
+                          type: "text",
+                          id: "another_" + parameter.id,
+                          name: "another_" + parameter.id,
+                          disabled: !_vm.isActiveField(index)
+                        },
+                        domProps: { value: parameter.another },
+                        on: {
+                          input: [
+                            function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                parameter,
+                                "another",
+                                $event.target.value
+                              )
+                            },
+                            function($event) {
+                              return _vm.inputChanged(parameter.another, index)
+                            }
+                          ]
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "help" }, [_vm._v("Свой вариант")])
+                    ])
+                  ]
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/vue/dist/vue.common.dev.js":
 /*!*************************************************!*\
   !*** ./node_modules/vue/dist/vue.common.dev.js ***!
@@ -34127,6 +34610,8 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fontawesome__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fontawesome */ "./resources/js/fontawesome.js");
+/* harmony import */ var _general__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./general */ "./resources/js/general.js");
+/* harmony import */ var _general__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_general__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -34144,8 +34629,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  */
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.component('configurator', __webpack_require__(/*! ./components/Configurator */ "./resources/js/components/Configurator.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -34155,6 +34640,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 var app = new Vue({
   el: '#app'
 });
+
 
 
 /***/ }),
@@ -34191,6 +34677,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/Configurator.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Configurator.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Configurator_vue_vue_type_template_id_f37ea6c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Configurator.vue?vue&type=template&id=f37ea6c0& */ "./resources/js/components/Configurator.vue?vue&type=template&id=f37ea6c0&");
+/* harmony import */ var _Configurator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Configurator.vue?vue&type=script&lang=js& */ "./resources/js/components/Configurator.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Configurator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Configurator_vue_vue_type_template_id_f37ea6c0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Configurator_vue_vue_type_template_id_f37ea6c0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Configurator.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Configurator.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Configurator.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Configurator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Configurator.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Configurator.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Configurator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Configurator.vue?vue&type=template&id=f37ea6c0&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/Configurator.vue?vue&type=template&id=f37ea6c0& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Configurator_vue_vue_type_template_id_f37ea6c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Configurator.vue?vue&type=template&id=f37ea6c0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Configurator.vue?vue&type=template&id=f37ea6c0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Configurator_vue_vue_type_template_id_f37ea6c0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Configurator_vue_vue_type_template_id_f37ea6c0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/fontawesome.js":
 /*!*************************************!*\
   !*** ./resources/js/fontawesome.js ***!
@@ -34221,6 +34776,24 @@ _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_f
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons_faChevronDown__WEBPACK_IMPORTED_MODULE_4__["faChevronDown"]);
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_regular_svg_icons_faBuilding__WEBPACK_IMPORTED_MODULE_5__["faBuilding"]);
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["dom"].watch();
+
+/***/ }),
+
+/***/ "./resources/js/general.js":
+/*!*********************************!*\
+  !*** ./resources/js/general.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+document.addEventListener("DOMContentLoaded", function (event) {
+  var navbarBurger = document.getElementById('navbar-burger');
+  var navbarMenu = document.getElementById('navbar-menu');
+  navbarBurger.addEventListener('click', function (e) {
+    navbarMenu.classList.toggle('is-active');
+    navbarBurger.classList.toggle('is-active');
+  }, false);
+});
 
 /***/ }),
 
