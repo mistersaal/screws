@@ -19,13 +19,12 @@
     <!--         TODO: Сделать правую колонку для выбранных параметров-->
             <div class="column is-half">
                 <form action="" class="box overflow" method="POST" id="conf_form">
-                    <div :id="parameter.id + 'Form'" class="field" v-for="(parameter, index) in parameters">
+                    <div class="field" v-for="(parameter, index) in parameters">
                         <div class="field">
                             <label :for="parameter.id" class="label">{{parameter.name}}</label>
                             <div class="control is-expanded">
                                 <div class="select is-fullwidth">
-                                    <select :id="parameter.id"
-                                            :name="parameter.id"
+                                    <select :name="parameter.id"
                                             class="configurator-select"
                                             v-model="parameter.value"
                                             :disabled="! isActiveField(index)"
@@ -45,7 +44,6 @@
                                 <input
                                     type="text"
                                     class="input configurator-another"
-                                    :id="'another_' + parameter.id"
                                     :name="'another_' + parameter.id"
                                     v-model="parameter.another"
                                     @input="inputChanged(parameter.another, index)"
