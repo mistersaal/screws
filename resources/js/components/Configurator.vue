@@ -1,19 +1,10 @@
 <template>
-    <div>
 
-        <ul class="steps has-content-centered is-small is-hidden-mobile">
-            <!-- TODO: spb.mtk-fortuna.ru -->
-            <li class="steps-segment" :class="{'is-active': isActiveProgress(index)}"
-                v-for="(parameter, index) in parameters"
-                v-if="parameter.inProgressBar"
-            >
-                <span class="steps-marker"></span>
-                <div class="steps-content">
-                    <p class="is-size-6">{{ parameter.name }}</p>
-                </div>
-            </li>
-        </ul>
-        <progress class="progress is-success is-hidden-tablet" :value="percents()" max="100">{{percents()}}%</progress>
+    <div>
+        <configurator-progress-bar
+            :active-index="activeIndex"
+            :parameters="parameters"
+        ></configurator-progress-bar>
 
         <div class="columns is-centered">
     <!--         TODO: Сделать правую колонку для выбранных параметров-->
@@ -57,11 +48,14 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
+    import ConfiguratorProgressBar from "./ConfiguratorProgressBar";
     export default {
         name: "Configurator",
+        components: {ConfiguratorProgressBar},
         data() {
             return {
                 parameters: [
@@ -104,24 +98,8 @@
             };
         },
         methods: {
-            isActiveProgress(index) {
-                if (index === this.activeIndex) {
-                    return true;
-                } else if (! this.parameters[this.activeIndex].inProgressBar) {
-                    for (let i = this.activeIndex - 1; i >= 0; i--) {
-                        if (this.parameters[i].inProgressBar) {
-                            return index === i;
-                        }
-                    }
-                } else {
-                    return false;
-                }
-            },
             isActiveField(index) {
                 return index <= this.activeIndex;
-            },
-            percents() {
-                return (this.activeIndex + 1) / this.parameters.length * 100;
             },
             selectChanged(value, index) {
                 if (value !== -1 && value !== 0 && index !== this.parameters.length - 1) {

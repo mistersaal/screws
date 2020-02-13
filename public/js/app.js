@@ -4470,6 +4470,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ConfiguratorProgressBar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfiguratorProgressBar */ "./resources/js/components/ConfiguratorProgressBar.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -4529,16 +4530,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Configurator",
+  components: {
+    ConfiguratorProgressBar: _ConfiguratorProgressBar__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       parameters: [{
@@ -4576,24 +4573,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   methods: {
-    isActiveProgress: function isActiveProgress(index) {
-      if (index === this.activeIndex) {
-        return true;
-      } else if (!this.parameters[this.activeIndex].inProgressBar) {
-        for (var i = this.activeIndex - 1; i >= 0; i--) {
-          if (this.parameters[i].inProgressBar) {
-            return index === i;
-          }
-        }
-      } else {
-        return false;
-      }
-    },
     isActiveField: function isActiveField(index) {
       return index <= this.activeIndex;
-    },
-    percents: function percents() {
-      return (this.activeIndex + 1) / this.parameters.length * 100;
     },
     selectChanged: function selectChanged(value, index) {
       if (value !== -1 && value !== 0 && index !== this.parameters.length - 1) {
@@ -4670,6 +4651,65 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       return false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ConfiguratorProgressBar",
+  props: {
+    parameters: {
+      "default": {}
+    },
+    activeIndex: {
+      "default": 0
+    }
+  },
+  methods: {
+    percents: function percents() {
+      return (this.activeIndex + 1) / this.parameters.length * 100;
+    },
+    isActiveProgress: function isActiveProgress(index) {
+      if (index === this.activeIndex) {
+        return true;
+      } else if (!this.parameters[this.activeIndex].inProgressBar) {
+        for (var i = this.activeIndex - 1; i >= 0; i--) {
+          if (this.parameters[i].inProgressBar) {
+            return index === i;
+          }
+        }
+      } else {
+        return false;
+      }
     }
   }
 });
@@ -22297,6 +22337,180 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("configurator-progress-bar", {
+        attrs: { "active-index": _vm.activeIndex, parameters: _vm.parameters }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column is-half" }, [
+          _c(
+            "form",
+            {
+              staticClass: "box overflow",
+              attrs: { action: "", method: "POST", id: "conf_form" }
+            },
+            _vm._l(_vm.parameters, function(parameter, index) {
+              return _c("div", { staticClass: "field" }, [
+                _c("div", { staticClass: "field" }, [
+                  _c(
+                    "label",
+                    { staticClass: "label", attrs: { for: parameter.id } },
+                    [_vm._v(_vm._s(parameter.name))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "control is-expanded" }, [
+                    _c("div", { staticClass: "select is-fullwidth" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: parameter.value,
+                              expression: "parameter.value"
+                            }
+                          ],
+                          staticClass: "configurator-select",
+                          attrs: {
+                            name: parameter.id,
+                            disabled: !_vm.isActiveField(index)
+                          },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  parameter,
+                                  "value",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                return _vm.selectChanged(parameter.value, index)
+                              }
+                            ]
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "", selected: "" },
+                              domProps: { value: -1 }
+                            },
+                            [_vm._v("-- Выбор --")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(parameter.values, function(option) {
+                            return _c(
+                              "option",
+                              { domProps: { value: option.id } },
+                              [_vm._v(_vm._s(option.name))]
+                            )
+                          }),
+                          _vm._v(" "),
+                          _c("option", { domProps: { value: 0 } }, [
+                            _vm._v("Другое")
+                          ])
+                        ],
+                        2
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "field configurator-field",
+                    class: { "is-slim": parameter.value !== 0 }
+                  },
+                  [
+                    _c("div", { staticClass: "control" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: parameter.another,
+                            expression: "parameter.another"
+                          }
+                        ],
+                        staticClass: "input configurator-another",
+                        attrs: {
+                          type: "text",
+                          name: "another_" + parameter.id,
+                          disabled: !_vm.isActiveField(index)
+                        },
+                        domProps: { value: parameter.another },
+                        on: {
+                          input: [
+                            function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                parameter,
+                                "another",
+                                $event.target.value
+                              )
+                            },
+                            function($event) {
+                              return _vm.inputChanged(parameter.another, index)
+                            }
+                          ]
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "help" }, [_vm._v("Свой вариант")])
+                    ])
+                  ]
+                )
+              ])
+            }),
+            0
+          )
+        ])
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _c("div", [
     _c(
       "ul",
@@ -22332,145 +22546,7 @@ var render = function() {
         domProps: { value: _vm.percents() }
       },
       [_vm._v(_vm._s(_vm.percents()) + "%")]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "columns is-centered" }, [
-      _c("div", { staticClass: "column is-half" }, [
-        _c(
-          "form",
-          {
-            staticClass: "box overflow",
-            attrs: { action: "", method: "POST", id: "conf_form" }
-          },
-          _vm._l(_vm.parameters, function(parameter, index) {
-            return _c("div", { staticClass: "field" }, [
-              _c("div", { staticClass: "field" }, [
-                _c(
-                  "label",
-                  { staticClass: "label", attrs: { for: parameter.id } },
-                  [_vm._v(_vm._s(parameter.name))]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "control is-expanded" }, [
-                  _c("div", { staticClass: "select is-fullwidth" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: parameter.value,
-                            expression: "parameter.value"
-                          }
-                        ],
-                        staticClass: "configurator-select",
-                        attrs: {
-                          name: parameter.id,
-                          disabled: !_vm.isActiveField(index)
-                        },
-                        on: {
-                          change: [
-                            function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                parameter,
-                                "value",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            },
-                            function($event) {
-                              return _vm.selectChanged(parameter.value, index)
-                            }
-                          ]
-                        }
-                      },
-                      [
-                        _c(
-                          "option",
-                          {
-                            attrs: { disabled: "", selected: "" },
-                            domProps: { value: -1 }
-                          },
-                          [_vm._v("-- Выбор --")]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(parameter.values, function(option) {
-                          return _c(
-                            "option",
-                            { domProps: { value: option.id } },
-                            [_vm._v(_vm._s(option.name))]
-                          )
-                        }),
-                        _vm._v(" "),
-                        _c("option", { domProps: { value: 0 } }, [
-                          _vm._v("Другое")
-                        ])
-                      ],
-                      2
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "field configurator-field",
-                  class: { "is-slim": parameter.value !== 0 }
-                },
-                [
-                  _c("div", { staticClass: "control" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: parameter.another,
-                          expression: "parameter.another"
-                        }
-                      ],
-                      staticClass: "input configurator-another",
-                      attrs: {
-                        type: "text",
-                        name: "another_" + parameter.id,
-                        disabled: !_vm.isActiveField(index)
-                      },
-                      domProps: { value: parameter.another },
-                      on: {
-                        input: [
-                          function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(parameter, "another", $event.target.value)
-                          },
-                          function($event) {
-                            return _vm.inputChanged(parameter.another, index)
-                          }
-                        ]
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "help" }, [_vm._v("Свой вариант")])
-                  ])
-                ]
-              )
-            ])
-          }),
-          0
-        )
-      ])
-    ])
+    )
   ])
 }
 var staticRenderFns = []
@@ -34645,7 +34721,8 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./components/Configurator.vue": "./resources/js/components/Configurator.vue"
+	"./components/Configurator.vue": "./resources/js/components/Configurator.vue",
+	"./components/ConfiguratorProgressBar.vue": "./resources/js/components/ConfiguratorProgressBar.vue"
 };
 
 
@@ -34813,6 +34890,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Configurator_vue_vue_type_template_id_f37ea6c0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Configurator_vue_vue_type_template_id_f37ea6c0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ConfiguratorProgressBar.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/ConfiguratorProgressBar.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true& */ "./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true&");
+/* harmony import */ var _ConfiguratorProgressBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfiguratorProgressBar.vue?vue&type=script&lang=js& */ "./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ConfiguratorProgressBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "5ed60f16",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ConfiguratorProgressBar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorProgressBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ConfiguratorProgressBar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorProgressBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
