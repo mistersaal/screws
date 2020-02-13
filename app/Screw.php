@@ -39,7 +39,10 @@ class Screw extends Model
         $tree = [];
 
         foreach ($screws as $screw) {
-            $tree[$screw->screw_type_id][$screw->screw_color_id][$screw->screw_length_id][] = $screw->screw_manufacturer_id;
+            $tree[$screw->screw_type_id]
+            [$screw->screw_color_id]
+            [$screw->screw_length_id]
+            [$screw->screw_manufacturer_id] = true;
         }
 
         return $tree;

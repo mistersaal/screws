@@ -4470,6 +4470,12 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4557,13 +4563,6 @@ __webpack_require__.r(__webpack_exports__);
         another: '',
         values: []
       }, {
-        id: 'amount',
-        name: 'Кол-во',
-        inProgressBar: true,
-        value: -1,
-        another: '',
-        values: []
-      }, {
         id: 'manufacturer',
         name: 'Производитель',
         inProgressBar: true,
@@ -4573,6 +4572,7 @@ __webpack_require__.r(__webpack_exports__);
       }],
       activeIndex: 0,
       formReady: false,
+      individual: false,
       values: {},
       screws: []
     };
@@ -4598,8 +4598,11 @@ __webpack_require__.r(__webpack_exports__);
       return (this.activeIndex + 1) / this.parameters.length * 100;
     },
     selectChanged: function selectChanged(value, index) {
+      this.checkIndividual();
+
       if (value !== -1 && value !== 0 && index !== this.parameters.length - 1) {
         this.activeIndex = index + 1;
+        this.updateOptions();
       } else {
         this.activeIndex = index;
         this.parameters[index].another = '';
@@ -4614,9 +4617,40 @@ __webpack_require__.r(__webpack_exports__);
       if (value.length !== 0 && index !== this.parameters.length - 1) {
         if (this.activeIndex === index) {
           this.activeIndex = index + 1;
+          this.updateOptions();
         }
       } else {
         this.activeIndex = index;
+      }
+    },
+    updateOptions: function updateOptions() {
+      var _this = this;
+
+      var active = this.parameters[this.activeIndex];
+      active.values = [];
+
+      if (this.individual) {
+        active.values = this.values[active.id];
+      } else {
+        var values = _objectSpread({}, this.screws);
+
+        for (var i = 0; i < this.activeIndex; i++) {
+          values = values[this.parameters[i].value];
+        }
+
+        Object.keys(values).forEach(function (valueId) {
+          console.log(_this.values[active.id][valueId]);
+          active.values.push(_this.values[active.id][valueId]);
+        });
+      }
+    },
+    checkIndividual: function checkIndividual() {
+      this.individual = false;
+
+      for (var i = 0; i <= this.activeIndex; i++) {
+        if (this.parameters[i].value === 0) {
+          this.individual = true;
+        }
       }
     }
   },
@@ -4626,24 +4660,19 @@ __webpack_require__.r(__webpack_exports__);
     this.formReady = (lastEl.value !== 0 && lastEl.value !== -1 || lastEl.another.length !== 0) && this.activeIndex === lastIndex;
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('/configurator/data').then(function (response) {
       var data = response.data;
-      _this.values = {
+      _this2.values = {
         color: data.colors,
         type: data.types,
         manufacturer: data.manufacturers,
         length: data.lengths
       };
-      Object.keys(data.screws).forEach(function (valueId) {
-        console.log(_this.parameters);
+      _this2.screws = data.screws;
 
-        _this.parameters[0].values.push({
-          id: valueId,
-          name: data.type[valueId].name
-        });
-      });
+      _this2.updateOptions();
     });
   }
 });

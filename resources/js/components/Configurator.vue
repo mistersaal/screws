@@ -90,14 +90,6 @@
                         values: []
                     },
                     {
-                        id: 'amount',
-                        name: 'Кол-во',
-                        inProgressBar: true,
-                        value: -1,
-                        another: '',
-                        values: []
-                    },
-                    {
                         id: 'manufacturer',
                         name: 'Производитель',
                         inProgressBar: true,
@@ -108,6 +100,7 @@
                 ],
                 activeIndex: 0,
                 formReady: false,
+                individual: false,
                 values: {},
                 screws: []
             };
@@ -133,8 +126,11 @@
                 return (this.activeIndex + 1) / this.parameters.length * 100;
             },
             selectChanged(value, index) {
+                this.checkIndividual();
+
                 if (value !== -1 && value !== 0 && index !== this.parameters.length - 1) {
                     this.activeIndex = index + 1;
+                    this.updateOptions();
                 } else {
                     this.activeIndex = index;
                     this.parameters[index].another = '';
@@ -149,11 +145,36 @@
                 if (value.length !== 0 && index !== this.parameters.length - 1) {
                     if (this.activeIndex === index) {
                         this.activeIndex = index + 1;
+                        this.updateOptions();
                     }
                 } else {
                     this.activeIndex = index;
                 }
             },
+            updateOptions() {
+                let active = this.parameters[this.activeIndex];
+                active.values = [];
+                if (this.individual) {
+                    active.values = this.values[active.id];
+                } else {
+                    let values = {...this.screws};
+                    for (let i = 0; i < this.activeIndex; i++) {
+                        values = values[this.parameters[i].value];
+                    }
+                    Object.keys(values).forEach((valueId) => {
+                        console.log(this.values[active.id][valueId]);
+                        active.values.push(this.values[active.id][valueId]);
+                    });
+                }
+            },
+            checkIndividual() {
+                this.individual = false;
+                for (let i = 0; i <= this.activeIndex; i++) {
+                    if (this.parameters[i].value === 0) {
+                        this.individual = true;
+                    }
+                }
+            }
         },
         updated() {
             let lastIndex = this.parameters.length - 1;
@@ -172,10 +193,8 @@
                     manufacturer: data.manufacturers,
                     length: data.lengths
                 };
-                Object.keys(data.screws).forEach((valueId) => {
-                    console.log(this.parameters);
-                    this.parameters[0].values.push({id: valueId, name: data.type[valueId].name})
-                });
+                this.screws = data.screws;
+                this.updateOptions();
             })
         }
     }
