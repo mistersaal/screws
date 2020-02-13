@@ -13,9 +13,9 @@ class ScrewLengthsTableSeeder extends Seeder
     public function run()
     {
         DB::table('screw_lengths')->insert([
-            ['value' => 25],
-            ['value' => 41],
-            ['value' => 55]
+            ['name' => 25],
+            ['name' => 41],
+            ['name' => 55]
         ]);
     }
 }

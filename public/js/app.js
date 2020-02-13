@@ -4531,8 +4531,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Configurator",
   data: function data() {
@@ -4542,34 +4540,41 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Тип',
         inProgressBar: true,
         value: -1,
-        another: ''
+        another: '',
+        values: []
       }, {
         id: 'color',
         name: 'Покрытие',
         inProgressBar: true,
         value: -1,
-        another: ''
+        another: '',
+        values: []
       }, {
         id: 'length',
         name: 'Длина',
         inProgressBar: true,
         value: -1,
-        another: ''
+        another: '',
+        values: []
       }, {
         id: 'amount',
         name: 'Кол-во',
         inProgressBar: true,
         value: -1,
-        another: ''
+        another: '',
+        values: []
       }, {
         id: 'manufacturer',
         name: 'Производитель',
         inProgressBar: true,
         value: -1,
-        another: ''
+        another: '',
+        values: []
       }],
       activeIndex: 0,
-      formReady: false
+      formReady: false,
+      values: {},
+      screws: []
     };
   },
   methods: {
@@ -4604,23 +4609,42 @@ __webpack_require__.r(__webpack_exports__);
         this.parameters[i].value = -1;
         this.parameters[i].another = '';
       }
-
-      this.checkReadiness();
     },
     inputChanged: function inputChanged(value, index) {
       if (value.length !== 0 && index !== this.parameters.length - 1) {
-        this.activeIndex = index + 1;
+        if (this.activeIndex === index) {
+          this.activeIndex = index + 1;
+        }
       } else {
         this.activeIndex = index;
       }
-
-      this.checkReadiness();
-    },
-    checkReadiness: function checkReadiness() {
-      var lastIndex = this.parameters.length - 1;
-      var lastEl = this.parameters[lastIndex];
-      this.formReady = (lastEl.value !== 0 && lastEl.value !== -1 || lastEl.another.length !== 0) && this.activeIndex === lastIndex;
     }
+  },
+  updated: function updated() {
+    var lastIndex = this.parameters.length - 1;
+    var lastEl = this.parameters[lastIndex];
+    this.formReady = (lastEl.value !== 0 && lastEl.value !== -1 || lastEl.another.length !== 0) && this.activeIndex === lastIndex;
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/configurator/data').then(function (response) {
+      var data = response.data;
+      _this.values = {
+        color: data.colors,
+        type: data.types,
+        manufacturer: data.manufacturers,
+        length: data.lengths
+      };
+      Object.keys(data.screws).forEach(function (valueId) {
+        console.log(_this.parameters);
+
+        _this.parameters[0].values.push({
+          id: valueId,
+          name: data.type[valueId].name
+        });
+      });
+    });
   }
 });
 
@@ -22293,142 +22317,129 @@ var render = function() {
             attrs: { action: "", method: "POST", id: "conf_form" }
           },
           _vm._l(_vm.parameters, function(parameter, index) {
-            return _c(
-              "div",
-              { staticClass: "field", attrs: { id: parameter.id + "Form" } },
-              [
-                _c("div", { staticClass: "field" }, [
-                  _c(
-                    "label",
-                    { staticClass: "label", attrs: { for: parameter.id } },
-                    [_vm._v(_vm._s(parameter.name))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "control is-expanded" }, [
-                    _c("div", { staticClass: "select is-fullwidth" }, [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: parameter.value,
-                              expression: "parameter.value"
-                            }
-                          ],
-                          staticClass: "configurator-select",
-                          attrs: {
-                            id: parameter.id,
-                            name: parameter.id,
-                            disabled: !_vm.isActiveField(index)
-                          },
-                          on: {
-                            change: [
-                              function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  parameter,
-                                  "value",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              },
-                              function($event) {
-                                return _vm.selectChanged(parameter.value, index)
-                              }
-                            ]
-                          }
-                        },
-                        [
-                          _c(
-                            "option",
-                            {
-                              attrs: { disabled: "", selected: "" },
-                              domProps: { value: -1 }
-                            },
-                            [_vm._v("-- Выбор --")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { domProps: { value: 1 } }, [
-                            _vm._v("Производитель1")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { domProps: { value: 2 } }, [
-                            _vm._v("Производитель2")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { domProps: { value: 3 } }, [
-                            _vm._v("Производитель3")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { domProps: { value: 0 } }, [
-                            _vm._v("Другое")
-                          ])
-                        ]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
+            return _c("div", { staticClass: "field" }, [
+              _c("div", { staticClass: "field" }, [
                 _c(
-                  "div",
-                  {
-                    staticClass: "field configurator-field",
-                    class: { "is-slim": parameter.value !== 0 }
-                  },
-                  [
-                    _c("div", { staticClass: "control" }, [
-                      _c("input", {
+                  "label",
+                  { staticClass: "label", attrs: { for: parameter.id } },
+                  [_vm._v(_vm._s(parameter.name))]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "control is-expanded" }, [
+                  _c("div", { staticClass: "select is-fullwidth" }, [
+                    _c(
+                      "select",
+                      {
                         directives: [
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: parameter.another,
-                            expression: "parameter.another"
+                            value: parameter.value,
+                            expression: "parameter.value"
                           }
                         ],
-                        staticClass: "input configurator-another",
+                        staticClass: "configurator-select",
                         attrs: {
-                          type: "text",
-                          id: "another_" + parameter.id,
-                          name: "another_" + parameter.id,
+                          name: parameter.id,
                           disabled: !_vm.isActiveField(index)
                         },
-                        domProps: { value: parameter.another },
                         on: {
-                          input: [
+                          change: [
                             function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
                               _vm.$set(
                                 parameter,
-                                "another",
-                                $event.target.value
+                                "value",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
                               )
                             },
                             function($event) {
-                              return _vm.inputChanged(parameter.another, index)
+                              return _vm.selectChanged(parameter.value, index)
                             }
                           ]
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "help" }, [_vm._v("Свой вариант")])
-                    ])
-                  ]
-                )
-              ]
-            )
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: { disabled: "", selected: "" },
+                            domProps: { value: -1 }
+                          },
+                          [_vm._v("-- Выбор --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(parameter.values, function(option) {
+                          return _c(
+                            "option",
+                            { domProps: { value: option.id } },
+                            [_vm._v(_vm._s(option.name))]
+                          )
+                        }),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: 0 } }, [
+                          _vm._v("Другое")
+                        ])
+                      ],
+                      2
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "field configurator-field",
+                  class: { "is-slim": parameter.value !== 0 }
+                },
+                [
+                  _c("div", { staticClass: "control" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: parameter.another,
+                          expression: "parameter.another"
+                        }
+                      ],
+                      staticClass: "input configurator-another",
+                      attrs: {
+                        type: "text",
+                        name: "another_" + parameter.id,
+                        disabled: !_vm.isActiveField(index)
+                      },
+                      domProps: { value: parameter.another },
+                      on: {
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(parameter, "another", $event.target.value)
+                          },
+                          function($event) {
+                            return _vm.inputChanged(parameter.another, index)
+                          }
+                        ]
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "help" }, [_vm._v("Свой вариант")])
+                  ])
+                ]
+              )
+            ])
           }),
           0
         )

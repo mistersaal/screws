@@ -15,7 +15,7 @@ class CreateScrewLengthsTable extends Migration
     {
         Schema::create('screw_lengths', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('value')->unique()->unsigned();
+            $table->float('name')->unique()->unsigned();
             $table->boolean('visible')->default(true);
         });
     }

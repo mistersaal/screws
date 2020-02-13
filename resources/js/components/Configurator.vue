@@ -31,9 +31,9 @@
                                             @change="selectChanged(parameter.value, index)"
                                     >
                                         <option disabled selected :value="-1">-- Выбор --</option>
-                                        <option :value="1">Производитель1</option>
-                                        <option :value="2">Производитель2</option>
-                                        <option :value="3">Производитель3</option>
+                                        <option :value="option.id"
+                                                v-for="option in parameter.values"
+                                        >{{option.name}}</option>
                                         <option :value="0">Другое</option>
                                     </select>
                                 </div>
@@ -70,37 +70,46 @@
                         name: 'Тип',
                         inProgressBar: true,
                         value: -1,
-                        another: ''
+                        another: '',
+                        values: []
                     },
                     {
                         id: 'color',
                         name: 'Покрытие',
                         inProgressBar: true,
                         value: -1,
-                        another: ''},
+                        another: '',
+                        values: []
+                    },
                     {
                         id: 'length',
                         name: 'Длина',
                         inProgressBar: true,
                         value: -1,
-                        another: ''},
+                        another: '',
+                        values: []
+                    },
                     {
                         id: 'amount',
                         name: 'Кол-во',
                         inProgressBar: true,
                         value: -1,
-                        another: ''
+                        another: '',
+                        values: []
                     },
                     {
                         id: 'manufacturer',
                         name: 'Производитель',
                         inProgressBar: true,
                         value: -1,
-                        another: ''
+                        another: '',
+                        values: []
                     }
                 ],
                 activeIndex: 0,
-                formReady: false
+                formReady: false,
+                values: {},
+                screws: []
             };
         },
         methods: {
@@ -135,23 +144,39 @@
                     this.parameters[i].value = -1;
                     this.parameters[i].another = '';
                 }
-                this.checkReadiness();
             },
             inputChanged(value, index) {
                 if (value.length !== 0 && index !== this.parameters.length - 1) {
-                    this.activeIndex = index + 1;
+                    if (this.activeIndex === index) {
+                        this.activeIndex = index + 1;
+                    }
                 } else {
                     this.activeIndex = index;
                 }
-                this.checkReadiness();
             },
-            checkReadiness() {
-                let lastIndex = this.parameters.length - 1;
-                let lastEl = this.parameters[lastIndex];
-                this.formReady = (
-                    lastEl.value !== 0 && lastEl.value !== -1 || lastEl.another.length !== 0
-                ) && this.activeIndex === lastIndex;
-            }
+        },
+        updated() {
+            let lastIndex = this.parameters.length - 1;
+            let lastEl = this.parameters[lastIndex];
+            this.formReady = (
+                lastEl.value !== 0 && lastEl.value !== -1 || lastEl.another.length !== 0
+            ) && this.activeIndex === lastIndex;
+        },
+        created() {
+            axios.get('/configurator/data')
+            .then((response) => {
+                let data = response.data;
+                this.values = {
+                    color: data.colors,
+                    type: data.types,
+                    manufacturer: data.manufacturers,
+                    length: data.lengths
+                };
+                Object.keys(data.screws).forEach((valueId) => {
+                    console.log(this.parameters);
+                    this.parameters[0].values.push({id: valueId, name: data.type[valueId].name})
+                });
+            })
         }
     }
 </script>
