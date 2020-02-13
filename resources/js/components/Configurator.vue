@@ -99,8 +99,6 @@
                     }
                 ],
                 activeIndex: 0,
-                formReady: false,
-                individual: false,
                 values: {},
                 screws: []
             };
@@ -126,8 +124,6 @@
                 return (this.activeIndex + 1) / this.parameters.length * 100;
             },
             selectChanged(value, index) {
-                this.checkIndividual();
-
                 if (value !== -1 && value !== 0 && index !== this.parameters.length - 1) {
                     this.activeIndex = index + 1;
                     this.updateOptions();
@@ -162,26 +158,10 @@
                         values = values[this.parameters[i].value];
                     }
                     Object.keys(values).forEach((valueId) => {
-                        console.log(this.values[active.id][valueId]);
                         active.values.push(this.values[active.id][valueId]);
                     });
                 }
-            },
-            checkIndividual() {
-                this.individual = false;
-                for (let i = 0; i <= this.activeIndex; i++) {
-                    if (this.parameters[i].value === 0) {
-                        this.individual = true;
-                    }
-                }
             }
-        },
-        updated() {
-            let lastIndex = this.parameters.length - 1;
-            let lastEl = this.parameters[lastIndex];
-            this.formReady = (
-                lastEl.value !== 0 && lastEl.value !== -1 || lastEl.another.length !== 0
-            ) && this.activeIndex === lastIndex;
         },
         created() {
             axios.get('/configurator/data')
@@ -196,6 +176,23 @@
                 this.screws = data.screws;
                 this.updateOptions();
             })
+        },
+        computed: {
+            formReady() {
+                let lastIndex = this.parameters.length - 1;
+                let lastEl = this.parameters[lastIndex];
+                return (
+                    lastEl.value !== 0 && lastEl.value !== -1 || lastEl.another.length !== 0
+                ) && this.activeIndex === lastIndex;
+            },
+            individual() {
+                for (let i = 0; i <= this.activeIndex; i++) {
+                    if (this.parameters[i].value === 0) {
+                        return true;
+                    }
+                }
+                return false;
+            },
         }
     }
 </script>

@@ -4571,8 +4571,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         values: []
       }],
       activeIndex: 0,
-      formReady: false,
-      individual: false,
       values: {},
       screws: []
     };
@@ -4598,8 +4596,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return (this.activeIndex + 1) / this.parameters.length * 100;
     },
     selectChanged: function selectChanged(value, index) {
-      this.checkIndividual();
-
       if (value !== -1 && value !== 0 && index !== this.parameters.length - 1) {
         this.activeIndex = index + 1;
         this.updateOptions();
@@ -4639,25 +4635,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
 
         Object.keys(values).forEach(function (valueId) {
-          console.log(_this.values[active.id][valueId]);
           active.values.push(_this.values[active.id][valueId]);
         });
       }
-    },
-    checkIndividual: function checkIndividual() {
-      this.individual = false;
-
-      for (var i = 0; i <= this.activeIndex; i++) {
-        if (this.parameters[i].value === 0) {
-          this.individual = true;
-        }
-      }
     }
-  },
-  updated: function updated() {
-    var lastIndex = this.parameters.length - 1;
-    var lastEl = this.parameters[lastIndex];
-    this.formReady = (lastEl.value !== 0 && lastEl.value !== -1 || lastEl.another.length !== 0) && this.activeIndex === lastIndex;
   },
   created: function created() {
     var _this2 = this;
@@ -4674,6 +4655,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       _this2.updateOptions();
     });
+  },
+  computed: {
+    formReady: function formReady() {
+      var lastIndex = this.parameters.length - 1;
+      var lastEl = this.parameters[lastIndex];
+      return (lastEl.value !== 0 && lastEl.value !== -1 || lastEl.another.length !== 0) && this.activeIndex === lastIndex;
+    },
+    individual: function individual() {
+      for (var i = 0; i <= this.activeIndex; i++) {
+        if (this.parameters[i].value === 0) {
+          return true;
+        }
+      }
+
+      return false;
+    }
   }
 });
 
