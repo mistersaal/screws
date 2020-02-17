@@ -6,56 +6,63 @@
             :parameters="parameters"
         ></configurator-progress-bar>
 
-        <div class="columns is-centered">
-    <!--         TODO: Сделать правую колонку для выбранных параметров-->
-            <div class="column is-half">
-                <form action="" class="box overflow" method="POST" id="conf_form">
-                    <div class="field" v-for="(parameter, index) in parameters">
-                        <div class="field">
-                            <label :for="parameter.id" class="label">{{parameter.name}}</label>
-                            <div class="control is-expanded">
-                                <div class="select is-fullwidth">
-                                    <select :name="parameter.id"
-                                            class="configurator-select"
-                                            v-model="parameter.value"
-                                            :disabled="! isActiveField(index)"
-                                            @change="selectChanged(parameter.value, index)"
+        <form action="" method="POST">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="box overflow">
+                        <h3 class="title is-5">Саморезы</h3>
+                        <div class="field" v-for="(parameter, index) in parameters">
+                            <div class="field">
+                                <label :for="parameter.id" class="label">{{parameter.name}}</label>
+                                <div class="control is-expanded">
+                                    <div class="select is-fullwidth">
+                                        <select :name="parameter.id"
+                                                :id="parameter.id"
+                                                class="configurator-select"
+                                                v-model="parameter.value"
+                                                :disabled="! isActiveField(index)"
+                                                @change="selectChanged(parameter.value, index)"
+                                        >
+                                            <option disabled selected :value="-1">-- Выбор --</option>
+                                            <option :value="option.id"
+                                                    v-for="option in parameter.values"
+                                            >{{option.name}}</option>
+                                            <option :value="0">Другое</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field configurator-field" :class="{'is-slim': parameter.value !== 0}">
+                                <div class="control">
+                                    <input
+                                        type="text"
+                                        class="input configurator-another"
+                                        :name="'another_' + parameter.id"
+                                        v-model="parameter.another"
+                                        @input="inputChanged(parameter.another, index)"
+                                        :disabled="! isActiveField(index)"
                                     >
-                                        <option disabled selected :value="-1">-- Выбор --</option>
-                                        <option :value="option.id"
-                                                v-for="option in parameter.values"
-                                        >{{option.name}}</option>
-                                        <option :value="0">Другое</option>
-                                    </select>
+                                    <p class="help">Свой вариант</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="field configurator-field" :class="{'is-slim': parameter.value !== 0}">
-                            <div class="control">
-                                <input
-                                    type="text"
-                                    class="input configurator-another"
-                                    :name="'another_' + parameter.id"
-                                    v-model="parameter.another"
-                                    @input="inputChanged(parameter.another, index)"
-                                    :disabled="! isActiveField(index)"
-                                >
-                                <p class="help">Свой вариант</p>
-                            </div>
-                        </div>
                     </div>
-                </form>
+                </div>
+                <div class="column">
+                    <configurator-order-form></configurator-order-form>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 
 </template>
 
 <script>
     import ConfiguratorProgressBar from "./ConfiguratorProgressBar";
+    import ConfiguratorOrderForm from "./ConfiguratorOrderForm";
     export default {
         name: "Configurator",
-        components: {ConfiguratorProgressBar},
+        components: {ConfiguratorOrderForm, ConfiguratorProgressBar},
         data() {
             return {
                 parameters: [

@@ -13,6 +13,7 @@
             </li>
         </ul>
         <progress class="progress is-success is-hidden-tablet" :value="percents()" max="100">{{percents()}}%</progress>
+        <div><!-- Для того, чтобы progressbar имел margin --></div>
     </div>
 </template>
 
