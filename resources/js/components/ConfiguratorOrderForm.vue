@@ -20,7 +20,7 @@
                 <span class="is-size-5">{{price * amount}}₽</span>
             </p>
         </div>
-        <div class="field is-grouped">
+        <div class="field is-grouped is-grouped-multiline">
           <div class="control">
             <button type="button" class="button is-link" name="addInCart" id="addInCart">
                 <span class="icon"><i class="fas fa-cart-plus"></i></span>

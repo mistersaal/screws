@@ -11,38 +11,40 @@
                 <div class="column">
                     <div class="box overflow">
                         <h3 class="title is-5">Саморезы</h3>
-                        <div class="field" v-for="(parameter, index) in parameters">
-                            <div class="field">
-                                <label :for="parameter.id" class="label">{{parameter.name}}</label>
-                                <div class="control is-expanded">
-                                    <div class="select is-fullwidth">
-                                        <select :name="parameter.id"
-                                                :id="parameter.id"
-                                                class="configurator-select"
-                                                v-model="parameter.value"
-                                                :disabled="! isActiveField(index)"
-                                                @change="selectChanged(parameter.value, index)"
-                                        >
-                                            <option disabled selected :value="-1">-- Выбор --</option>
-                                            <option :value="option.id"
-                                                    v-for="option in parameter.values"
-                                            >{{option.name}}</option>
-                                            <option :value="0">Другое</option>
-                                        </select>
-                                    </div>
+                        <div class="field">
+                            <label for="type" class="label">Тип</label>
+                            <div class="control is-expanded">
+                                <div class="select is-fullwidth">
+                                    <select name="type"
+                                            id="type"
+                                    >
+                                        <option disabled selected value="-1">-- Выбор --</option>
+                                        <option value="0">Другое</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="field configurator-field" :class="{'is-slim': parameter.value !== 0}">
-                                <div class="control">
-                                    <input
-                                        type="text"
-                                        class="input configurator-another"
-                                        :name="'another_' + parameter.id"
-                                        v-model="parameter.another"
-                                        @input="inputChanged(parameter.another, index)"
-                                        :disabled="! isActiveField(index)"
+                        </div>
+                        <div class="field">
+                            <label for="length" class="label">Длина, мм</label>
+                            <div class="control is-expanded">
+                                <input name="length" id="length" class="input" type="number" min="5" step="1">
+                            </div>
+                        </div>
+                        <div class="field" v-for="(parameter, index) in parameters">
+                            <label :for="parameter.id" class="label">{{parameter.name}}</label>
+                            <div class="control is-expanded">
+                                <div class="select is-fullwidth">
+                                    <select :name="parameter.id"
+                                            :id="parameter.id"
+                                            v-model="parameter.value"
+                                            @change="selectChanged(parameter.value, index)"
                                     >
-                                    <p class="help">Свой вариант</p>
+                                        <option disabled selected :value="-1">-- Выбор --</option>
+                                        <option :value="option.id"
+                                                v-for="option in parameter.values"
+                                        >{{option.name}}</option>
+                                        <option :value="0">Другое</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -67,24 +69,8 @@
             return {
                 parameters: [
                     {
-                        id: 'type',
-                        name: 'Тип',
-                        inProgressBar: true,
-                        value: -1,
-                        another: '',
-                        values: []
-                    },
-                    {
                         id: 'color',
                         name: 'Покрытие',
-                        inProgressBar: true,
-                        value: -1,
-                        another: '',
-                        values: []
-                    },
-                    {
-                        id: 'length',
-                        name: 'Длина',
                         inProgressBar: true,
                         value: -1,
                         another: '',
@@ -105,9 +91,6 @@
             };
         },
         methods: {
-            isActiveField(index) {
-                return index <= this.activeIndex;
-            },
             selectChanged(value, index) {
                 if (value !== -1 && value !== 0 && index !== this.parameters.length - 1) {
                     this.activeIndex = index + 1;
