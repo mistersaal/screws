@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ScrewType;
+use App\ScrewConfig;
 use Illuminate\Http\Request;
 
 class ScrewTypeController extends Controller
@@ -41,10 +41,10 @@ class ScrewTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ScrewType  $screwType
+     * @param  \App\ScrewConfig  $screwType
      * @return \Illuminate\Http\Response
      */
-    public function show(ScrewType $screwType)
+    public function show(ScrewConfig $screwType)
     {
         //
     }
@@ -52,10 +52,10 @@ class ScrewTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ScrewType  $screwType
+     * @param  \App\ScrewConfig  $screwType
      * @return \Illuminate\Http\Response
      */
-    public function edit(ScrewType $screwType)
+    public function edit(ScrewConfig $screwType)
     {
         //
     }
@@ -64,10 +64,10 @@ class ScrewTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ScrewType  $screwType
+     * @param  \App\ScrewConfig  $screwType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ScrewType $screwType)
+    public function update(Request $request, ScrewConfig $screwType)
     {
         //
     }
@@ -75,10 +75,10 @@ class ScrewTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ScrewType  $screwType
+     * @param  \App\ScrewConfig  $screwType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ScrewType $screwType)
+    public function destroy(ScrewConfig $screwType)
     {
         //
     }

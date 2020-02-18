@@ -15,4 +15,14 @@ trait HasVisibilityAttribute
     {
         return $this->where('visible', false)->get($options);
     }
+
+    public function visibleItems()
+    {
+        return $this->where('visible', true);
+    }
+
+    public function hiddenItems()
+    {
+        return $this->where('visible', false);
+    }
 }

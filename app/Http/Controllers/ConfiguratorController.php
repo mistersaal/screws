@@ -6,7 +6,7 @@ use App\Screw;
 use App\ScrewColor;
 use App\ScrewLength;
 use App\ScrewManufacturer;
-use App\ScrewType;
+use App\ScrewConfig;
 
 class ConfiguratorController extends Controller
 {
@@ -15,7 +15,7 @@ class ConfiguratorController extends Controller
         ScrewColor $screwColor,
         ScrewLength $screwLength,
         ScrewManufacturer $screwManufacturer,
-        ScrewType $screwType
+        ScrewConfig $screwType
     )
     {
         $screws = $screw->getParametersTree();

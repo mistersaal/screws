@@ -26,7 +26,7 @@ class Screw extends Model
 
     public function type()
     {
-        return $this->belongsTo(ScrewType::class, 'screw_type_id');
+        return $this->belongsTo(ScrewConfig::class, 'screw_type_id');
     }
 
     public function getParametersTree(bool $all = false)

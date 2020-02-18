@@ -85,30 +85,24 @@ namespace App{
  * App\Screw
  *
  * @property int $id
- * @property int $screw_type_id
- * @property int $screw_color_id
- * @property int $screw_manufacturer_id
+ * @property int|null $screw_config_id
  * @property int $screw_length_id
- * @property int $amount
- * @property float $cost
+ * @property int $screw_manufacturer_id
  * @property int $visible
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\ScrewColor $color
  * @property-read \App\ScrewLength $length
  * @property-read \App\ScrewManufacturer $manufacturer
- * @property-read \App\ScrewType $type
+ * @property-read \App\ScrewConfig $type
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw whereAmount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw whereCost($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw whereScrewColorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw whereScrewConfigId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw whereScrewLengthId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw whereScrewManufacturerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw whereScrewTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw whereVisible($value)
  */
@@ -130,6 +124,35 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewColor whereVisible($value)
  */
 	class ScrewColor extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\ScrewConfig
+ *
+ * @property int $id
+ * @property string|null $type
+ * @property int $individual
+ * @property int $screw_type_of_head_id
+ * @property int $screw_color_id
+ * @property int $screw_tip_id
+ * @property int $screw_diameter_id
+ * @property int $screw_slot_id
+ * @property int $visible
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig whereIndividual($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig whereScrewColorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig whereScrewDiameterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig whereScrewSlotId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig whereScrewTipId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig whereScrewTypeOfHeadId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig whereVisible($value)
+ */
+	class ScrewConfig extends \Eloquent {}
 }
 
 namespace App{
@@ -215,33 +238,6 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTip whereVisible($value)
  */
 	class ScrewTip extends \Eloquent {}
-}
-
-namespace App{
-/**
- * App\ScrewType
- *
- * @property int $id
- * @property string $name
- * @property int $screw_type_of_head_id
- * @property int $screw_color_id
- * @property int $screw_tip_id
- * @property int $screw_diameter_id
- * @property int $screw_slot_id
- * @property int $visible
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereScrewColorId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereScrewDiameterId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereScrewSlotId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereScrewTipId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereScrewTypeOfHeadId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereVisible($value)
- */
-	class ScrewType extends \Eloquent {}
 }
 
 namespace App{
