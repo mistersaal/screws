@@ -91,10 +91,9 @@ namespace App{
  * @property int $visible
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\ScrewColor $color
+ * @property-read \App\ScrewConfig|null $config
  * @property-read \App\ScrewLength $length
  * @property-read \App\ScrewManufacturer $manufacturer
- * @property-read \App\ScrewConfig $type
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Screw query()
@@ -139,6 +138,11 @@ namespace App{
  * @property int $screw_diameter_id
  * @property int $screw_slot_id
  * @property int $visible
+ * @property-read \App\ScrewColor $color
+ * @property-read \App\ScrewDiameter $diameter
+ * @property-read \App\ScrewSlot $slot
+ * @property-read \App\ScrewTip $tip
+ * @property-read \App\ScrewTypeOfHead $typeOfHead
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewConfig query()
@@ -244,9 +248,15 @@ namespace App{
 /**
  * App\ScrewTypeOfHead
  *
+ * @property int $id
+ * @property string $name
+ * @property int $visible
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTypeOfHead newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTypeOfHead newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTypeOfHead query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTypeOfHead whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTypeOfHead whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTypeOfHead whereVisible($value)
  */
 	class ScrewTypeOfHead extends \Eloquent {}
 }

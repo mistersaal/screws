@@ -24,19 +24,29 @@ class ConfiguratorController extends Controller
         ScrewSlot $screwSlot
     )
     {
-        $configs = $screwConfig->getVisibleItems(['id', 'type'])->pluck('type', 'id');
-        $lengths = $screwLength->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $manufacturers = $screwManufacturer->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $typesOfHead = $screwTypeOfHead->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $colors = $screwColor->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $tips = $screwTip->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $diameters = $screwDiameter->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $slots = $screwSlot->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $config = $screwConfig->getVisibleItems(['id', 'type'])->pluck('type', 'id');
+        $length = $screwLength->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $manufacturer = $screwManufacturer->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $typeOfHead = $screwTypeOfHead->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $color = $screwColor->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $tip = $screwTip->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $diameter = $screwDiameter->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $slot = $screwSlot->getVisibleItems(['id', 'name'])->pluck('name', 'id');
 
         return [
-            'configs' => $configs,
-            'parameters' => compact('lengths', 'manufacturers'),
-            'individual' => compact('typesOfHead', 'colors', 'tips', 'diameters', 'slots')
+            'config' => $config,
+            'parameters' => compact('length', 'manufacturer'),
+            'individual' => compact('typeOfHead', 'color', 'tip', 'diameter', 'slot'),
+            'rus' => [
+                'config' => 'Тип',
+                'length' => 'Длина',
+                'manufacturer' => 'Производитель',
+                'typeOfHead' => 'Тип головки',
+                'color' => 'Покрытие',
+                'tip' => 'Наконечник',
+                'diameter' => 'Диаметр',
+                'slot' => 'Шлиц'
+            ]
         ];
     }
 
