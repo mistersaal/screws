@@ -14,41 +14,28 @@ class ScrewsTableSeeder extends Seeder
     {
         DB::table('screws')->insert([
             [
-                'screw_type_id' => 1,
-                'screw_color_id' => 1,
-                'screw_manufacturer_id' => 1,
+                'screw_config_id' => 1,
                 'screw_length_id' => 3,
-                'amount' => 125,
-                'cost' => 50,
-                'visible' => true
+                'screw_manufacturer_id' => 1,
             ],
             [
-                'screw_type_id' => 2,
-                'screw_color_id' => 2,
-                'screw_manufacturer_id' => 3,
-                'screw_length_id' => 1,
-                'amount' => 0,
-                'cost' => 120,
-                'visible' => true
-            ],
-            [
-                'screw_type_id' => 1,
-                'screw_color_id' => 3,
+                'screw_config_id' => 2,
+                'screw_length_id' => 4,
                 'screw_manufacturer_id' => 2,
-                'screw_length_id' => 2,
-                'amount' => 1000,
-                'cost' => 80,
-                'visible' => true
             ],
             [
-                'screw_type_id' => 1,
-                'screw_color_id' => 3,
+                'screw_config_id' => 3,
+                'screw_length_id' => 5,
                 'screw_manufacturer_id' => 3,
-                'screw_length_id' => 1,
-                'amount' => 20,
-                'cost' => 1500,
-                'visible' => false
             ]
         ]);
+        DB::table('screws')->insert(
+            [
+                'screw_config_id' => 1,
+                'screw_length_id' => 4,
+                'screw_manufacturer_id' => 3,
+                'visible' => false
+            ]
+        );
     }
 }

@@ -223,12 +223,22 @@ namespace App{
  *
  * @property int $id
  * @property string $name
+ * @property int $screw_type_of_head_id
+ * @property int $screw_color_id
+ * @property int $screw_tip_id
+ * @property int $screw_diameter_id
+ * @property int $screw_slot_id
  * @property int $visible
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereScrewColorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereScrewDiameterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereScrewSlotId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereScrewTipId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereScrewTypeOfHeadId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereVisible($value)
  */
 	class ScrewType extends \Eloquent {}

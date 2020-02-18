@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ScrewSlotsTableSeeder::class);
         $this->call(ScrewTipsTableSeeder::class);
         $this->call(ScrewTypesOfHeadTableSeeder::class);
-        $this->call(ScrewTypesTableSeeder::class);
+        $this->call(ScrewConfigsTableSeeder::class);
         $this->call(ScrewsTableSeeder::class);
         $this->call(OrderSeeder::class);
         $this->call(IndividualOrderSeeder::class);

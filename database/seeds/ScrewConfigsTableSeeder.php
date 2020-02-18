@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ScrewTypesTableSeeder extends Seeder
+class ScrewConfigsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,9 +12,10 @@ class ScrewTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('screw_types')->insert([
+        DB::table('screw_configs')->insert([
             [
-                'name' => 'Гипсокартон дерево',
+                'type' => 'Гипсокартон дерево',
+                'individual' => false,
                 'screw_type_of_head_id' => 1,
                 'screw_color_id' => 3,
                 'screw_tip_id' => 1,
@@ -22,7 +23,8 @@ class ScrewTypesTableSeeder extends Seeder
                 'screw_slot_id' => 1,
             ],
             [
-                'name' => 'Гипсокартон металл',
+                'type' => 'Гипсокартон металл',
+                'individual' => false,
                 'screw_type_of_head_id' => 1,
                 'screw_color_id' => 3,
                 'screw_tip_id' => 2,
@@ -30,7 +32,8 @@ class ScrewTypesTableSeeder extends Seeder
                 'screw_slot_id' => 1,
             ],
             [
-                'name' => 'Гипсоволокно',
+                'type' => 'Гипсоволокно',
+                'individual' => false,
                 'screw_type_of_head_id' => 1,
                 'screw_color_id' => 3,
                 'screw_tip_id' => 1,

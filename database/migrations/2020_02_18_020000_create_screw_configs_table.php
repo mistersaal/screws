@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScrewTypesTable extends Migration
+class CreateScrewConfigsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateScrewTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('screw_types', function (Blueprint $table) {
+        Schema::create('screw_configs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
+            $table->string('type')->unique()->nullable();
+            $table->boolean('individual')->default(true);
             $table->bigInteger('screw_type_of_head_id')->unsigned();
             $table->bigInteger('screw_color_id')->unsigned();
             $table->bigInteger('screw_tip_id')->unsigned();
@@ -40,12 +41,14 @@ class CreateScrewTypesTable extends Migration
                 ->on('screw_slots');
 
             $table->unique([
+                'type',
+                'individual',
                 'screw_type_of_head_id',
                 'screw_color_id',
                 'screw_tip_id',
                 'screw_diameter_id',
                 'screw_slot_id',
-            ], 'screw_type_parameters');
+            ], 'screw_config_parameters');
         });
     }
 
@@ -56,6 +59,6 @@ class CreateScrewTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('screw_types');
+        Schema::dropIfExists('screw_configs');
     }
 }
