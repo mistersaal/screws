@@ -2,33 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Screw;
 use App\ScrewColor;
+use App\ScrewConfig;
+use App\ScrewDiameter;
 use App\ScrewLength;
 use App\ScrewManufacturer;
-use App\ScrewConfig;
+use App\ScrewSlot;
+use App\ScrewTip;
+use App\ScrewTypeOfHead;
 
 class ConfiguratorController extends Controller
 {
     public function getConfiguratorData(
-        Screw $screw,
-        ScrewColor $screwColor,
+        ScrewConfig $screwConfig,
         ScrewLength $screwLength,
         ScrewManufacturer $screwManufacturer,
-        ScrewConfig $screwType
+        ScrewTypeOfHead $screwTypeOfHead,
+        ScrewColor $screwColor,
+        ScrewTip $screwTip,
+        ScrewDiameter $screwDiameter,
+        ScrewSlot $screwSlot
     )
     {
-        $screws = $screw->getParametersTree();
-        $colors = $screwColor->getVisibleItems(['id', 'name'])->keyBy('id');
-        $lengths = $screwLength->getVisibleItems(['id', 'name'])->keyBy('id');
-        $manufacturers = $screwManufacturer->getVisibleItems(['id', 'name'])->keyBy('id');
-        $types = $screwType->getVisibleItems(['id', 'name'])->keyBy('id');
+        $configs = $screwConfig->getVisibleItems(['id', 'type'])->pluck('type', 'id');
+        $lengths = $screwLength->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $manufacturers = $screwManufacturer->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $typesOfHead = $screwTypeOfHead->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $colors = $screwColor->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $tips = $screwTip->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $diameters = $screwDiameter->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $slots = $screwSlot->getVisibleItems(['id', 'name'])->pluck('name', 'id');
 
-        return compact('screws', 'colors', 'lengths', 'manufacturers', 'types');
+        return [
+            'configs' => $configs,
+            'parameters' => compact('lengths', 'manufacturers'),
+            'individual' => compact('typesOfHead', 'colors', 'tips', 'diameters', 'slots')
+        ];
     }
 
-    private function idToIndex($array)
-    {
-
-    }
 }
