@@ -10,7 +10,7 @@ class CreateScrewTypesOfHeadTable extends Migration
     {
         Schema::create('screw_types_of_head', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('name')->unique()->unsigned();
+            $table->string('name')->unique();
             $table->boolean('visible')->default(true);
         });
     }

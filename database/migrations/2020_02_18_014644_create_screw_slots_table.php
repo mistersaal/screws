@@ -10,7 +10,7 @@ class CreateScrewSlotsTable extends Migration
     {
         Schema::create('screw_slots', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('name')->unique()->unsigned();
+            $table->string('name')->unique();
             $table->boolean('visible')->default(true);
         });
     }

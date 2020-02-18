@@ -11,6 +11,9 @@ class ScrewTypesOfHeadTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('screw_types_of_head')->insert([
+            ['name' => 'Потайная'],
+            ['name' => 'Полупотайная'],
+        ]);
     }
 }

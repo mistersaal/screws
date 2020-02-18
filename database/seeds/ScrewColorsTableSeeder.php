@@ -13,9 +13,9 @@ class ScrewColorsTableSeeder extends Seeder
     public function run()
     {
         DB::table('screw_colors')->insert([
-            ['name' => 'Белые'],
-            ['name' => 'Чёрные'],
-            ['name' => 'Золотые']
+            ['name' => 'Белый цинк'],
+            ['name' => 'Жёлтый цинк'],
+            ['name' => 'Оксидированный']
         ]);
     }
 }

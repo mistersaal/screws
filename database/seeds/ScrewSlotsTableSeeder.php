@@ -11,6 +11,9 @@ class ScrewSlotsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('screw_slots')->insert([
+            ['name' => 'PH2'],
+            ['name' => 'PZ2'],
+        ]);
     }
 }

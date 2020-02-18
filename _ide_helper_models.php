@@ -134,16 +134,33 @@ namespace App{
 
 namespace App{
 /**
+ * App\ScrewDiameter
+ *
+ * @property int $id
+ * @property float $name
+ * @property int $visible
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewDiameter newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewDiameter newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewDiameter query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewDiameter whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewDiameter whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewDiameter whereVisible($value)
+ */
+	class ScrewDiameter extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\ScrewLength
  *
  * @property int $id
- * @property float $value
+ * @property float $name
  * @property int $visible
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewLength newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewLength newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewLength query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewLength whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewLength whereValue($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewLength whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewLength whereVisible($value)
  */
 	class ScrewLength extends \Eloquent {}
@@ -168,6 +185,40 @@ namespace App{
 
 namespace App{
 /**
+ * App\ScrewSlot
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $visible
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewSlot newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewSlot newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewSlot query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewSlot whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewSlot whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewSlot whereVisible($value)
+ */
+	class ScrewSlot extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\ScrewTip
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $visible
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTip newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTip newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTip query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTip whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTip whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTip whereVisible($value)
+ */
+	class ScrewTip extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\ScrewType
  *
  * @property int $id
@@ -181,6 +232,17 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewType whereVisible($value)
  */
 	class ScrewType extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\ScrewTypeOfHead
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTypeOfHead newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTypeOfHead newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ScrewTypeOfHead query()
+ */
+	class ScrewTypeOfHead extends \Eloquent {}
 }
 
 namespace App{

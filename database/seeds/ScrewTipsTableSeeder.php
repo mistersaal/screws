@@ -11,6 +11,9 @@ class ScrewTipsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('screw_tips')->insert([
+            ['name' => 'Остриё'],
+            ['name' => 'Сверло'],
+        ]);
     }
 }

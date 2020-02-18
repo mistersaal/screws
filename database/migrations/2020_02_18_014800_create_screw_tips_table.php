@@ -10,7 +10,7 @@ class CreateScrewTipsTable extends Migration
     {
         Schema::create('screw_tips', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('name')->unique()->unsigned();
+            $table->string('name')->unique();
             $table->boolean('visible')->default(true);
         });
     }
