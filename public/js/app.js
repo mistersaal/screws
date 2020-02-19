@@ -4510,8 +4510,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ConfiguratorProgressBar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfiguratorProgressBar */ "./resources/js/components/ConfiguratorProgressBar.vue");
-/* harmony import */ var _ConfiguratorOrderForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfiguratorOrderForm */ "./resources/js/components/ConfiguratorOrderForm.vue");
+/* harmony import */ var _ConfiguratorOrderForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfiguratorOrderForm */ "./resources/js/components/ConfiguratorOrderForm.vue");
 //
 //
 //
@@ -4567,17 +4566,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Configurator",
   components: {
-    ConfiguratorOrderForm: _ConfiguratorOrderForm__WEBPACK_IMPORTED_MODULE_1__["default"],
-    ConfiguratorProgressBar: _ConfiguratorProgressBar__WEBPACK_IMPORTED_MODULE_0__["default"]
+    ConfiguratorOrderForm: _ConfiguratorOrderForm__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
@@ -4698,66 +4691,6 @@ __webpack_require__.r(__webpack_exports__);
       amount: 0,
       price: 24
     };
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ConfiguratorProgressBar",
-  props: {
-    parameters: {
-      "default": {}
-    },
-    activeIndex: {
-      "default": 0
-    }
-  },
-  methods: {
-    percents: function percents() {
-      return (this.activeIndex + 1) / this.parameters.length * 100;
-    },
-    isActiveProgress: function isActiveProgress(index) {
-      if (index === this.activeIndex) {
-        return true;
-      } else if (!this.parameters[this.activeIndex].inProgressBar) {
-        for (var i = this.activeIndex - 1; i >= 0; i--) {
-          if (this.parameters[i].inProgressBar) {
-            return index === i;
-          }
-        }
-      } else {
-        return false;
-      }
-    }
   }
 });
 
@@ -22683,68 +22616,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true&":
-/*!**************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true& ***!
-  \**************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "ul",
-      { staticClass: "steps has-content-centered is-small is-hidden-mobile" },
-      _vm._l(_vm.parameters, function(parameter, index) {
-        return parameter.inProgressBar
-          ? _c(
-              "li",
-              {
-                staticClass: "steps-segment",
-                class: { "is-active": _vm.isActiveProgress(index) }
-              },
-              [
-                _c("span", { staticClass: "steps-marker" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "steps-content" }, [
-                  _c("p", { staticClass: "is-size-6" }, [
-                    _vm._v(_vm._s(parameter.name))
-                  ])
-                ])
-              ]
-            )
-          : _vm._e()
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c(
-      "progress",
-      {
-        staticClass: "progress is-success is-hidden-tablet",
-        attrs: { max: "100" },
-        domProps: { value: _vm.percents() }
-      },
-      [_vm._v(_vm._s(_vm.percents()) + "%")]
-    ),
-    _vm._v(" "),
-    _c("div")
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -34911,8 +34782,7 @@ module.exports = function(module) {
 
 var map = {
 	"./components/Configurator.vue": "./resources/js/components/Configurator.vue",
-	"./components/ConfiguratorOrderForm.vue": "./resources/js/components/ConfiguratorOrderForm.vue",
-	"./components/ConfiguratorProgressBar.vue": "./resources/js/components/ConfiguratorProgressBar.vue"
+	"./components/ConfiguratorOrderForm.vue": "./resources/js/components/ConfiguratorOrderForm.vue"
 };
 
 
@@ -35149,75 +35019,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorOrderForm_vue_vue_type_template_id_6b1379a2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorOrderForm_vue_vue_type_template_id_6b1379a2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/ConfiguratorProgressBar.vue":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/ConfiguratorProgressBar.vue ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true& */ "./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true&");
-/* harmony import */ var _ConfiguratorProgressBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfiguratorProgressBar.vue?vue&type=script&lang=js& */ "./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ConfiguratorProgressBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "5ed60f16",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/ConfiguratorProgressBar.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorProgressBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ConfiguratorProgressBar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorProgressBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true&":
-/*!********************************************************************************************************!*\
-  !*** ./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true& ***!
-  \********************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfiguratorProgressBar.vue?vue&type=template&id=5ed60f16&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfiguratorProgressBar_vue_vue_type_template_id_5ed60f16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

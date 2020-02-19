@@ -1,10 +1,6 @@
 <template>
 
     <div :class="{'v-load': ! loaded}">
-<!--        <configurator-progress-bar-->
-<!--            :active-index="activeIndex"-->
-<!--            :parameters="parameters"-->
-<!--        ></configurator-progress-bar>-->
 
         <form action="" method="POST">
             <div class="columns is-centered">
@@ -58,12 +54,11 @@
 </template>
 
 <script>
-    import ConfiguratorProgressBar from "./ConfiguratorProgressBar";
     import ConfiguratorOrderForm from "./ConfiguratorOrderForm";
 
     export default {
         name: "Configurator",
-        components: {ConfiguratorOrderForm, ConfiguratorProgressBar},
+        components: {ConfiguratorOrderForm},
         data() {
             return {
                 parameters: {
