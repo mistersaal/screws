@@ -24,7 +24,7 @@ class ConfiguratorController extends Controller
         ScrewSlot $screwSlot
     )
     {
-        $config = $screwConfig->getVisibleItems(['id', 'type'])->pluck('type', 'id');
+        $config = $screwConfig->getTypes()->pluck('type', 'id');
         $length = $screwLength->getVisibleItems(['id', 'name'])->pluck('name', 'id');
         $manufacturer = $screwManufacturer->getVisibleItems(['id', 'name'])->pluck('name', 'id');
         $typeOfHead = $screwTypeOfHead->getVisibleItems(['id', 'name'])->pluck('name', 'id');
@@ -39,12 +39,12 @@ class ConfiguratorController extends Controller
             'individual' => compact('typeOfHead', 'color', 'tip', 'diameter', 'slot'),
             'rus' => [
                 'config' => 'Тип',
-                'length' => 'Длина',
+                'length' => 'Длина, мм',
                 'manufacturer' => 'Производитель',
                 'typeOfHead' => 'Тип головки',
                 'color' => 'Покрытие',
                 'tip' => 'Наконечник',
-                'diameter' => 'Диаметр',
+                'diameter' => 'Диаметр, мм',
                 'slot' => 'Шлиц'
             ]
         ];

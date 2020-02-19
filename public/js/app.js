@@ -4512,14 +4512,6 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ConfiguratorProgressBar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfiguratorProgressBar */ "./resources/js/components/ConfiguratorProgressBar.vue");
 /* harmony import */ var _ConfiguratorOrderForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfiguratorOrderForm */ "./resources/js/components/ConfiguratorOrderForm.vue");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
 //
 //
 //
@@ -4589,102 +4581,62 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      parameters: [{
-        id: 'color',
-        name: 'Покрытие',
-        inProgressBar: true,
-        value: -1,
-        another: '',
-        values: []
-      }, {
-        id: 'manufacturer',
-        name: 'Производитель',
-        inProgressBar: true,
-        value: -1,
-        another: '',
-        values: []
-      }],
-      activeIndex: 0,
+      parameters: {
+        "default": {},
+        individual: {}
+      },
+      config: {},
+      rus: {},
       values: {},
-      screws: []
+      loaded: false
     };
   },
   methods: {
-    selectChanged: function selectChanged(value, index) {
-      if (value !== -1 && value !== 0 && index !== this.parameters.length - 1) {
-        this.activeIndex = index + 1;
-        this.updateOptions();
-      } else {
-        this.activeIndex = index;
-        this.parameters[index].another = '';
-      }
-
-      for (var i = index + 1; i < this.parameters.length; i++) {
-        this.parameters[i].value = -1;
-        this.parameters[i].another = '';
-      }
-    },
-    inputChanged: function inputChanged(value, index) {
-      if (value.length !== 0 && index !== this.parameters.length - 1) {
-        if (this.activeIndex === index) {
-          this.activeIndex = index + 1;
-          this.updateOptions();
-        }
-      } else {
-        this.activeIndex = index;
-      }
-    },
-    updateOptions: function updateOptions() {
-      var _this = this;
-
-      var active = this.parameters[this.activeIndex];
-      active.values = [];
-
-      if (this.individual) {
-        active.values = this.values[active.id];
-      } else {
-        var values = _objectSpread({}, this.screws);
-
-        for (var i = 0; i < this.activeIndex; i++) {
-          values = values[this.parameters[i].value];
-        }
-
-        Object.keys(values).forEach(function (valueId) {
-          active.values.push(_this.values[active.id][valueId]);
-        });
-      }
+    hideField: function hideField(type) {
+      return type === 'individual' && !this.isIndividual;
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this = this;
 
     axios.get('/configurator/data').then(function (response) {
       var data = response.data;
-      _this2.values = {
-        color: data.colors,
-        type: data.types,
-        manufacturer: data.manufacturers,
-        length: data.lengths
-      };
-      _this2.screws = data.screws;
 
-      _this2.updateOptions();
+      _this.$set(_this.values, 'config', -1);
+
+      Object.keys(data.parameters).forEach(function (key) {
+        _this.$set(_this.values, key, -1);
+      });
+      Object.keys(data.individual).forEach(function (key) {
+        _this.$set(_this.values, key, -1);
+      });
+      _this.config = data.config;
+      _this.rus = data.rus;
+      _this.parameters["default"] = data.parameters;
+      _this.parameters.individual = data.individual;
+      _this.loaded = true;
     });
   },
   computed: {
-    formReady: function formReady() {
-      var lastIndex = this.parameters.length - 1;
-      var lastEl = this.parameters[lastIndex];
-      return (lastEl.value !== 0 && lastEl.value !== -1 || lastEl.another.length !== 0) && this.activeIndex === lastIndex;
+    isIndividual: function isIndividual() {
+      return this.values.config === 0;
     },
-    individual: function individual() {
-      for (var i = 0; i <= this.activeIndex; i++) {
-        if (this.parameters[i].value === 0) {
-          return true;
-        }
+    isReady: function isReady() {
+      var _this2 = this;
+
+      if (this.values.config === -1) return false;
+      var def = Object.keys(this.parameters["default"]).every(function (key) {
+        return _this2.values[key] !== -1;
+      });
+
+      if (!this.isIndividual) {
+        return def;
       }
 
-      return false;
+      var individual = Object.keys(this.parameters.individual).every(function (key) {
+        return _this2.values[key] !== -1;
+      });
+      return def && individual;
     }
   }
 });
@@ -22432,51 +22384,113 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("configurator-progress-bar", {
-        attrs: { "active-index": _vm.activeIndex, parameters: _vm.parameters }
-      }),
-      _vm._v(" "),
-      _c("form", { attrs: { action: "", method: "POST" } }, [
-        _c("div", { staticClass: "columns is-centered" }, [
-          _c("div", { staticClass: "column" }, [
-            _c(
-              "div",
-              { staticClass: "box overflow" },
-              [
-                _c("h3", { staticClass: "title is-5" }, [_vm._v("Саморезы")]),
+  return _c("div", { class: { "v-load": !_vm.loaded } }, [
+    _c("form", { attrs: { action: "", method: "POST" } }, [
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column" }, [
+          _c(
+            "div",
+            { staticClass: "box overflow" },
+            [
+              _c("h3", { staticClass: "title is-5" }, [_vm._v("Саморезы")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label", attrs: { for: "type" } }, [
+                  _vm._v(_vm._s(_vm.rus.config))
+                ]),
                 _vm._v(" "),
-                _vm._m(0),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._l(_vm.parameters, function(parameter, index) {
-                  return _c("div", { staticClass: "field" }, [
+                _c("div", { staticClass: "control is-expanded" }, [
+                  _c("div", { staticClass: "select is-fullwidth" }, [
                     _c(
-                      "label",
-                      { staticClass: "label", attrs: { for: parameter.id } },
-                      [_vm._v(_vm._s(parameter.name))]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "control is-expanded" }, [
-                      _c("div", { staticClass: "select is-fullwidth" }, [
-                        _c(
-                          "select",
+                      "select",
+                      {
+                        directives: [
                           {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: parameter.value,
-                                expression: "parameter.value"
-                              }
-                            ],
-                            attrs: { name: parameter.id, id: parameter.id },
-                            on: {
-                              change: [
-                                function($event) {
+                            name: "model",
+                            rawName: "v-model.number",
+                            value: _vm.values.config,
+                            expression: "values.config",
+                            modifiers: { number: true }
+                          }
+                        ],
+                        attrs: { name: "type", id: "type" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return _vm._n(val)
+                              })
+                            _vm.$set(
+                              _vm.values,
+                              "config",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: { disabled: "", selected: "", value: "-1" }
+                          },
+                          [_vm._v("-- Выбор --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.config, function(type, index) {
+                          return _c("option", { domProps: { value: index } }, [
+                            _vm._v(_vm._s(type))
+                          ])
+                        }),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("Другое")
+                        ])
+                      ],
+                      2
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.parameters, function(type, index) {
+                return _vm._l(type, function(parameter, name) {
+                  return _c(
+                    "div",
+                    {
+                      staticClass: "field configurator-field",
+                      class: { "is-slim": _vm.hideField(index) }
+                    },
+                    [
+                      _c(
+                        "label",
+                        { staticClass: "label", attrs: { for: name } },
+                        [_vm._v(_vm._s(_vm.rus[name]))]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "control is-expanded" }, [
+                        _c("div", { staticClass: "select is-fullwidth" }, [
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.number",
+                                  value: _vm.values[name],
+                                  expression: "values[name]",
+                                  modifiers: { number: true }
+                                }
+                              ],
+                              attrs: { name: name, id: name },
+                              on: {
+                                change: function($event) {
                                   var $$selectedVal = Array.prototype.filter
                                     .call($event.target.options, function(o) {
                                       return o.selected
@@ -22484,119 +22498,58 @@ var render = function() {
                                     .map(function(o) {
                                       var val =
                                         "_value" in o ? o._value : o.value
-                                      return val
+                                      return _vm._n(val)
                                     })
                                   _vm.$set(
-                                    parameter,
-                                    "value",
+                                    _vm.values,
+                                    name,
                                     $event.target.multiple
                                       ? $$selectedVal
                                       : $$selectedVal[0]
                                   )
-                                },
-                                function($event) {
-                                  return _vm.selectChanged(
-                                    parameter.value,
-                                    index
-                                  )
                                 }
-                              ]
-                            }
-                          },
-                          [
-                            _c(
-                              "option",
-                              {
-                                attrs: { disabled: "", selected: "" },
-                                domProps: { value: -1 }
-                              },
-                              [_vm._v("-- Выбор --")]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(parameter.values, function(option) {
-                              return _c(
+                              }
+                            },
+                            [
+                              _c(
                                 "option",
-                                { domProps: { value: option.id } },
-                                [_vm._v(_vm._s(option.name))]
-                              )
-                            }),
-                            _vm._v(" "),
-                            _c("option", { domProps: { value: 0 } }, [
-                              _vm._v("Другое")
-                            ])
-                          ],
-                          2
-                        )
+                                {
+                                  attrs: {
+                                    disabled: "",
+                                    selected: "",
+                                    value: "-1"
+                                  }
+                                },
+                                [_vm._v("-- Выбор --")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(parameter, function(option, id) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: id } },
+                                  [_vm._v(_vm._s(option))]
+                                )
+                              })
+                            ],
+                            2
+                          )
+                        ])
                       ])
-                    ])
-                  ])
+                    ]
+                  )
                 })
-              ],
-              2
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "column" },
-            [_c("configurator-order-form")],
-            1
+              })
+            ],
+            2
           )
-        ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" })
       ])
-    ],
-    1
-  )
+    ])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "field" }, [
-      _c("label", { staticClass: "label", attrs: { for: "type" } }, [
-        _vm._v("Тип")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "control is-expanded" }, [
-        _c("div", { staticClass: "select is-fullwidth" }, [
-          _c("select", { attrs: { name: "type", id: "type" } }, [
-            _c(
-              "option",
-              { attrs: { disabled: "", selected: "", value: "-1" } },
-              [_vm._v("-- Выбор --")]
-            ),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "0" } }, [_vm._v("Другое")])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "field" }, [
-      _c("label", { staticClass: "label", attrs: { for: "length" } }, [
-        _vm._v("Длина, мм")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "control is-expanded" }, [
-        _c("input", {
-          staticClass: "input",
-          attrs: {
-            name: "length",
-            id: "length",
-            type: "number",
-            min: "5",
-            step: "1"
-          }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
