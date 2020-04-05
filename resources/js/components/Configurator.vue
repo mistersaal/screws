@@ -3,51 +3,60 @@
     <div :class="{'v-load': ! loaded}">
 
         <form action="" method="POST">
-            <div class="columns is-centered">
-                <div class="column">
-                    <div class="box overflow">
-                        <h3 class="title is-5">Саморезы</h3>
-                        <div class="field">
-                            <label for="type" class="label">{{rus.config}}</label>
-                            <div class="control is-expanded">
-                                <div class="select is-fullwidth">
-                                    <select name="type"
-                                            id="type"
-                                            v-model.number="values.config"
-                                    >
-                                        <option disabled selected value="-1">-- Выбор --</option>
-                                        <option :value="index" v-for="(type, index) in config">{{type}}</option>
-                                        <option value="0">Другое</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <template v-for="(type, index) in parameters">
-                            <div
-                                class="field configurator-field"
-                                :class="{'is-slim': hideField(index)}"
-                                v-for="(parameter, name) in type"
-                            >
-                                <label :for="name" class="label">{{rus[name]}}</label>
-                                <div class="control is-expanded">
-                                    <div class="select is-fullwidth">
-                                        <select :name="name"
-                                                :id="name"
-                                                v-model.number="values[name]"
-                                        >
-                                            <option disabled selected value="-1">-- Выбор --</option>
-                                            <option :value="id" v-for="(option, id) in parameter">{{option}}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-                <div class="column">
-<!--                    <configurator-order-form></configurator-order-form>-->
+            <h3 class="title is-5">Саморезы</h3>
+            <span class="label">{{rus.config}}</span>
+            <div class="field configurator-radio is-grouped is-grouped-multiline">
+                <div class="control" v-for="(type, index) in config">
+                    <input type="radio"
+                           name="config"
+                           :value="index"
+                           :id="'config_' + index"
+                           v-model.number="values.config"
+                    >
+                    <label :for="'config_' + index">
+                        <span class="radio-dot"></span>
+                        {{type}}
+                    </label>
                 </div>
             </div>
+            <template v-for="(type, index) in parameters">
+                <template v-for="(parameter, name) in type">
+                    <div class="field configurator-field"
+                         :class="{
+                            'is-slim': hideField(index),
+                         }"
+                    >
+                        <label :for="name" class="label">{{rus[name]}}</label>
+                        <div  :class="{
+                                'field configurator-radio is-grouped is-grouped-multiline': ! isInSelect(name)
+                            }">
+                            <div class="control">
+                                <div class="select" v-if="isInSelect(name)">
+                                    <select :name="name"
+                                            :id="name"
+                                            v-model.number="values[name]"
+                                    >
+                                        <option disabled selected value="-1">-- Выбор --</option>
+                                        <option :value="id" v-for="(option, id) in parameter">{{option}}</option>
+                                    </select>
+                                </div>
+                                <template v-else v-for="(option, id) in parameter">
+                                    <input type="radio"
+                                           name="config"
+                                           :id="name + '_' + id"
+                                           :value="id"
+                                           v-model.number="values[name]"
+                                    >
+                                    <label :for="name + '_' + id">
+                                        <span class="radio-dot"></span>
+                                        {{option}}
+                                    </label>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </template>
         </form>
     </div>
 
@@ -68,12 +77,16 @@
                 config: {},
                 rus: {},
                 values: {},
+                inSelect: [],
                 loaded: false
             };
         },
         methods: {
             hideField(type) {
                 return type === 'individual' && ! this.isIndividual;
+            },
+            isInSelect(name) {
+                return this.inSelect.indexOf(name) !== -1;
             }
         },
         created() {
@@ -89,6 +102,7 @@
                 });
                 this.config = data.config;
                 this.rus = data.rus;
+                this.inSelect = data.inSelect;
                 this.parameters.default = data.parameters;
                 this.parameters.individual = data.individual;
                 this.loaded = true;

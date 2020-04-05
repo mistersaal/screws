@@ -24,14 +24,30 @@ class ConfiguratorController extends Controller
         ScrewSlot $screwSlot
     )
     {
-        $config = $screwConfig->getTypes()->pluck('type', 'id');
-        $length = $screwLength->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $manufacturer = $screwManufacturer->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $typeOfHead = $screwTypeOfHead->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $color = $screwColor->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $tip = $screwTip->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $diameter = $screwDiameter->getVisibleItems(['id', 'name'])->pluck('name', 'id');
-        $slot = $screwSlot->getVisibleItems(['id', 'name'])->pluck('name', 'id');
+        $config = $screwConfig
+            ->getTypes()
+            ->pluck('type', 'id');
+        $length = $screwLength
+            ->getVisibleItems(['id', 'name'])
+            ->pluck('name', 'id');
+        $manufacturer = $screwManufacturer
+            ->getVisibleItems(['id', 'name'])
+            ->pluck('name', 'id');
+        $typeOfHead = $screwTypeOfHead
+            ->getVisibleItems(['id', 'name'])
+            ->pluck('name', 'id');
+        $color = $screwColor
+            ->getVisibleItems(['id', 'name'])
+            ->pluck('name', 'id');
+        $tip = $screwTip
+            ->getVisibleItems(['id', 'name'])
+            ->pluck('name', 'id');
+        $diameter = $screwDiameter
+            ->getVisibleItems(['id', 'name'])
+            ->pluck('name', 'id');
+        $slot = $screwSlot
+            ->getVisibleItems(['id', 'name'])
+            ->pluck('name', 'id');
 
         return [
             'config' => $config,
@@ -46,6 +62,10 @@ class ConfiguratorController extends Controller
                 'tip' => 'Наконечник',
                 'diameter' => 'Диаметр, мм',
                 'slot' => 'Шлиц'
+            ],
+            'inSelect' => [
+                'length',
+                'diameter'
             ]
         ];
     }

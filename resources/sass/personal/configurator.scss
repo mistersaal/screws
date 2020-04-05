@@ -11,3 +11,49 @@ $field-margin-bottom: 0.75rem;
     max-height: 0;
     margin-top: -$field-margin-bottom;
 }
+.configurator-radio {
+    & label {
+        @extend .button;
+        padding-left: $control-padding-horizontal;
+        padding-right: $control-padding-horizontal;
+    }
+    & input[type="radio"] {
+        display: none;
+    }
+    & input[type="radio"]:checked + label {
+        border-color: $input-focus-border-color;
+        box-shadow: $input-focus-box-shadow-size $input-focus-box-shadow-color;
+    }
+    .radio-dot {
+        position: relative;
+        display: block;
+        float: left;
+        width: 16px;
+        height: 16px;
+        border-radius: 10px;
+        background-color: $grey-lighter;
+        transition: all .15s ease;
+        margin-right: $control-padding-horizontal;
+        &:after {
+            content: "";
+            position: absolute;
+            display: block;
+            top: 5px;
+            left: 5px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0;
+            transform: scale(0);
+        }
+    }
+    & input[type="radio"]:checked + label .radio-dot {
+        background-color: $link;
+    }
+    & input[type="radio"]:checked + label .radio-dot:after {
+        opacity: 1;
+        transform: scale(1);
+        transition: all .15s ease;
+    }
+}

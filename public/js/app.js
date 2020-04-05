@@ -4566,6 +4566,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Configurator",
@@ -4581,12 +4590,16 @@ __webpack_require__.r(__webpack_exports__);
       config: {},
       rus: {},
       values: {},
+      inSelect: [],
       loaded: false
     };
   },
   methods: {
     hideField: function hideField(type) {
       return type === 'individual' && !this.isIndividual;
+    },
+    isInSelect: function isInSelect(name) {
+      return this.inSelect.indexOf(name) !== -1;
     }
   },
   created: function created() {
@@ -4605,6 +4618,7 @@ __webpack_require__.r(__webpack_exports__);
       });
       _this.config = data.config;
       _this.rus = data.rus;
+      _this.inSelect = data.inSelect;
       _this.parameters["default"] = data.parameters;
       _this.parameters.individual = data.individual;
       _this.loaded = true;
@@ -22318,168 +22332,214 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { class: { "v-load": !_vm.loaded } }, [
-    _c("form", { attrs: { action: "", method: "POST" } }, [
-      _c("div", { staticClass: "columns is-centered" }, [
-        _c("div", { staticClass: "column" }, [
-          _c(
-            "div",
-            { staticClass: "box overflow" },
-            [
-              _c("h3", { staticClass: "title is-5" }, [_vm._v("Саморезы")]),
+    _c(
+      "form",
+      { attrs: { action: "", method: "POST" } },
+      [
+        _c("h3", { staticClass: "title is-5" }, [_vm._v("Саморезы")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "label" }, [_vm._v(_vm._s(_vm.rus.config))]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "field configurator-radio is-grouped is-grouped-multiline"
+          },
+          _vm._l(_vm.config, function(type, index) {
+            return _c("div", { staticClass: "control" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.number",
+                    value: _vm.values.config,
+                    expression: "values.config",
+                    modifiers: { number: true }
+                  }
+                ],
+                attrs: { type: "radio", name: "config", id: "config_" + index },
+                domProps: {
+                  value: index,
+                  checked: _vm._q(_vm.values.config, _vm._n(index))
+                },
+                on: {
+                  change: function($event) {
+                    _vm.$set(_vm.values, "config", _vm._n(index))
+                  }
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "field" }, [
-                _c("label", { staticClass: "label", attrs: { for: "type" } }, [
-                  _vm._v(_vm._s(_vm.rus.config))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "control is-expanded" }, [
-                  _c("div", { staticClass: "select is-fullwidth" }, [
+              _c("label", { attrs: { for: "config_" + index } }, [
+                _c("span", { staticClass: "radio-dot" }),
+                _vm._v(
+                  "\n                    " + _vm._s(type) + "\n                "
+                )
+              ])
+            ])
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _vm._l(_vm.parameters, function(type, index) {
+          return [
+            _vm._l(type, function(parameter, name) {
+              return [
+                _c(
+                  "div",
+                  {
+                    staticClass: "field configurator-field",
+                    class: {
+                      "is-slim": _vm.hideField(index)
+                    }
+                  },
+                  [
                     _c(
-                      "select",
+                      "label",
+                      { staticClass: "label", attrs: { for: name } },
+                      [_vm._v(_vm._s(_vm.rus[name]))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
                       {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model.number",
-                            value: _vm.values.config,
-                            expression: "values.config",
-                            modifiers: { number: true }
-                          }
-                        ],
-                        attrs: { name: "type", id: "type" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return _vm._n(val)
-                              })
-                            _vm.$set(
-                              _vm.values,
-                              "config",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
+                        class: {
+                          "field configurator-radio is-grouped is-grouped-multiline": !_vm.isInSelect(
+                            name
+                          )
                         }
                       },
                       [
                         _c(
-                          "option",
-                          {
-                            attrs: { disabled: "", selected: "", value: "-1" }
-                          },
-                          [_vm._v("-- Выбор --")]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.config, function(type, index) {
-                          return _c("option", { domProps: { value: index } }, [
-                            _vm._v(_vm._s(type))
-                          ])
-                        }),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "0" } }, [
-                          _vm._v("Другое")
-                        ])
-                      ],
-                      2
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.parameters, function(type, index) {
-                return _vm._l(type, function(parameter, name) {
-                  return _c(
-                    "div",
-                    {
-                      staticClass: "field configurator-field",
-                      class: { "is-slim": _vm.hideField(index) }
-                    },
-                    [
-                      _c(
-                        "label",
-                        { staticClass: "label", attrs: { for: name } },
-                        [_vm._v(_vm._s(_vm.rus[name]))]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "control is-expanded" }, [
-                        _c("div", { staticClass: "select is-fullwidth" }, [
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model.number",
-                                  value: _vm.values[name],
-                                  expression: "values[name]",
-                                  modifiers: { number: true }
-                                }
-                              ],
-                              attrs: { name: name, id: name },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return _vm._n(val)
-                                    })
-                                  _vm.$set(
-                                    _vm.values,
-                                    name,
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
+                          "div",
+                          { staticClass: "control" },
+                          [
+                            _vm.isInSelect(name)
+                              ? _c("div", { staticClass: "select" }, [
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model.number",
+                                          value: _vm.values[name],
+                                          expression: "values[name]",
+                                          modifiers: { number: true }
+                                        }
+                                      ],
+                                      attrs: { name: name, id: name },
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return _vm._n(val)
+                                            })
+                                          _vm.$set(
+                                            _vm.values,
+                                            name,
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            disabled: "",
+                                            selected: "",
+                                            value: "-1"
+                                          }
+                                        },
+                                        [_vm._v("-- Выбор --")]
+                                      ),
+                                      _vm._v(" "),
+                                      _vm._l(parameter, function(option, id) {
+                                        return _c(
+                                          "option",
+                                          { domProps: { value: id } },
+                                          [_vm._v(_vm._s(option))]
+                                        )
+                                      })
+                                    ],
+                                    2
                                   )
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    disabled: "",
-                                    selected: "",
-                                    value: "-1"
-                                  }
-                                },
-                                [_vm._v("-- Выбор --")]
-                              ),
-                              _vm._v(" "),
-                              _vm._l(parameter, function(option, id) {
-                                return _c(
-                                  "option",
-                                  { domProps: { value: id } },
-                                  [_vm._v(_vm._s(option))]
-                                )
-                              })
-                            ],
-                            2
-                          )
-                        ])
-                      ])
-                    ]
-                  )
-                })
-              })
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column" })
-      ])
-    ])
+                                ])
+                              : _vm._l(parameter, function(option, id) {
+                                  return [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model.number",
+                                          value: _vm.values[name],
+                                          expression: "values[name]",
+                                          modifiers: { number: true }
+                                        }
+                                      ],
+                                      attrs: {
+                                        type: "radio",
+                                        name: "config",
+                                        id: name + "_" + id
+                                      },
+                                      domProps: {
+                                        value: id,
+                                        checked: _vm._q(
+                                          _vm.values[name],
+                                          _vm._n(id)
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          _vm.$set(_vm.values, name, _vm._n(id))
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      { attrs: { for: name + "_" + id } },
+                                      [
+                                        _c("span", {
+                                          staticClass: "radio-dot"
+                                        }),
+                                        _vm._v(
+                                          "\n                                    " +
+                                            _vm._s(option) +
+                                            "\n                                "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                })
+                          ],
+                          2
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            })
+          ]
+        })
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = []

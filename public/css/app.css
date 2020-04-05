@@ -32,6 +32,7 @@
 .breadcrumb,
 .file,
 .button,
+.configurator-radio label,
 .is-unselectable,
 .modal-close,
 .delete {
@@ -179,7 +180,8 @@
 .control.is-loading::after,
 .select.is-loading::after,
 .loader,
-.button.is-loading::after {
+.button.is-loading::after,
+.configurator-radio label.is-loading::after {
   -webkit-animation: spinAround 500ms infinite linear;
           animation: spinAround 500ms infinite linear;
   border: 2px solid #dbdbdb;
@@ -245,7 +247,8 @@
 .select select,
 .textarea,
 .input,
-.button {
+.button,
+.configurator-radio label {
   -moz-appearance: none;
   -webkit-appearance: none;
   -webkit-box-align: center;
@@ -277,6 +280,7 @@
 .textarea:focus,
 .input:focus,
 .button:focus,
+.configurator-radio label:focus,
 .is-focused.pagination-previous,
 .is-focused.pagination-next,
 .is-focused.pagination-link,
@@ -287,6 +291,7 @@
 .is-focused.textarea,
 .is-focused.input,
 .is-focused.button,
+.configurator-radio label.is-focused,
 .pagination-previous:active,
 .pagination-next:active,
 .pagination-link:active,
@@ -297,6 +302,7 @@
 .textarea:active,
 .input:active,
 .button:active,
+.configurator-radio label:active,
 .is-active.pagination-previous,
 .is-active.pagination-next,
 .is-active.pagination-link,
@@ -306,7 +312,8 @@
 .select select.is-active,
 .is-active.textarea,
 .is-active.input,
-.is-active.button {
+.is-active.button,
+.configurator-radio label.is-active {
   outline: none;
 }
 
@@ -319,7 +326,8 @@
 .select select[disabled],
 [disabled].textarea,
 [disabled].input,
-[disabled].button {
+[disabled].button,
+.configurator-radio label[disabled] {
   cursor: not-allowed;
 }
 
@@ -1996,6 +2004,7 @@
 .breadcrumb,
 .file,
 .button,
+.configurator-radio label,
 .is-unselectable,
 .modal-close,
 .delete {
@@ -2144,7 +2153,8 @@
 .control.is-loading::after,
 .select.is-loading::after,
 .loader,
-.button.is-loading::after {
+.button.is-loading::after,
+.configurator-radio label.is-loading::after {
   -webkit-animation: spinAround 500ms infinite linear;
           animation: spinAround 500ms infinite linear;
   border: 2px solid #dbdbdb;
@@ -2210,7 +2220,8 @@
 .select select,
 .textarea,
 .input,
-.button {
+.button,
+.configurator-radio label {
   -moz-appearance: none;
   -webkit-appearance: none;
   -webkit-box-align: center;
@@ -2243,6 +2254,7 @@
 .textarea:focus,
 .input:focus,
 .button:focus,
+.configurator-radio label:focus,
 .is-focused.pagination-previous,
 .is-focused.pagination-next,
 .is-focused.pagination-link,
@@ -2253,6 +2265,7 @@
 .is-focused.textarea,
 .is-focused.input,
 .is-focused.button,
+.configurator-radio label.is-focused,
 .pagination-previous:active,
 .pagination-next:active,
 .pagination-link:active,
@@ -2263,6 +2276,7 @@
 .textarea:active,
 .input:active,
 .button:active,
+.configurator-radio label:active,
 .is-active.pagination-previous,
 .is-active.pagination-next,
 .is-active.pagination-link,
@@ -2272,7 +2286,8 @@
 .select select.is-active,
 .is-active.textarea,
 .is-active.input,
-.is-active.button {
+.is-active.button,
+.configurator-radio label.is-active {
   outline: none;
 }
 
@@ -2286,6 +2301,7 @@
 [disabled].textarea,
 [disabled].input,
 [disabled].button,
+.configurator-radio label[disabled],
 fieldset[disabled] .pagination-previous,
 fieldset[disabled] .pagination-next,
 fieldset[disabled] .pagination-link,
@@ -2296,7 +2312,9 @@ fieldset[disabled] .select select,
 .select fieldset[disabled] select,
 fieldset[disabled] .textarea,
 fieldset[disabled] .input,
-fieldset[disabled] .button {
+fieldset[disabled] .button,
+fieldset[disabled] .configurator-radio label,
+.configurator-radio fieldset[disabled] label {
   cursor: not-allowed;
 }
 
@@ -3713,7 +3731,8 @@ a.box:active {
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2), 0 0 0 1px #3273dc;
 }
 
-.button {
+.button,
+.configurator-radio label {
   background-color: white;
   border-color: #dbdbdb;
   border-width: 1px;
@@ -3729,11 +3748,13 @@ a.box:active {
   white-space: nowrap;
 }
 
-.button strong {
+.button strong,
+.configurator-radio label strong {
   color: inherit;
 }
 
 .button .icon,
+.configurator-radio label .icon,
 .button .icon.is-small,
 .button .icon.is-medium,
 .button .icon.is-large {
@@ -3741,45 +3762,57 @@ a.box:active {
   width: 1.5em;
 }
 
-.button .icon:first-child:not(:last-child) {
+.button .icon:first-child:not(:last-child),
+.configurator-radio label .icon:first-child:not(:last-child) {
   margin-left: calc(-0.5em - 1px);
   margin-right: 0.25em;
 }
 
-.button .icon:last-child:not(:first-child) {
+.button .icon:last-child:not(:first-child),
+.configurator-radio label .icon:last-child:not(:first-child) {
   margin-left: 0.25em;
   margin-right: calc(-0.5em - 1px);
 }
 
-.button .icon:first-child:last-child {
+.button .icon:first-child:last-child,
+.configurator-radio label .icon:first-child:last-child {
   margin-left: calc(-0.5em - 1px);
   margin-right: calc(-0.5em - 1px);
 }
 
 .button:hover,
-.button.is-hovered {
+.configurator-radio label:hover,
+.button.is-hovered,
+.configurator-radio label.is-hovered {
   border-color: #b5b5b5;
   color: #363636;
 }
 
 .button:focus,
-.button.is-focused {
+.configurator-radio label:focus,
+.button.is-focused,
+.configurator-radio label.is-focused {
   border-color: #3273dc;
   color: #363636;
 }
 
 .button:focus:not(:active),
-.button.is-focused:not(:active) {
+.configurator-radio label:focus:not(:active),
+.button.is-focused:not(:active),
+.configurator-radio label.is-focused:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
 }
 
 .button:active,
-.button.is-active {
+.configurator-radio label:active,
+.button.is-active,
+.configurator-radio label.is-active {
   border-color: #4a4a4a;
   color: #363636;
 }
 
-.button.is-text {
+.button.is-text,
+.configurator-radio label.is-text {
   background-color: transparent;
   border-color: transparent;
   color: #4a4a4a;
@@ -3787,1300 +3820,1760 @@ a.box:active {
 }
 
 .button.is-text:hover,
+.configurator-radio label.is-text:hover,
 .button.is-text.is-hovered,
+.configurator-radio label.is-text.is-hovered,
 .button.is-text:focus,
-.button.is-text.is-focused {
+.configurator-radio label.is-text:focus,
+.button.is-text.is-focused,
+.configurator-radio label.is-text.is-focused {
   background-color: whitesmoke;
   color: #363636;
 }
 
 .button.is-text:active,
-.button.is-text.is-active {
+.configurator-radio label.is-text:active,
+.button.is-text.is-active,
+.configurator-radio label.is-text.is-active {
   background-color: #e8e8e8;
   color: #363636;
 }
 
 .button.is-text[disabled],
-fieldset[disabled] .button.is-text {
+.configurator-radio label.is-text[disabled],
+fieldset[disabled] .button.is-text,
+fieldset[disabled] .configurator-radio label.is-text,
+.configurator-radio fieldset[disabled] label.is-text {
   background-color: transparent;
   border-color: transparent;
   box-shadow: none;
 }
 
-.button.is-white {
+.button.is-white,
+.configurator-radio label.is-white {
   background-color: white;
   border-color: transparent;
   color: #0a0a0a;
 }
 
 .button.is-white:hover,
-.button.is-white.is-hovered {
+.configurator-radio label.is-white:hover,
+.button.is-white.is-hovered,
+.configurator-radio label.is-white.is-hovered {
   background-color: #f9f9f9;
   border-color: transparent;
   color: #0a0a0a;
 }
 
 .button.is-white:focus,
-.button.is-white.is-focused {
+.configurator-radio label.is-white:focus,
+.button.is-white.is-focused,
+.configurator-radio label.is-white.is-focused {
   border-color: transparent;
   color: #0a0a0a;
 }
 
 .button.is-white:focus:not(:active),
-.button.is-white.is-focused:not(:active) {
+.configurator-radio label.is-white:focus:not(:active),
+.button.is-white.is-focused:not(:active),
+.configurator-radio label.is-white.is-focused:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(255, 255, 255, 0.25);
 }
 
 .button.is-white:active,
-.button.is-white.is-active {
+.configurator-radio label.is-white:active,
+.button.is-white.is-active,
+.configurator-radio label.is-white.is-active {
   background-color: #f2f2f2;
   border-color: transparent;
   color: #0a0a0a;
 }
 
 .button.is-white[disabled],
-fieldset[disabled] .button.is-white {
+.configurator-radio label.is-white[disabled],
+fieldset[disabled] .button.is-white,
+fieldset[disabled] .configurator-radio label.is-white,
+.configurator-radio fieldset[disabled] label.is-white {
   background-color: white;
   border-color: transparent;
   box-shadow: none;
 }
 
-.button.is-white.is-inverted {
+.button.is-white.is-inverted,
+.configurator-radio label.is-white.is-inverted {
   background-color: #0a0a0a;
   color: white;
 }
 
 .button.is-white.is-inverted:hover,
-.button.is-white.is-inverted.is-hovered {
+.configurator-radio label.is-white.is-inverted:hover,
+.button.is-white.is-inverted.is-hovered,
+.configurator-radio label.is-white.is-inverted.is-hovered {
   background-color: black;
 }
 
 .button.is-white.is-inverted[disabled],
-fieldset[disabled] .button.is-white.is-inverted {
+.configurator-radio label.is-white.is-inverted[disabled],
+fieldset[disabled] .button.is-white.is-inverted,
+fieldset[disabled] .configurator-radio label.is-white.is-inverted,
+.configurator-radio fieldset[disabled] label.is-white.is-inverted {
   background-color: #0a0a0a;
   border-color: transparent;
   box-shadow: none;
   color: white;
 }
 
-.button.is-white.is-loading::after {
+.button.is-white.is-loading::after,
+.configurator-radio label.is-white.is-loading::after {
   border-color: transparent transparent #0a0a0a #0a0a0a !important;
 }
 
-.button.is-white.is-outlined {
+.button.is-white.is-outlined,
+.configurator-radio label.is-white.is-outlined {
   background-color: transparent;
   border-color: white;
   color: white;
 }
 
 .button.is-white.is-outlined:hover,
+.configurator-radio label.is-white.is-outlined:hover,
 .button.is-white.is-outlined.is-hovered,
+.configurator-radio label.is-white.is-outlined.is-hovered,
 .button.is-white.is-outlined:focus,
-.button.is-white.is-outlined.is-focused {
+.configurator-radio label.is-white.is-outlined:focus,
+.button.is-white.is-outlined.is-focused,
+.configurator-radio label.is-white.is-outlined.is-focused {
   background-color: white;
   border-color: white;
   color: #0a0a0a;
 }
 
-.button.is-white.is-outlined.is-loading::after {
+.button.is-white.is-outlined.is-loading::after,
+.configurator-radio label.is-white.is-outlined.is-loading::after {
   border-color: transparent transparent white white !important;
 }
 
 .button.is-white.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-white.is-outlined.is-loading:hover::after,
 .button.is-white.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-white.is-outlined.is-loading.is-hovered::after,
 .button.is-white.is-outlined.is-loading:focus::after,
-.button.is-white.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-white.is-outlined.is-loading:focus::after,
+.button.is-white.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-white.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #0a0a0a #0a0a0a !important;
 }
 
 .button.is-white.is-outlined[disabled],
-fieldset[disabled] .button.is-white.is-outlined {
+.configurator-radio label.is-white.is-outlined[disabled],
+fieldset[disabled] .button.is-white.is-outlined,
+fieldset[disabled] .configurator-radio label.is-white.is-outlined,
+.configurator-radio fieldset[disabled] label.is-white.is-outlined {
   background-color: transparent;
   border-color: white;
   box-shadow: none;
   color: white;
 }
 
-.button.is-white.is-inverted.is-outlined {
+.button.is-white.is-inverted.is-outlined,
+.configurator-radio label.is-white.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #0a0a0a;
   color: #0a0a0a;
 }
 
 .button.is-white.is-inverted.is-outlined:hover,
+.configurator-radio label.is-white.is-inverted.is-outlined:hover,
 .button.is-white.is-inverted.is-outlined.is-hovered,
+.configurator-radio label.is-white.is-inverted.is-outlined.is-hovered,
 .button.is-white.is-inverted.is-outlined:focus,
-.button.is-white.is-inverted.is-outlined.is-focused {
+.configurator-radio label.is-white.is-inverted.is-outlined:focus,
+.button.is-white.is-inverted.is-outlined.is-focused,
+.configurator-radio label.is-white.is-inverted.is-outlined.is-focused {
   background-color: #0a0a0a;
   color: white;
 }
 
 .button.is-white.is-inverted.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-white.is-inverted.is-outlined.is-loading:hover::after,
 .button.is-white.is-inverted.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-white.is-inverted.is-outlined.is-loading.is-hovered::after,
 .button.is-white.is-inverted.is-outlined.is-loading:focus::after,
-.button.is-white.is-inverted.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-white.is-inverted.is-outlined.is-loading:focus::after,
+.button.is-white.is-inverted.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-white.is-inverted.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent white white !important;
 }
 
 .button.is-white.is-inverted.is-outlined[disabled],
-fieldset[disabled] .button.is-white.is-inverted.is-outlined {
+.configurator-radio label.is-white.is-inverted.is-outlined[disabled],
+fieldset[disabled] .button.is-white.is-inverted.is-outlined,
+fieldset[disabled] .configurator-radio label.is-white.is-inverted.is-outlined,
+.configurator-radio fieldset[disabled] label.is-white.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #0a0a0a;
   box-shadow: none;
   color: #0a0a0a;
 }
 
-.button.is-black {
+.button.is-black,
+.configurator-radio label.is-black {
   background-color: #0a0a0a;
   border-color: transparent;
   color: white;
 }
 
 .button.is-black:hover,
-.button.is-black.is-hovered {
+.configurator-radio label.is-black:hover,
+.button.is-black.is-hovered,
+.configurator-radio label.is-black.is-hovered {
   background-color: #040404;
   border-color: transparent;
   color: white;
 }
 
 .button.is-black:focus,
-.button.is-black.is-focused {
+.configurator-radio label.is-black:focus,
+.button.is-black.is-focused,
+.configurator-radio label.is-black.is-focused {
   border-color: transparent;
   color: white;
 }
 
 .button.is-black:focus:not(:active),
-.button.is-black.is-focused:not(:active) {
+.configurator-radio label.is-black:focus:not(:active),
+.button.is-black.is-focused:not(:active),
+.configurator-radio label.is-black.is-focused:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(10, 10, 10, 0.25);
 }
 
 .button.is-black:active,
-.button.is-black.is-active {
+.configurator-radio label.is-black:active,
+.button.is-black.is-active,
+.configurator-radio label.is-black.is-active {
   background-color: black;
   border-color: transparent;
   color: white;
 }
 
 .button.is-black[disabled],
-fieldset[disabled] .button.is-black {
+.configurator-radio label.is-black[disabled],
+fieldset[disabled] .button.is-black,
+fieldset[disabled] .configurator-radio label.is-black,
+.configurator-radio fieldset[disabled] label.is-black {
   background-color: #0a0a0a;
   border-color: transparent;
   box-shadow: none;
 }
 
-.button.is-black.is-inverted {
+.button.is-black.is-inverted,
+.configurator-radio label.is-black.is-inverted {
   background-color: white;
   color: #0a0a0a;
 }
 
 .button.is-black.is-inverted:hover,
-.button.is-black.is-inverted.is-hovered {
+.configurator-radio label.is-black.is-inverted:hover,
+.button.is-black.is-inverted.is-hovered,
+.configurator-radio label.is-black.is-inverted.is-hovered {
   background-color: #f2f2f2;
 }
 
 .button.is-black.is-inverted[disabled],
-fieldset[disabled] .button.is-black.is-inverted {
+.configurator-radio label.is-black.is-inverted[disabled],
+fieldset[disabled] .button.is-black.is-inverted,
+fieldset[disabled] .configurator-radio label.is-black.is-inverted,
+.configurator-radio fieldset[disabled] label.is-black.is-inverted {
   background-color: white;
   border-color: transparent;
   box-shadow: none;
   color: #0a0a0a;
 }
 
-.button.is-black.is-loading::after {
+.button.is-black.is-loading::after,
+.configurator-radio label.is-black.is-loading::after {
   border-color: transparent transparent white white !important;
 }
 
-.button.is-black.is-outlined {
+.button.is-black.is-outlined,
+.configurator-radio label.is-black.is-outlined {
   background-color: transparent;
   border-color: #0a0a0a;
   color: #0a0a0a;
 }
 
 .button.is-black.is-outlined:hover,
+.configurator-radio label.is-black.is-outlined:hover,
 .button.is-black.is-outlined.is-hovered,
+.configurator-radio label.is-black.is-outlined.is-hovered,
 .button.is-black.is-outlined:focus,
-.button.is-black.is-outlined.is-focused {
+.configurator-radio label.is-black.is-outlined:focus,
+.button.is-black.is-outlined.is-focused,
+.configurator-radio label.is-black.is-outlined.is-focused {
   background-color: #0a0a0a;
   border-color: #0a0a0a;
   color: white;
 }
 
-.button.is-black.is-outlined.is-loading::after {
+.button.is-black.is-outlined.is-loading::after,
+.configurator-radio label.is-black.is-outlined.is-loading::after {
   border-color: transparent transparent #0a0a0a #0a0a0a !important;
 }
 
 .button.is-black.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-black.is-outlined.is-loading:hover::after,
 .button.is-black.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-black.is-outlined.is-loading.is-hovered::after,
 .button.is-black.is-outlined.is-loading:focus::after,
-.button.is-black.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-black.is-outlined.is-loading:focus::after,
+.button.is-black.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-black.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent white white !important;
 }
 
 .button.is-black.is-outlined[disabled],
-fieldset[disabled] .button.is-black.is-outlined {
+.configurator-radio label.is-black.is-outlined[disabled],
+fieldset[disabled] .button.is-black.is-outlined,
+fieldset[disabled] .configurator-radio label.is-black.is-outlined,
+.configurator-radio fieldset[disabled] label.is-black.is-outlined {
   background-color: transparent;
   border-color: #0a0a0a;
   box-shadow: none;
   color: #0a0a0a;
 }
 
-.button.is-black.is-inverted.is-outlined {
+.button.is-black.is-inverted.is-outlined,
+.configurator-radio label.is-black.is-inverted.is-outlined {
   background-color: transparent;
   border-color: white;
   color: white;
 }
 
 .button.is-black.is-inverted.is-outlined:hover,
+.configurator-radio label.is-black.is-inverted.is-outlined:hover,
 .button.is-black.is-inverted.is-outlined.is-hovered,
+.configurator-radio label.is-black.is-inverted.is-outlined.is-hovered,
 .button.is-black.is-inverted.is-outlined:focus,
-.button.is-black.is-inverted.is-outlined.is-focused {
+.configurator-radio label.is-black.is-inverted.is-outlined:focus,
+.button.is-black.is-inverted.is-outlined.is-focused,
+.configurator-radio label.is-black.is-inverted.is-outlined.is-focused {
   background-color: white;
   color: #0a0a0a;
 }
 
 .button.is-black.is-inverted.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-black.is-inverted.is-outlined.is-loading:hover::after,
 .button.is-black.is-inverted.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-black.is-inverted.is-outlined.is-loading.is-hovered::after,
 .button.is-black.is-inverted.is-outlined.is-loading:focus::after,
-.button.is-black.is-inverted.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-black.is-inverted.is-outlined.is-loading:focus::after,
+.button.is-black.is-inverted.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-black.is-inverted.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #0a0a0a #0a0a0a !important;
 }
 
 .button.is-black.is-inverted.is-outlined[disabled],
-fieldset[disabled] .button.is-black.is-inverted.is-outlined {
+.configurator-radio label.is-black.is-inverted.is-outlined[disabled],
+fieldset[disabled] .button.is-black.is-inverted.is-outlined,
+fieldset[disabled] .configurator-radio label.is-black.is-inverted.is-outlined,
+.configurator-radio fieldset[disabled] label.is-black.is-inverted.is-outlined {
   background-color: transparent;
   border-color: white;
   box-shadow: none;
   color: white;
 }
 
-.button.is-light {
+.button.is-light,
+.configurator-radio label.is-light {
   background-color: whitesmoke;
   border-color: transparent;
   color: #363636;
 }
 
 .button.is-light:hover,
-.button.is-light.is-hovered {
+.configurator-radio label.is-light:hover,
+.button.is-light.is-hovered,
+.configurator-radio label.is-light.is-hovered {
   background-color: #eeeeee;
   border-color: transparent;
   color: #363636;
 }
 
 .button.is-light:focus,
-.button.is-light.is-focused {
+.configurator-radio label.is-light:focus,
+.button.is-light.is-focused,
+.configurator-radio label.is-light.is-focused {
   border-color: transparent;
   color: #363636;
 }
 
 .button.is-light:focus:not(:active),
-.button.is-light.is-focused:not(:active) {
+.configurator-radio label.is-light:focus:not(:active),
+.button.is-light.is-focused:not(:active),
+.configurator-radio label.is-light.is-focused:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(245, 245, 245, 0.25);
 }
 
 .button.is-light:active,
-.button.is-light.is-active {
+.configurator-radio label.is-light:active,
+.button.is-light.is-active,
+.configurator-radio label.is-light.is-active {
   background-color: #e8e8e8;
   border-color: transparent;
   color: #363636;
 }
 
 .button.is-light[disabled],
-fieldset[disabled] .button.is-light {
+.configurator-radio label.is-light[disabled],
+fieldset[disabled] .button.is-light,
+fieldset[disabled] .configurator-radio label.is-light,
+.configurator-radio fieldset[disabled] label.is-light {
   background-color: whitesmoke;
   border-color: transparent;
   box-shadow: none;
 }
 
-.button.is-light.is-inverted {
+.button.is-light.is-inverted,
+.configurator-radio label.is-light.is-inverted {
   background-color: #363636;
   color: whitesmoke;
 }
 
 .button.is-light.is-inverted:hover,
-.button.is-light.is-inverted.is-hovered {
+.configurator-radio label.is-light.is-inverted:hover,
+.button.is-light.is-inverted.is-hovered,
+.configurator-radio label.is-light.is-inverted.is-hovered {
   background-color: #292929;
 }
 
 .button.is-light.is-inverted[disabled],
-fieldset[disabled] .button.is-light.is-inverted {
+.configurator-radio label.is-light.is-inverted[disabled],
+fieldset[disabled] .button.is-light.is-inverted,
+fieldset[disabled] .configurator-radio label.is-light.is-inverted,
+.configurator-radio fieldset[disabled] label.is-light.is-inverted {
   background-color: #363636;
   border-color: transparent;
   box-shadow: none;
   color: whitesmoke;
 }
 
-.button.is-light.is-loading::after {
+.button.is-light.is-loading::after,
+.configurator-radio label.is-light.is-loading::after {
   border-color: transparent transparent #363636 #363636 !important;
 }
 
-.button.is-light.is-outlined {
+.button.is-light.is-outlined,
+.configurator-radio label.is-light.is-outlined {
   background-color: transparent;
   border-color: whitesmoke;
   color: whitesmoke;
 }
 
 .button.is-light.is-outlined:hover,
+.configurator-radio label.is-light.is-outlined:hover,
 .button.is-light.is-outlined.is-hovered,
+.configurator-radio label.is-light.is-outlined.is-hovered,
 .button.is-light.is-outlined:focus,
-.button.is-light.is-outlined.is-focused {
+.configurator-radio label.is-light.is-outlined:focus,
+.button.is-light.is-outlined.is-focused,
+.configurator-radio label.is-light.is-outlined.is-focused {
   background-color: whitesmoke;
   border-color: whitesmoke;
   color: #363636;
 }
 
-.button.is-light.is-outlined.is-loading::after {
+.button.is-light.is-outlined.is-loading::after,
+.configurator-radio label.is-light.is-outlined.is-loading::after {
   border-color: transparent transparent whitesmoke whitesmoke !important;
 }
 
 .button.is-light.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-light.is-outlined.is-loading:hover::after,
 .button.is-light.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-light.is-outlined.is-loading.is-hovered::after,
 .button.is-light.is-outlined.is-loading:focus::after,
-.button.is-light.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-light.is-outlined.is-loading:focus::after,
+.button.is-light.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-light.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #363636 #363636 !important;
 }
 
 .button.is-light.is-outlined[disabled],
-fieldset[disabled] .button.is-light.is-outlined {
+.configurator-radio label.is-light.is-outlined[disabled],
+fieldset[disabled] .button.is-light.is-outlined,
+fieldset[disabled] .configurator-radio label.is-light.is-outlined,
+.configurator-radio fieldset[disabled] label.is-light.is-outlined {
   background-color: transparent;
   border-color: whitesmoke;
   box-shadow: none;
   color: whitesmoke;
 }
 
-.button.is-light.is-inverted.is-outlined {
+.button.is-light.is-inverted.is-outlined,
+.configurator-radio label.is-light.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #363636;
   color: #363636;
 }
 
 .button.is-light.is-inverted.is-outlined:hover,
+.configurator-radio label.is-light.is-inverted.is-outlined:hover,
 .button.is-light.is-inverted.is-outlined.is-hovered,
+.configurator-radio label.is-light.is-inverted.is-outlined.is-hovered,
 .button.is-light.is-inverted.is-outlined:focus,
-.button.is-light.is-inverted.is-outlined.is-focused {
+.configurator-radio label.is-light.is-inverted.is-outlined:focus,
+.button.is-light.is-inverted.is-outlined.is-focused,
+.configurator-radio label.is-light.is-inverted.is-outlined.is-focused {
   background-color: #363636;
   color: whitesmoke;
 }
 
 .button.is-light.is-inverted.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-light.is-inverted.is-outlined.is-loading:hover::after,
 .button.is-light.is-inverted.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-light.is-inverted.is-outlined.is-loading.is-hovered::after,
 .button.is-light.is-inverted.is-outlined.is-loading:focus::after,
-.button.is-light.is-inverted.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-light.is-inverted.is-outlined.is-loading:focus::after,
+.button.is-light.is-inverted.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-light.is-inverted.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent whitesmoke whitesmoke !important;
 }
 
 .button.is-light.is-inverted.is-outlined[disabled],
-fieldset[disabled] .button.is-light.is-inverted.is-outlined {
+.configurator-radio label.is-light.is-inverted.is-outlined[disabled],
+fieldset[disabled] .button.is-light.is-inverted.is-outlined,
+fieldset[disabled] .configurator-radio label.is-light.is-inverted.is-outlined,
+.configurator-radio fieldset[disabled] label.is-light.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #363636;
   box-shadow: none;
   color: #363636;
 }
 
-.button.is-dark {
+.button.is-dark,
+.configurator-radio label.is-dark {
   background-color: #363636;
   border-color: transparent;
   color: whitesmoke;
 }
 
 .button.is-dark:hover,
-.button.is-dark.is-hovered {
+.configurator-radio label.is-dark:hover,
+.button.is-dark.is-hovered,
+.configurator-radio label.is-dark.is-hovered {
   background-color: #2f2f2f;
   border-color: transparent;
   color: whitesmoke;
 }
 
 .button.is-dark:focus,
-.button.is-dark.is-focused {
+.configurator-radio label.is-dark:focus,
+.button.is-dark.is-focused,
+.configurator-radio label.is-dark.is-focused {
   border-color: transparent;
   color: whitesmoke;
 }
 
 .button.is-dark:focus:not(:active),
-.button.is-dark.is-focused:not(:active) {
+.configurator-radio label.is-dark:focus:not(:active),
+.button.is-dark.is-focused:not(:active),
+.configurator-radio label.is-dark.is-focused:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(54, 54, 54, 0.25);
 }
 
 .button.is-dark:active,
-.button.is-dark.is-active {
+.configurator-radio label.is-dark:active,
+.button.is-dark.is-active,
+.configurator-radio label.is-dark.is-active {
   background-color: #292929;
   border-color: transparent;
   color: whitesmoke;
 }
 
 .button.is-dark[disabled],
-fieldset[disabled] .button.is-dark {
+.configurator-radio label.is-dark[disabled],
+fieldset[disabled] .button.is-dark,
+fieldset[disabled] .configurator-radio label.is-dark,
+.configurator-radio fieldset[disabled] label.is-dark {
   background-color: #363636;
   border-color: transparent;
   box-shadow: none;
 }
 
-.button.is-dark.is-inverted {
+.button.is-dark.is-inverted,
+.configurator-radio label.is-dark.is-inverted {
   background-color: whitesmoke;
   color: #363636;
 }
 
 .button.is-dark.is-inverted:hover,
-.button.is-dark.is-inverted.is-hovered {
+.configurator-radio label.is-dark.is-inverted:hover,
+.button.is-dark.is-inverted.is-hovered,
+.configurator-radio label.is-dark.is-inverted.is-hovered {
   background-color: #e8e8e8;
 }
 
 .button.is-dark.is-inverted[disabled],
-fieldset[disabled] .button.is-dark.is-inverted {
+.configurator-radio label.is-dark.is-inverted[disabled],
+fieldset[disabled] .button.is-dark.is-inverted,
+fieldset[disabled] .configurator-radio label.is-dark.is-inverted,
+.configurator-radio fieldset[disabled] label.is-dark.is-inverted {
   background-color: whitesmoke;
   border-color: transparent;
   box-shadow: none;
   color: #363636;
 }
 
-.button.is-dark.is-loading::after {
+.button.is-dark.is-loading::after,
+.configurator-radio label.is-dark.is-loading::after {
   border-color: transparent transparent whitesmoke whitesmoke !important;
 }
 
-.button.is-dark.is-outlined {
+.button.is-dark.is-outlined,
+.configurator-radio label.is-dark.is-outlined {
   background-color: transparent;
   border-color: #363636;
   color: #363636;
 }
 
 .button.is-dark.is-outlined:hover,
+.configurator-radio label.is-dark.is-outlined:hover,
 .button.is-dark.is-outlined.is-hovered,
+.configurator-radio label.is-dark.is-outlined.is-hovered,
 .button.is-dark.is-outlined:focus,
-.button.is-dark.is-outlined.is-focused {
+.configurator-radio label.is-dark.is-outlined:focus,
+.button.is-dark.is-outlined.is-focused,
+.configurator-radio label.is-dark.is-outlined.is-focused {
   background-color: #363636;
   border-color: #363636;
   color: whitesmoke;
 }
 
-.button.is-dark.is-outlined.is-loading::after {
+.button.is-dark.is-outlined.is-loading::after,
+.configurator-radio label.is-dark.is-outlined.is-loading::after {
   border-color: transparent transparent #363636 #363636 !important;
 }
 
 .button.is-dark.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-dark.is-outlined.is-loading:hover::after,
 .button.is-dark.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-dark.is-outlined.is-loading.is-hovered::after,
 .button.is-dark.is-outlined.is-loading:focus::after,
-.button.is-dark.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-dark.is-outlined.is-loading:focus::after,
+.button.is-dark.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-dark.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent whitesmoke whitesmoke !important;
 }
 
 .button.is-dark.is-outlined[disabled],
-fieldset[disabled] .button.is-dark.is-outlined {
+.configurator-radio label.is-dark.is-outlined[disabled],
+fieldset[disabled] .button.is-dark.is-outlined,
+fieldset[disabled] .configurator-radio label.is-dark.is-outlined,
+.configurator-radio fieldset[disabled] label.is-dark.is-outlined {
   background-color: transparent;
   border-color: #363636;
   box-shadow: none;
   color: #363636;
 }
 
-.button.is-dark.is-inverted.is-outlined {
+.button.is-dark.is-inverted.is-outlined,
+.configurator-radio label.is-dark.is-inverted.is-outlined {
   background-color: transparent;
   border-color: whitesmoke;
   color: whitesmoke;
 }
 
 .button.is-dark.is-inverted.is-outlined:hover,
+.configurator-radio label.is-dark.is-inverted.is-outlined:hover,
 .button.is-dark.is-inverted.is-outlined.is-hovered,
+.configurator-radio label.is-dark.is-inverted.is-outlined.is-hovered,
 .button.is-dark.is-inverted.is-outlined:focus,
-.button.is-dark.is-inverted.is-outlined.is-focused {
+.configurator-radio label.is-dark.is-inverted.is-outlined:focus,
+.button.is-dark.is-inverted.is-outlined.is-focused,
+.configurator-radio label.is-dark.is-inverted.is-outlined.is-focused {
   background-color: whitesmoke;
   color: #363636;
 }
 
 .button.is-dark.is-inverted.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-dark.is-inverted.is-outlined.is-loading:hover::after,
 .button.is-dark.is-inverted.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-dark.is-inverted.is-outlined.is-loading.is-hovered::after,
 .button.is-dark.is-inverted.is-outlined.is-loading:focus::after,
-.button.is-dark.is-inverted.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-dark.is-inverted.is-outlined.is-loading:focus::after,
+.button.is-dark.is-inverted.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-dark.is-inverted.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #363636 #363636 !important;
 }
 
 .button.is-dark.is-inverted.is-outlined[disabled],
-fieldset[disabled] .button.is-dark.is-inverted.is-outlined {
+.configurator-radio label.is-dark.is-inverted.is-outlined[disabled],
+fieldset[disabled] .button.is-dark.is-inverted.is-outlined,
+fieldset[disabled] .configurator-radio label.is-dark.is-inverted.is-outlined,
+.configurator-radio fieldset[disabled] label.is-dark.is-inverted.is-outlined {
   background-color: transparent;
   border-color: whitesmoke;
   box-shadow: none;
   color: whitesmoke;
 }
 
-.button.is-primary {
+.button.is-primary,
+.configurator-radio label.is-primary {
   background-color: #00d1b2;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-primary:hover,
-.button.is-primary.is-hovered {
+.configurator-radio label.is-primary:hover,
+.button.is-primary.is-hovered,
+.configurator-radio label.is-primary.is-hovered {
   background-color: #00c4a7;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-primary:focus,
-.button.is-primary.is-focused {
+.configurator-radio label.is-primary:focus,
+.button.is-primary.is-focused,
+.configurator-radio label.is-primary.is-focused {
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-primary:focus:not(:active),
-.button.is-primary.is-focused:not(:active) {
+.configurator-radio label.is-primary:focus:not(:active),
+.button.is-primary.is-focused:not(:active),
+.configurator-radio label.is-primary.is-focused:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
 }
 
 .button.is-primary:active,
-.button.is-primary.is-active {
+.configurator-radio label.is-primary:active,
+.button.is-primary.is-active,
+.configurator-radio label.is-primary.is-active {
   background-color: #00b89c;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-primary[disabled],
-fieldset[disabled] .button.is-primary {
+.configurator-radio label.is-primary[disabled],
+fieldset[disabled] .button.is-primary,
+fieldset[disabled] .configurator-radio label.is-primary,
+.configurator-radio fieldset[disabled] label.is-primary {
   background-color: #00d1b2;
   border-color: transparent;
   box-shadow: none;
 }
 
-.button.is-primary.is-inverted {
+.button.is-primary.is-inverted,
+.configurator-radio label.is-primary.is-inverted {
   background-color: #fff;
   color: #00d1b2;
 }
 
 .button.is-primary.is-inverted:hover,
-.button.is-primary.is-inverted.is-hovered {
+.configurator-radio label.is-primary.is-inverted:hover,
+.button.is-primary.is-inverted.is-hovered,
+.configurator-radio label.is-primary.is-inverted.is-hovered {
   background-color: #f2f2f2;
 }
 
 .button.is-primary.is-inverted[disabled],
-fieldset[disabled] .button.is-primary.is-inverted {
+.configurator-radio label.is-primary.is-inverted[disabled],
+fieldset[disabled] .button.is-primary.is-inverted,
+fieldset[disabled] .configurator-radio label.is-primary.is-inverted,
+.configurator-radio fieldset[disabled] label.is-primary.is-inverted {
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
   color: #00d1b2;
 }
 
-.button.is-primary.is-loading::after {
+.button.is-primary.is-loading::after,
+.configurator-radio label.is-primary.is-loading::after {
   border-color: transparent transparent #fff #fff !important;
 }
 
-.button.is-primary.is-outlined {
+.button.is-primary.is-outlined,
+.configurator-radio label.is-primary.is-outlined {
   background-color: transparent;
   border-color: #00d1b2;
   color: #00d1b2;
 }
 
 .button.is-primary.is-outlined:hover,
+.configurator-radio label.is-primary.is-outlined:hover,
 .button.is-primary.is-outlined.is-hovered,
+.configurator-radio label.is-primary.is-outlined.is-hovered,
 .button.is-primary.is-outlined:focus,
-.button.is-primary.is-outlined.is-focused {
+.configurator-radio label.is-primary.is-outlined:focus,
+.button.is-primary.is-outlined.is-focused,
+.configurator-radio label.is-primary.is-outlined.is-focused {
   background-color: #00d1b2;
   border-color: #00d1b2;
   color: #fff;
 }
 
-.button.is-primary.is-outlined.is-loading::after {
+.button.is-primary.is-outlined.is-loading::after,
+.configurator-radio label.is-primary.is-outlined.is-loading::after {
   border-color: transparent transparent #00d1b2 #00d1b2 !important;
 }
 
 .button.is-primary.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-primary.is-outlined.is-loading:hover::after,
 .button.is-primary.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-primary.is-outlined.is-loading.is-hovered::after,
 .button.is-primary.is-outlined.is-loading:focus::after,
-.button.is-primary.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-primary.is-outlined.is-loading:focus::after,
+.button.is-primary.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-primary.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #fff #fff !important;
 }
 
 .button.is-primary.is-outlined[disabled],
-fieldset[disabled] .button.is-primary.is-outlined {
+.configurator-radio label.is-primary.is-outlined[disabled],
+fieldset[disabled] .button.is-primary.is-outlined,
+fieldset[disabled] .configurator-radio label.is-primary.is-outlined,
+.configurator-radio fieldset[disabled] label.is-primary.is-outlined {
   background-color: transparent;
   border-color: #00d1b2;
   box-shadow: none;
   color: #00d1b2;
 }
 
-.button.is-primary.is-inverted.is-outlined {
+.button.is-primary.is-inverted.is-outlined,
+.configurator-radio label.is-primary.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
 }
 
 .button.is-primary.is-inverted.is-outlined:hover,
+.configurator-radio label.is-primary.is-inverted.is-outlined:hover,
 .button.is-primary.is-inverted.is-outlined.is-hovered,
+.configurator-radio label.is-primary.is-inverted.is-outlined.is-hovered,
 .button.is-primary.is-inverted.is-outlined:focus,
-.button.is-primary.is-inverted.is-outlined.is-focused {
+.configurator-radio label.is-primary.is-inverted.is-outlined:focus,
+.button.is-primary.is-inverted.is-outlined.is-focused,
+.configurator-radio label.is-primary.is-inverted.is-outlined.is-focused {
   background-color: #fff;
   color: #00d1b2;
 }
 
 .button.is-primary.is-inverted.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-primary.is-inverted.is-outlined.is-loading:hover::after,
 .button.is-primary.is-inverted.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-primary.is-inverted.is-outlined.is-loading.is-hovered::after,
 .button.is-primary.is-inverted.is-outlined.is-loading:focus::after,
-.button.is-primary.is-inverted.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-primary.is-inverted.is-outlined.is-loading:focus::after,
+.button.is-primary.is-inverted.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-primary.is-inverted.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #00d1b2 #00d1b2 !important;
 }
 
 .button.is-primary.is-inverted.is-outlined[disabled],
-fieldset[disabled] .button.is-primary.is-inverted.is-outlined {
+.configurator-radio label.is-primary.is-inverted.is-outlined[disabled],
+fieldset[disabled] .button.is-primary.is-inverted.is-outlined,
+fieldset[disabled] .configurator-radio label.is-primary.is-inverted.is-outlined,
+.configurator-radio fieldset[disabled] label.is-primary.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #fff;
   box-shadow: none;
   color: #fff;
 }
 
-.button.is-link {
+.button.is-link,
+.configurator-radio label.is-link {
   background-color: #3273dc;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-link:hover,
-.button.is-link.is-hovered {
+.configurator-radio label.is-link:hover,
+.button.is-link.is-hovered,
+.configurator-radio label.is-link.is-hovered {
   background-color: #276cda;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-link:focus,
-.button.is-link.is-focused {
+.configurator-radio label.is-link:focus,
+.button.is-link.is-focused,
+.configurator-radio label.is-link.is-focused {
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-link:focus:not(:active),
-.button.is-link.is-focused:not(:active) {
+.configurator-radio label.is-link:focus:not(:active),
+.button.is-link.is-focused:not(:active),
+.configurator-radio label.is-link.is-focused:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
 }
 
 .button.is-link:active,
-.button.is-link.is-active {
+.configurator-radio label.is-link:active,
+.button.is-link.is-active,
+.configurator-radio label.is-link.is-active {
   background-color: #2366d1;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-link[disabled],
-fieldset[disabled] .button.is-link {
+.configurator-radio label.is-link[disabled],
+fieldset[disabled] .button.is-link,
+fieldset[disabled] .configurator-radio label.is-link,
+.configurator-radio fieldset[disabled] label.is-link {
   background-color: #3273dc;
   border-color: transparent;
   box-shadow: none;
 }
 
-.button.is-link.is-inverted {
+.button.is-link.is-inverted,
+.configurator-radio label.is-link.is-inverted {
   background-color: #fff;
   color: #3273dc;
 }
 
 .button.is-link.is-inverted:hover,
-.button.is-link.is-inverted.is-hovered {
+.configurator-radio label.is-link.is-inverted:hover,
+.button.is-link.is-inverted.is-hovered,
+.configurator-radio label.is-link.is-inverted.is-hovered {
   background-color: #f2f2f2;
 }
 
 .button.is-link.is-inverted[disabled],
-fieldset[disabled] .button.is-link.is-inverted {
+.configurator-radio label.is-link.is-inverted[disabled],
+fieldset[disabled] .button.is-link.is-inverted,
+fieldset[disabled] .configurator-radio label.is-link.is-inverted,
+.configurator-radio fieldset[disabled] label.is-link.is-inverted {
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
   color: #3273dc;
 }
 
-.button.is-link.is-loading::after {
+.button.is-link.is-loading::after,
+.configurator-radio label.is-link.is-loading::after {
   border-color: transparent transparent #fff #fff !important;
 }
 
-.button.is-link.is-outlined {
+.button.is-link.is-outlined,
+.configurator-radio label.is-link.is-outlined {
   background-color: transparent;
   border-color: #3273dc;
   color: #3273dc;
 }
 
 .button.is-link.is-outlined:hover,
+.configurator-radio label.is-link.is-outlined:hover,
 .button.is-link.is-outlined.is-hovered,
+.configurator-radio label.is-link.is-outlined.is-hovered,
 .button.is-link.is-outlined:focus,
-.button.is-link.is-outlined.is-focused {
+.configurator-radio label.is-link.is-outlined:focus,
+.button.is-link.is-outlined.is-focused,
+.configurator-radio label.is-link.is-outlined.is-focused {
   background-color: #3273dc;
   border-color: #3273dc;
   color: #fff;
 }
 
-.button.is-link.is-outlined.is-loading::after {
+.button.is-link.is-outlined.is-loading::after,
+.configurator-radio label.is-link.is-outlined.is-loading::after {
   border-color: transparent transparent #3273dc #3273dc !important;
 }
 
 .button.is-link.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-link.is-outlined.is-loading:hover::after,
 .button.is-link.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-link.is-outlined.is-loading.is-hovered::after,
 .button.is-link.is-outlined.is-loading:focus::after,
-.button.is-link.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-link.is-outlined.is-loading:focus::after,
+.button.is-link.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-link.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #fff #fff !important;
 }
 
 .button.is-link.is-outlined[disabled],
-fieldset[disabled] .button.is-link.is-outlined {
+.configurator-radio label.is-link.is-outlined[disabled],
+fieldset[disabled] .button.is-link.is-outlined,
+fieldset[disabled] .configurator-radio label.is-link.is-outlined,
+.configurator-radio fieldset[disabled] label.is-link.is-outlined {
   background-color: transparent;
   border-color: #3273dc;
   box-shadow: none;
   color: #3273dc;
 }
 
-.button.is-link.is-inverted.is-outlined {
+.button.is-link.is-inverted.is-outlined,
+.configurator-radio label.is-link.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
 }
 
 .button.is-link.is-inverted.is-outlined:hover,
+.configurator-radio label.is-link.is-inverted.is-outlined:hover,
 .button.is-link.is-inverted.is-outlined.is-hovered,
+.configurator-radio label.is-link.is-inverted.is-outlined.is-hovered,
 .button.is-link.is-inverted.is-outlined:focus,
-.button.is-link.is-inverted.is-outlined.is-focused {
+.configurator-radio label.is-link.is-inverted.is-outlined:focus,
+.button.is-link.is-inverted.is-outlined.is-focused,
+.configurator-radio label.is-link.is-inverted.is-outlined.is-focused {
   background-color: #fff;
   color: #3273dc;
 }
 
 .button.is-link.is-inverted.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-link.is-inverted.is-outlined.is-loading:hover::after,
 .button.is-link.is-inverted.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-link.is-inverted.is-outlined.is-loading.is-hovered::after,
 .button.is-link.is-inverted.is-outlined.is-loading:focus::after,
-.button.is-link.is-inverted.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-link.is-inverted.is-outlined.is-loading:focus::after,
+.button.is-link.is-inverted.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-link.is-inverted.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #3273dc #3273dc !important;
 }
 
 .button.is-link.is-inverted.is-outlined[disabled],
-fieldset[disabled] .button.is-link.is-inverted.is-outlined {
+.configurator-radio label.is-link.is-inverted.is-outlined[disabled],
+fieldset[disabled] .button.is-link.is-inverted.is-outlined,
+fieldset[disabled] .configurator-radio label.is-link.is-inverted.is-outlined,
+.configurator-radio fieldset[disabled] label.is-link.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #fff;
   box-shadow: none;
   color: #fff;
 }
 
-.button.is-info {
+.button.is-info,
+.configurator-radio label.is-info {
   background-color: #209cee;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-info:hover,
-.button.is-info.is-hovered {
+.configurator-radio label.is-info:hover,
+.button.is-info.is-hovered,
+.configurator-radio label.is-info.is-hovered {
   background-color: #1496ed;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-info:focus,
-.button.is-info.is-focused {
+.configurator-radio label.is-info:focus,
+.button.is-info.is-focused,
+.configurator-radio label.is-info.is-focused {
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-info:focus:not(:active),
-.button.is-info.is-focused:not(:active) {
+.configurator-radio label.is-info:focus:not(:active),
+.button.is-info.is-focused:not(:active),
+.configurator-radio label.is-info.is-focused:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(32, 156, 238, 0.25);
 }
 
 .button.is-info:active,
-.button.is-info.is-active {
+.configurator-radio label.is-info:active,
+.button.is-info.is-active,
+.configurator-radio label.is-info.is-active {
   background-color: #118fe4;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-info[disabled],
-fieldset[disabled] .button.is-info {
+.configurator-radio label.is-info[disabled],
+fieldset[disabled] .button.is-info,
+fieldset[disabled] .configurator-radio label.is-info,
+.configurator-radio fieldset[disabled] label.is-info {
   background-color: #209cee;
   border-color: transparent;
   box-shadow: none;
 }
 
-.button.is-info.is-inverted {
+.button.is-info.is-inverted,
+.configurator-radio label.is-info.is-inverted {
   background-color: #fff;
   color: #209cee;
 }
 
 .button.is-info.is-inverted:hover,
-.button.is-info.is-inverted.is-hovered {
+.configurator-radio label.is-info.is-inverted:hover,
+.button.is-info.is-inverted.is-hovered,
+.configurator-radio label.is-info.is-inverted.is-hovered {
   background-color: #f2f2f2;
 }
 
 .button.is-info.is-inverted[disabled],
-fieldset[disabled] .button.is-info.is-inverted {
+.configurator-radio label.is-info.is-inverted[disabled],
+fieldset[disabled] .button.is-info.is-inverted,
+fieldset[disabled] .configurator-radio label.is-info.is-inverted,
+.configurator-radio fieldset[disabled] label.is-info.is-inverted {
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
   color: #209cee;
 }
 
-.button.is-info.is-loading::after {
+.button.is-info.is-loading::after,
+.configurator-radio label.is-info.is-loading::after {
   border-color: transparent transparent #fff #fff !important;
 }
 
-.button.is-info.is-outlined {
+.button.is-info.is-outlined,
+.configurator-radio label.is-info.is-outlined {
   background-color: transparent;
   border-color: #209cee;
   color: #209cee;
 }
 
 .button.is-info.is-outlined:hover,
+.configurator-radio label.is-info.is-outlined:hover,
 .button.is-info.is-outlined.is-hovered,
+.configurator-radio label.is-info.is-outlined.is-hovered,
 .button.is-info.is-outlined:focus,
-.button.is-info.is-outlined.is-focused {
+.configurator-radio label.is-info.is-outlined:focus,
+.button.is-info.is-outlined.is-focused,
+.configurator-radio label.is-info.is-outlined.is-focused {
   background-color: #209cee;
   border-color: #209cee;
   color: #fff;
 }
 
-.button.is-info.is-outlined.is-loading::after {
+.button.is-info.is-outlined.is-loading::after,
+.configurator-radio label.is-info.is-outlined.is-loading::after {
   border-color: transparent transparent #209cee #209cee !important;
 }
 
 .button.is-info.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-info.is-outlined.is-loading:hover::after,
 .button.is-info.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-info.is-outlined.is-loading.is-hovered::after,
 .button.is-info.is-outlined.is-loading:focus::after,
-.button.is-info.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-info.is-outlined.is-loading:focus::after,
+.button.is-info.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-info.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #fff #fff !important;
 }
 
 .button.is-info.is-outlined[disabled],
-fieldset[disabled] .button.is-info.is-outlined {
+.configurator-radio label.is-info.is-outlined[disabled],
+fieldset[disabled] .button.is-info.is-outlined,
+fieldset[disabled] .configurator-radio label.is-info.is-outlined,
+.configurator-radio fieldset[disabled] label.is-info.is-outlined {
   background-color: transparent;
   border-color: #209cee;
   box-shadow: none;
   color: #209cee;
 }
 
-.button.is-info.is-inverted.is-outlined {
+.button.is-info.is-inverted.is-outlined,
+.configurator-radio label.is-info.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
 }
 
 .button.is-info.is-inverted.is-outlined:hover,
+.configurator-radio label.is-info.is-inverted.is-outlined:hover,
 .button.is-info.is-inverted.is-outlined.is-hovered,
+.configurator-radio label.is-info.is-inverted.is-outlined.is-hovered,
 .button.is-info.is-inverted.is-outlined:focus,
-.button.is-info.is-inverted.is-outlined.is-focused {
+.configurator-radio label.is-info.is-inverted.is-outlined:focus,
+.button.is-info.is-inverted.is-outlined.is-focused,
+.configurator-radio label.is-info.is-inverted.is-outlined.is-focused {
   background-color: #fff;
   color: #209cee;
 }
 
 .button.is-info.is-inverted.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-info.is-inverted.is-outlined.is-loading:hover::after,
 .button.is-info.is-inverted.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-info.is-inverted.is-outlined.is-loading.is-hovered::after,
 .button.is-info.is-inverted.is-outlined.is-loading:focus::after,
-.button.is-info.is-inverted.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-info.is-inverted.is-outlined.is-loading:focus::after,
+.button.is-info.is-inverted.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-info.is-inverted.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #209cee #209cee !important;
 }
 
 .button.is-info.is-inverted.is-outlined[disabled],
-fieldset[disabled] .button.is-info.is-inverted.is-outlined {
+.configurator-radio label.is-info.is-inverted.is-outlined[disabled],
+fieldset[disabled] .button.is-info.is-inverted.is-outlined,
+fieldset[disabled] .configurator-radio label.is-info.is-inverted.is-outlined,
+.configurator-radio fieldset[disabled] label.is-info.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #fff;
   box-shadow: none;
   color: #fff;
 }
 
-.button.is-success {
+.button.is-success,
+.configurator-radio label.is-success {
   background-color: #23d160;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-success:hover,
-.button.is-success.is-hovered {
+.configurator-radio label.is-success:hover,
+.button.is-success.is-hovered,
+.configurator-radio label.is-success.is-hovered {
   background-color: #22c65b;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-success:focus,
-.button.is-success.is-focused {
+.configurator-radio label.is-success:focus,
+.button.is-success.is-focused,
+.configurator-radio label.is-success.is-focused {
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-success:focus:not(:active),
-.button.is-success.is-focused:not(:active) {
+.configurator-radio label.is-success:focus:not(:active),
+.button.is-success.is-focused:not(:active),
+.configurator-radio label.is-success.is-focused:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(35, 209, 96, 0.25);
 }
 
 .button.is-success:active,
-.button.is-success.is-active {
+.configurator-radio label.is-success:active,
+.button.is-success.is-active,
+.configurator-radio label.is-success.is-active {
   background-color: #20bc56;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-success[disabled],
-fieldset[disabled] .button.is-success {
+.configurator-radio label.is-success[disabled],
+fieldset[disabled] .button.is-success,
+fieldset[disabled] .configurator-radio label.is-success,
+.configurator-radio fieldset[disabled] label.is-success {
   background-color: #23d160;
   border-color: transparent;
   box-shadow: none;
 }
 
-.button.is-success.is-inverted {
+.button.is-success.is-inverted,
+.configurator-radio label.is-success.is-inverted {
   background-color: #fff;
   color: #23d160;
 }
 
 .button.is-success.is-inverted:hover,
-.button.is-success.is-inverted.is-hovered {
+.configurator-radio label.is-success.is-inverted:hover,
+.button.is-success.is-inverted.is-hovered,
+.configurator-radio label.is-success.is-inverted.is-hovered {
   background-color: #f2f2f2;
 }
 
 .button.is-success.is-inverted[disabled],
-fieldset[disabled] .button.is-success.is-inverted {
+.configurator-radio label.is-success.is-inverted[disabled],
+fieldset[disabled] .button.is-success.is-inverted,
+fieldset[disabled] .configurator-radio label.is-success.is-inverted,
+.configurator-radio fieldset[disabled] label.is-success.is-inverted {
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
   color: #23d160;
 }
 
-.button.is-success.is-loading::after {
+.button.is-success.is-loading::after,
+.configurator-radio label.is-success.is-loading::after {
   border-color: transparent transparent #fff #fff !important;
 }
 
-.button.is-success.is-outlined {
+.button.is-success.is-outlined,
+.configurator-radio label.is-success.is-outlined {
   background-color: transparent;
   border-color: #23d160;
   color: #23d160;
 }
 
 .button.is-success.is-outlined:hover,
+.configurator-radio label.is-success.is-outlined:hover,
 .button.is-success.is-outlined.is-hovered,
+.configurator-radio label.is-success.is-outlined.is-hovered,
 .button.is-success.is-outlined:focus,
-.button.is-success.is-outlined.is-focused {
+.configurator-radio label.is-success.is-outlined:focus,
+.button.is-success.is-outlined.is-focused,
+.configurator-radio label.is-success.is-outlined.is-focused {
   background-color: #23d160;
   border-color: #23d160;
   color: #fff;
 }
 
-.button.is-success.is-outlined.is-loading::after {
+.button.is-success.is-outlined.is-loading::after,
+.configurator-radio label.is-success.is-outlined.is-loading::after {
   border-color: transparent transparent #23d160 #23d160 !important;
 }
 
 .button.is-success.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-success.is-outlined.is-loading:hover::after,
 .button.is-success.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-success.is-outlined.is-loading.is-hovered::after,
 .button.is-success.is-outlined.is-loading:focus::after,
-.button.is-success.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-success.is-outlined.is-loading:focus::after,
+.button.is-success.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-success.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #fff #fff !important;
 }
 
 .button.is-success.is-outlined[disabled],
-fieldset[disabled] .button.is-success.is-outlined {
+.configurator-radio label.is-success.is-outlined[disabled],
+fieldset[disabled] .button.is-success.is-outlined,
+fieldset[disabled] .configurator-radio label.is-success.is-outlined,
+.configurator-radio fieldset[disabled] label.is-success.is-outlined {
   background-color: transparent;
   border-color: #23d160;
   box-shadow: none;
   color: #23d160;
 }
 
-.button.is-success.is-inverted.is-outlined {
+.button.is-success.is-inverted.is-outlined,
+.configurator-radio label.is-success.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
 }
 
 .button.is-success.is-inverted.is-outlined:hover,
+.configurator-radio label.is-success.is-inverted.is-outlined:hover,
 .button.is-success.is-inverted.is-outlined.is-hovered,
+.configurator-radio label.is-success.is-inverted.is-outlined.is-hovered,
 .button.is-success.is-inverted.is-outlined:focus,
-.button.is-success.is-inverted.is-outlined.is-focused {
+.configurator-radio label.is-success.is-inverted.is-outlined:focus,
+.button.is-success.is-inverted.is-outlined.is-focused,
+.configurator-radio label.is-success.is-inverted.is-outlined.is-focused {
   background-color: #fff;
   color: #23d160;
 }
 
 .button.is-success.is-inverted.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-success.is-inverted.is-outlined.is-loading:hover::after,
 .button.is-success.is-inverted.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-success.is-inverted.is-outlined.is-loading.is-hovered::after,
 .button.is-success.is-inverted.is-outlined.is-loading:focus::after,
-.button.is-success.is-inverted.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-success.is-inverted.is-outlined.is-loading:focus::after,
+.button.is-success.is-inverted.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-success.is-inverted.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #23d160 #23d160 !important;
 }
 
 .button.is-success.is-inverted.is-outlined[disabled],
-fieldset[disabled] .button.is-success.is-inverted.is-outlined {
+.configurator-radio label.is-success.is-inverted.is-outlined[disabled],
+fieldset[disabled] .button.is-success.is-inverted.is-outlined,
+fieldset[disabled] .configurator-radio label.is-success.is-inverted.is-outlined,
+.configurator-radio fieldset[disabled] label.is-success.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #fff;
   box-shadow: none;
   color: #fff;
 }
 
-.button.is-warning {
+.button.is-warning,
+.configurator-radio label.is-warning {
   background-color: #ffdd57;
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 
 .button.is-warning:hover,
-.button.is-warning.is-hovered {
+.configurator-radio label.is-warning:hover,
+.button.is-warning.is-hovered,
+.configurator-radio label.is-warning.is-hovered {
   background-color: #ffdb4a;
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 
 .button.is-warning:focus,
-.button.is-warning.is-focused {
+.configurator-radio label.is-warning:focus,
+.button.is-warning.is-focused,
+.configurator-radio label.is-warning.is-focused {
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 
 .button.is-warning:focus:not(:active),
-.button.is-warning.is-focused:not(:active) {
+.configurator-radio label.is-warning:focus:not(:active),
+.button.is-warning.is-focused:not(:active),
+.configurator-radio label.is-warning.is-focused:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(255, 221, 87, 0.25);
 }
 
 .button.is-warning:active,
-.button.is-warning.is-active {
+.configurator-radio label.is-warning:active,
+.button.is-warning.is-active,
+.configurator-radio label.is-warning.is-active {
   background-color: #ffd83d;
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 
 .button.is-warning[disabled],
-fieldset[disabled] .button.is-warning {
+.configurator-radio label.is-warning[disabled],
+fieldset[disabled] .button.is-warning,
+fieldset[disabled] .configurator-radio label.is-warning,
+.configurator-radio fieldset[disabled] label.is-warning {
   background-color: #ffdd57;
   border-color: transparent;
   box-shadow: none;
 }
 
-.button.is-warning.is-inverted {
+.button.is-warning.is-inverted,
+.configurator-radio label.is-warning.is-inverted {
   background-color: rgba(0, 0, 0, 0.7);
   color: #ffdd57;
 }
 
 .button.is-warning.is-inverted:hover,
-.button.is-warning.is-inverted.is-hovered {
+.configurator-radio label.is-warning.is-inverted:hover,
+.button.is-warning.is-inverted.is-hovered,
+.configurator-radio label.is-warning.is-inverted.is-hovered {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
 .button.is-warning.is-inverted[disabled],
-fieldset[disabled] .button.is-warning.is-inverted {
+.configurator-radio label.is-warning.is-inverted[disabled],
+fieldset[disabled] .button.is-warning.is-inverted,
+fieldset[disabled] .configurator-radio label.is-warning.is-inverted,
+.configurator-radio fieldset[disabled] label.is-warning.is-inverted {
   background-color: rgba(0, 0, 0, 0.7);
   border-color: transparent;
   box-shadow: none;
   color: #ffdd57;
 }
 
-.button.is-warning.is-loading::after {
+.button.is-warning.is-loading::after,
+.configurator-radio label.is-warning.is-loading::after {
   border-color: transparent transparent rgba(0, 0, 0, 0.7) rgba(0, 0, 0, 0.7) !important;
 }
 
-.button.is-warning.is-outlined {
+.button.is-warning.is-outlined,
+.configurator-radio label.is-warning.is-outlined {
   background-color: transparent;
   border-color: #ffdd57;
   color: #ffdd57;
 }
 
 .button.is-warning.is-outlined:hover,
+.configurator-radio label.is-warning.is-outlined:hover,
 .button.is-warning.is-outlined.is-hovered,
+.configurator-radio label.is-warning.is-outlined.is-hovered,
 .button.is-warning.is-outlined:focus,
-.button.is-warning.is-outlined.is-focused {
+.configurator-radio label.is-warning.is-outlined:focus,
+.button.is-warning.is-outlined.is-focused,
+.configurator-radio label.is-warning.is-outlined.is-focused {
   background-color: #ffdd57;
   border-color: #ffdd57;
   color: rgba(0, 0, 0, 0.7);
 }
 
-.button.is-warning.is-outlined.is-loading::after {
+.button.is-warning.is-outlined.is-loading::after,
+.configurator-radio label.is-warning.is-outlined.is-loading::after {
   border-color: transparent transparent #ffdd57 #ffdd57 !important;
 }
 
 .button.is-warning.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-warning.is-outlined.is-loading:hover::after,
 .button.is-warning.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-warning.is-outlined.is-loading.is-hovered::after,
 .button.is-warning.is-outlined.is-loading:focus::after,
-.button.is-warning.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-warning.is-outlined.is-loading:focus::after,
+.button.is-warning.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-warning.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent rgba(0, 0, 0, 0.7) rgba(0, 0, 0, 0.7) !important;
 }
 
 .button.is-warning.is-outlined[disabled],
-fieldset[disabled] .button.is-warning.is-outlined {
+.configurator-radio label.is-warning.is-outlined[disabled],
+fieldset[disabled] .button.is-warning.is-outlined,
+fieldset[disabled] .configurator-radio label.is-warning.is-outlined,
+.configurator-radio fieldset[disabled] label.is-warning.is-outlined {
   background-color: transparent;
   border-color: #ffdd57;
   box-shadow: none;
   color: #ffdd57;
 }
 
-.button.is-warning.is-inverted.is-outlined {
+.button.is-warning.is-inverted.is-outlined,
+.configurator-radio label.is-warning.is-inverted.is-outlined {
   background-color: transparent;
   border-color: rgba(0, 0, 0, 0.7);
   color: rgba(0, 0, 0, 0.7);
 }
 
 .button.is-warning.is-inverted.is-outlined:hover,
+.configurator-radio label.is-warning.is-inverted.is-outlined:hover,
 .button.is-warning.is-inverted.is-outlined.is-hovered,
+.configurator-radio label.is-warning.is-inverted.is-outlined.is-hovered,
 .button.is-warning.is-inverted.is-outlined:focus,
-.button.is-warning.is-inverted.is-outlined.is-focused {
+.configurator-radio label.is-warning.is-inverted.is-outlined:focus,
+.button.is-warning.is-inverted.is-outlined.is-focused,
+.configurator-radio label.is-warning.is-inverted.is-outlined.is-focused {
   background-color: rgba(0, 0, 0, 0.7);
   color: #ffdd57;
 }
 
 .button.is-warning.is-inverted.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-warning.is-inverted.is-outlined.is-loading:hover::after,
 .button.is-warning.is-inverted.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-warning.is-inverted.is-outlined.is-loading.is-hovered::after,
 .button.is-warning.is-inverted.is-outlined.is-loading:focus::after,
-.button.is-warning.is-inverted.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-warning.is-inverted.is-outlined.is-loading:focus::after,
+.button.is-warning.is-inverted.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-warning.is-inverted.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #ffdd57 #ffdd57 !important;
 }
 
 .button.is-warning.is-inverted.is-outlined[disabled],
-fieldset[disabled] .button.is-warning.is-inverted.is-outlined {
+.configurator-radio label.is-warning.is-inverted.is-outlined[disabled],
+fieldset[disabled] .button.is-warning.is-inverted.is-outlined,
+fieldset[disabled] .configurator-radio label.is-warning.is-inverted.is-outlined,
+.configurator-radio fieldset[disabled] label.is-warning.is-inverted.is-outlined {
   background-color: transparent;
   border-color: rgba(0, 0, 0, 0.7);
   box-shadow: none;
   color: rgba(0, 0, 0, 0.7);
 }
 
-.button.is-danger {
+.button.is-danger,
+.configurator-radio label.is-danger {
   background-color: #ff3860;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-danger:hover,
-.button.is-danger.is-hovered {
+.configurator-radio label.is-danger:hover,
+.button.is-danger.is-hovered,
+.configurator-radio label.is-danger.is-hovered {
   background-color: #ff2b56;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-danger:focus,
-.button.is-danger.is-focused {
+.configurator-radio label.is-danger:focus,
+.button.is-danger.is-focused,
+.configurator-radio label.is-danger.is-focused {
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-danger:focus:not(:active),
-.button.is-danger.is-focused:not(:active) {
+.configurator-radio label.is-danger:focus:not(:active),
+.button.is-danger.is-focused:not(:active),
+.configurator-radio label.is-danger.is-focused:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(255, 56, 96, 0.25);
 }
 
 .button.is-danger:active,
-.button.is-danger.is-active {
+.configurator-radio label.is-danger:active,
+.button.is-danger.is-active,
+.configurator-radio label.is-danger.is-active {
   background-color: #ff1f4b;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-danger[disabled],
-fieldset[disabled] .button.is-danger {
+.configurator-radio label.is-danger[disabled],
+fieldset[disabled] .button.is-danger,
+fieldset[disabled] .configurator-radio label.is-danger,
+.configurator-radio fieldset[disabled] label.is-danger {
   background-color: #ff3860;
   border-color: transparent;
   box-shadow: none;
 }
 
-.button.is-danger.is-inverted {
+.button.is-danger.is-inverted,
+.configurator-radio label.is-danger.is-inverted {
   background-color: #fff;
   color: #ff3860;
 }
 
 .button.is-danger.is-inverted:hover,
-.button.is-danger.is-inverted.is-hovered {
+.configurator-radio label.is-danger.is-inverted:hover,
+.button.is-danger.is-inverted.is-hovered,
+.configurator-radio label.is-danger.is-inverted.is-hovered {
   background-color: #f2f2f2;
 }
 
 .button.is-danger.is-inverted[disabled],
-fieldset[disabled] .button.is-danger.is-inverted {
+.configurator-radio label.is-danger.is-inverted[disabled],
+fieldset[disabled] .button.is-danger.is-inverted,
+fieldset[disabled] .configurator-radio label.is-danger.is-inverted,
+.configurator-radio fieldset[disabled] label.is-danger.is-inverted {
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
   color: #ff3860;
 }
 
-.button.is-danger.is-loading::after {
+.button.is-danger.is-loading::after,
+.configurator-radio label.is-danger.is-loading::after {
   border-color: transparent transparent #fff #fff !important;
 }
 
-.button.is-danger.is-outlined {
+.button.is-danger.is-outlined,
+.configurator-radio label.is-danger.is-outlined {
   background-color: transparent;
   border-color: #ff3860;
   color: #ff3860;
 }
 
 .button.is-danger.is-outlined:hover,
+.configurator-radio label.is-danger.is-outlined:hover,
 .button.is-danger.is-outlined.is-hovered,
+.configurator-radio label.is-danger.is-outlined.is-hovered,
 .button.is-danger.is-outlined:focus,
-.button.is-danger.is-outlined.is-focused {
+.configurator-radio label.is-danger.is-outlined:focus,
+.button.is-danger.is-outlined.is-focused,
+.configurator-radio label.is-danger.is-outlined.is-focused {
   background-color: #ff3860;
   border-color: #ff3860;
   color: #fff;
 }
 
-.button.is-danger.is-outlined.is-loading::after {
+.button.is-danger.is-outlined.is-loading::after,
+.configurator-radio label.is-danger.is-outlined.is-loading::after {
   border-color: transparent transparent #ff3860 #ff3860 !important;
 }
 
 .button.is-danger.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-danger.is-outlined.is-loading:hover::after,
 .button.is-danger.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-danger.is-outlined.is-loading.is-hovered::after,
 .button.is-danger.is-outlined.is-loading:focus::after,
-.button.is-danger.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-danger.is-outlined.is-loading:focus::after,
+.button.is-danger.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-danger.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #fff #fff !important;
 }
 
 .button.is-danger.is-outlined[disabled],
-fieldset[disabled] .button.is-danger.is-outlined {
+.configurator-radio label.is-danger.is-outlined[disabled],
+fieldset[disabled] .button.is-danger.is-outlined,
+fieldset[disabled] .configurator-radio label.is-danger.is-outlined,
+.configurator-radio fieldset[disabled] label.is-danger.is-outlined {
   background-color: transparent;
   border-color: #ff3860;
   box-shadow: none;
   color: #ff3860;
 }
 
-.button.is-danger.is-inverted.is-outlined {
+.button.is-danger.is-inverted.is-outlined,
+.configurator-radio label.is-danger.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
 }
 
 .button.is-danger.is-inverted.is-outlined:hover,
+.configurator-radio label.is-danger.is-inverted.is-outlined:hover,
 .button.is-danger.is-inverted.is-outlined.is-hovered,
+.configurator-radio label.is-danger.is-inverted.is-outlined.is-hovered,
 .button.is-danger.is-inverted.is-outlined:focus,
-.button.is-danger.is-inverted.is-outlined.is-focused {
+.configurator-radio label.is-danger.is-inverted.is-outlined:focus,
+.button.is-danger.is-inverted.is-outlined.is-focused,
+.configurator-radio label.is-danger.is-inverted.is-outlined.is-focused {
   background-color: #fff;
   color: #ff3860;
 }
 
 .button.is-danger.is-inverted.is-outlined.is-loading:hover::after,
+.configurator-radio label.is-danger.is-inverted.is-outlined.is-loading:hover::after,
 .button.is-danger.is-inverted.is-outlined.is-loading.is-hovered::after,
+.configurator-radio label.is-danger.is-inverted.is-outlined.is-loading.is-hovered::after,
 .button.is-danger.is-inverted.is-outlined.is-loading:focus::after,
-.button.is-danger.is-inverted.is-outlined.is-loading.is-focused::after {
+.configurator-radio label.is-danger.is-inverted.is-outlined.is-loading:focus::after,
+.button.is-danger.is-inverted.is-outlined.is-loading.is-focused::after,
+.configurator-radio label.is-danger.is-inverted.is-outlined.is-loading.is-focused::after {
   border-color: transparent transparent #ff3860 #ff3860 !important;
 }
 
 .button.is-danger.is-inverted.is-outlined[disabled],
-fieldset[disabled] .button.is-danger.is-inverted.is-outlined {
+.configurator-radio label.is-danger.is-inverted.is-outlined[disabled],
+fieldset[disabled] .button.is-danger.is-inverted.is-outlined,
+fieldset[disabled] .configurator-radio label.is-danger.is-inverted.is-outlined,
+.configurator-radio fieldset[disabled] label.is-danger.is-inverted.is-outlined {
   background-color: transparent;
   border-color: #fff;
   box-shadow: none;
   color: #fff;
 }
 
-.button.is-small {
+.button.is-small,
+.configurator-radio label.is-small {
   border-radius: 2px;
   font-size: 0.75rem;
 }
 
-.button.is-normal {
+.button.is-normal,
+.configurator-radio label.is-normal {
   font-size: 1rem;
 }
 
-.button.is-medium {
+.button.is-medium,
+.configurator-radio label.is-medium {
   font-size: 1.25rem;
 }
 
-.button.is-large {
+.button.is-large,
+.configurator-radio label.is-large {
   font-size: 1.5rem;
 }
 
 .button[disabled],
-fieldset[disabled] .button {
+.configurator-radio label[disabled],
+fieldset[disabled] .button,
+fieldset[disabled] .configurator-radio label,
+.configurator-radio fieldset[disabled] label {
   background-color: white;
   border-color: #dbdbdb;
   box-shadow: none;
   opacity: 0.5;
 }
 
-.button.is-fullwidth {
+.button.is-fullwidth,
+.configurator-radio label.is-fullwidth {
   display: -webkit-box;
   display: flex;
   width: 100%;
 }
 
-.button.is-loading {
+.button.is-loading,
+.configurator-radio label.is-loading {
   color: transparent !important;
   pointer-events: none;
 }
 
-.button.is-loading::after {
+.button.is-loading::after,
+.configurator-radio label.is-loading::after {
   position: absolute;
   left: calc(50% - (1em / 2));
   top: calc(50% - (1em / 2));
   position: absolute !important;
 }
 
-.button.is-static {
+.button.is-static,
+.configurator-radio label.is-static {
   background-color: whitesmoke;
   border-color: #dbdbdb;
   color: #7a7a7a;
@@ -5088,7 +5581,8 @@ fieldset[disabled] .button {
   pointer-events: none;
 }
 
-.button.is-rounded {
+.button.is-rounded,
+.configurator-radio label.is-rounded {
   border-radius: 290486px;
   padding-left: calc(1em + 0.25em);
   padding-right: calc(1em + 0.25em);
@@ -5104,11 +5598,15 @@ fieldset[disabled] .button {
           justify-content: flex-start;
 }
 
-.buttons .button {
+.buttons .button,
+.buttons .configurator-radio label,
+.configurator-radio .buttons label {
   margin-bottom: 0.5rem;
 }
 
-.buttons .button:not(:last-child):not(.is-fullwidth) {
+.buttons .button:not(:last-child):not(.is-fullwidth),
+.buttons .configurator-radio label:not(:last-child):not(.is-fullwidth),
+.configurator-radio .buttons label:not(:last-child):not(.is-fullwidth) {
   margin-right: 0.5rem;
 }
 
@@ -5120,56 +5618,94 @@ fieldset[disabled] .button {
   margin-bottom: 1rem;
 }
 
-.buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large) {
+.buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large),
+.buttons.are-small .configurator-radio label:not(.is-normal):not(.is-medium):not(.is-large),
+.configurator-radio .buttons.are-small label:not(.is-normal):not(.is-medium):not(.is-large) {
   border-radius: 2px;
   font-size: 0.75rem;
 }
 
-.buttons.are-medium .button:not(.is-small):not(.is-normal):not(.is-large) {
+.buttons.are-medium .button:not(.is-small):not(.is-normal):not(.is-large),
+.buttons.are-medium .configurator-radio label:not(.is-small):not(.is-normal):not(.is-large),
+.configurator-radio .buttons.are-medium label:not(.is-small):not(.is-normal):not(.is-large) {
   font-size: 1.25rem;
 }
 
-.buttons.are-large .button:not(.is-small):not(.is-normal):not(.is-medium) {
+.buttons.are-large .button:not(.is-small):not(.is-normal):not(.is-medium),
+.buttons.are-large .configurator-radio label:not(.is-small):not(.is-normal):not(.is-medium),
+.configurator-radio .buttons.are-large label:not(.is-small):not(.is-normal):not(.is-medium) {
   font-size: 1.5rem;
 }
 
-.buttons.has-addons .button:not(:first-child) {
+.buttons.has-addons .button:not(:first-child),
+.buttons.has-addons .configurator-radio label:not(:first-child),
+.configurator-radio .buttons.has-addons label:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
 
-.buttons.has-addons .button:not(:last-child) {
+.buttons.has-addons .button:not(:last-child),
+.buttons.has-addons .configurator-radio label:not(:last-child),
+.configurator-radio .buttons.has-addons label:not(:last-child) {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   margin-right: -1px;
 }
 
-.buttons.has-addons .button:last-child {
+.buttons.has-addons .button:last-child,
+.buttons.has-addons .configurator-radio label:last-child,
+.configurator-radio .buttons.has-addons label:last-child {
   margin-right: 0;
 }
 
 .buttons.has-addons .button:hover,
-.buttons.has-addons .button.is-hovered {
+.buttons.has-addons .configurator-radio label:hover,
+.configurator-radio .buttons.has-addons label:hover,
+.buttons.has-addons .button.is-hovered,
+.buttons.has-addons .configurator-radio label.is-hovered,
+.configurator-radio .buttons.has-addons label.is-hovered {
   z-index: 2;
 }
 
 .buttons.has-addons .button:focus,
+.buttons.has-addons .configurator-radio label:focus,
+.configurator-radio .buttons.has-addons label:focus,
 .buttons.has-addons .button.is-focused,
+.buttons.has-addons .configurator-radio label.is-focused,
+.configurator-radio .buttons.has-addons label.is-focused,
 .buttons.has-addons .button:active,
+.buttons.has-addons .configurator-radio label:active,
+.configurator-radio .buttons.has-addons label:active,
 .buttons.has-addons .button.is-active,
-.buttons.has-addons .button.is-selected {
+.buttons.has-addons .configurator-radio label.is-active,
+.configurator-radio .buttons.has-addons label.is-active,
+.buttons.has-addons .button.is-selected,
+.buttons.has-addons .configurator-radio label.is-selected,
+.configurator-radio .buttons.has-addons label.is-selected {
   z-index: 3;
 }
 
 .buttons.has-addons .button:focus:hover,
+.buttons.has-addons .configurator-radio label:focus:hover,
+.configurator-radio .buttons.has-addons label:focus:hover,
 .buttons.has-addons .button.is-focused:hover,
+.buttons.has-addons .configurator-radio label.is-focused:hover,
+.configurator-radio .buttons.has-addons label.is-focused:hover,
 .buttons.has-addons .button:active:hover,
+.buttons.has-addons .configurator-radio label:active:hover,
+.configurator-radio .buttons.has-addons label:active:hover,
 .buttons.has-addons .button.is-active:hover,
-.buttons.has-addons .button.is-selected:hover {
+.buttons.has-addons .configurator-radio label.is-active:hover,
+.configurator-radio .buttons.has-addons label.is-active:hover,
+.buttons.has-addons .button.is-selected:hover,
+.buttons.has-addons .configurator-radio label.is-selected:hover,
+.configurator-radio .buttons.has-addons label.is-selected:hover {
   z-index: 4;
 }
 
-.buttons.has-addons .button.is-expanded {
+.buttons.has-addons .button.is-expanded,
+.buttons.has-addons .configurator-radio label.is-expanded,
+.configurator-radio .buttons.has-addons label.is-expanded {
   -webkit-box-flex: 1;
           flex-grow: 1;
   flex-shrink: 1;
@@ -5180,7 +5716,9 @@ fieldset[disabled] .button {
           justify-content: center;
 }
 
-.buttons.is-centered:not(.has-addons) .button:not(.is-fullwidth) {
+.buttons.is-centered:not(.has-addons) .button:not(.is-fullwidth),
+.buttons.is-centered:not(.has-addons) .configurator-radio label:not(.is-fullwidth),
+.configurator-radio .buttons.is-centered:not(.has-addons) label:not(.is-fullwidth) {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
@@ -5190,7 +5728,9 @@ fieldset[disabled] .button {
           justify-content: flex-end;
 }
 
-.buttons.is-right:not(.has-addons) .button:not(.is-fullwidth) {
+.buttons.is-right:not(.has-addons) .button:not(.is-fullwidth),
+.buttons.is-right:not(.has-addons) .configurator-radio label:not(.is-fullwidth),
+.configurator-radio .buttons.is-right:not(.has-addons) label:not(.is-fullwidth) {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
@@ -7787,12 +8327,16 @@ fieldset[disabled] .select select:hover {
 }
 
 .field.has-addons .control:not(:first-child):not(:last-child) .button,
+.field.has-addons .control:not(:first-child):not(:last-child) .configurator-radio label,
+.configurator-radio .field.has-addons .control:not(:first-child):not(:last-child) label,
 .field.has-addons .control:not(:first-child):not(:last-child) .input,
 .field.has-addons .control:not(:first-child):not(:last-child) .select select {
   border-radius: 0;
 }
 
 .field.has-addons .control:first-child:not(:only-child) .button,
+.field.has-addons .control:first-child:not(:only-child) .configurator-radio label,
+.configurator-radio .field.has-addons .control:first-child:not(:only-child) label,
 .field.has-addons .control:first-child:not(:only-child) .input,
 .field.has-addons .control:first-child:not(:only-child) .select select {
   border-bottom-right-radius: 0;
@@ -7800,6 +8344,8 @@ fieldset[disabled] .select select:hover {
 }
 
 .field.has-addons .control:last-child:not(:only-child) .button,
+.field.has-addons .control:last-child:not(:only-child) .configurator-radio label,
+.configurator-radio .field.has-addons .control:last-child:not(:only-child) label,
 .field.has-addons .control:last-child:not(:only-child) .input,
 .field.has-addons .control:last-child:not(:only-child) .select select {
   border-bottom-left-radius: 0;
@@ -7807,7 +8353,11 @@ fieldset[disabled] .select select:hover {
 }
 
 .field.has-addons .control .button:not([disabled]):hover,
+.field.has-addons .control .configurator-radio label:not([disabled]):hover,
+.configurator-radio .field.has-addons .control label:not([disabled]):hover,
 .field.has-addons .control .button:not([disabled]).is-hovered,
+.field.has-addons .control .configurator-radio label:not([disabled]).is-hovered,
+.configurator-radio .field.has-addons .control label:not([disabled]).is-hovered,
 .field.has-addons .control .input:not([disabled]):hover,
 .field.has-addons .control .input:not([disabled]).is-hovered,
 .field.has-addons .control .select select:not([disabled]):hover,
@@ -7816,9 +8366,17 @@ fieldset[disabled] .select select:hover {
 }
 
 .field.has-addons .control .button:not([disabled]):focus,
+.field.has-addons .control .configurator-radio label:not([disabled]):focus,
+.configurator-radio .field.has-addons .control label:not([disabled]):focus,
 .field.has-addons .control .button:not([disabled]).is-focused,
+.field.has-addons .control .configurator-radio label:not([disabled]).is-focused,
+.configurator-radio .field.has-addons .control label:not([disabled]).is-focused,
 .field.has-addons .control .button:not([disabled]):active,
+.field.has-addons .control .configurator-radio label:not([disabled]):active,
+.configurator-radio .field.has-addons .control label:not([disabled]):active,
 .field.has-addons .control .button:not([disabled]).is-active,
+.field.has-addons .control .configurator-radio label:not([disabled]).is-active,
+.configurator-radio .field.has-addons .control label:not([disabled]).is-active,
 .field.has-addons .control .input:not([disabled]):focus,
 .field.has-addons .control .input:not([disabled]).is-focused,
 .field.has-addons .control .input:not([disabled]):active,
@@ -7831,9 +8389,17 @@ fieldset[disabled] .select select:hover {
 }
 
 .field.has-addons .control .button:not([disabled]):focus:hover,
+.field.has-addons .control .configurator-radio label:not([disabled]):focus:hover,
+.configurator-radio .field.has-addons .control label:not([disabled]):focus:hover,
 .field.has-addons .control .button:not([disabled]).is-focused:hover,
+.field.has-addons .control .configurator-radio label:not([disabled]).is-focused:hover,
+.configurator-radio .field.has-addons .control label:not([disabled]).is-focused:hover,
 .field.has-addons .control .button:not([disabled]):active:hover,
+.field.has-addons .control .configurator-radio label:not([disabled]):active:hover,
+.configurator-radio .field.has-addons .control label:not([disabled]):active:hover,
 .field.has-addons .control .button:not([disabled]).is-active:hover,
+.field.has-addons .control .configurator-radio label:not([disabled]).is-active:hover,
+.configurator-radio .field.has-addons .control label:not([disabled]).is-active:hover,
 .field.has-addons .control .input:not([disabled]):focus:hover,
 .field.has-addons .control .input:not([disabled]).is-focused:hover,
 .field.has-addons .control .input:not([disabled]):active:hover,
@@ -8947,7 +9513,9 @@ a.list-item {
   border-top: 1px solid #dbdbdb;
 }
 
-.modal-card-foot .button:not(:last-child) {
+.modal-card-foot .button:not(:last-child),
+.modal-card-foot .configurator-radio label:not(:last-child),
+.configurator-radio .modal-card-foot label:not(:last-child) {
   margin-right: 0.5em;
 }
 
@@ -14197,12 +14765,16 @@ label.panel-block:hover {
 }
 
 @media screen and (max-width: 768px) {
-  .hero-buttons .button {
+  .hero-buttons .button,
+  .hero-buttons .configurator-radio label,
+  .configurator-radio .hero-buttons label {
     display: -webkit-box;
     display: flex;
   }
 
-  .hero-buttons .button:not(:last-child) {
+  .hero-buttons .button:not(:last-child),
+  .hero-buttons .configurator-radio label:not(:last-child),
+  .configurator-radio .hero-buttons label:not(:last-child) {
     margin-bottom: 0.75rem;
   }
 }
@@ -14215,7 +14787,9 @@ label.panel-block:hover {
             justify-content: center;
   }
 
-  .hero-buttons .button:not(:last-child) {
+  .hero-buttons .button:not(:last-child),
+  .hero-buttons .configurator-radio label:not(:last-child),
+  .configurator-radio .hero-buttons label:not(:last-child) {
     margin-right: 1.5rem;
   }
 }
@@ -14315,5 +14889,59 @@ label.panel-block:hover {
   overflow: hidden;
   max-height: 0;
   margin-top: -0.75rem;
+}
+
+.configurator-radio label {
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+}
+
+.configurator-radio input[type=radio] {
+  display: none;
+}
+
+.configurator-radio input[type=radio]:checked + label {
+  border-color: #3273dc;
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+}
+
+.configurator-radio .radio-dot {
+  position: relative;
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  background-color: #dbdbdb;
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+  margin-right: calc(0.625em - 1px);
+}
+
+.configurator-radio .radio-dot:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 5px;
+  left: 5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.configurator-radio input[type=radio]:checked + label .radio-dot {
+  background-color: #3273dc;
+}
+
+.configurator-radio input[type=radio]:checked + label .radio-dot:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
 }
 
