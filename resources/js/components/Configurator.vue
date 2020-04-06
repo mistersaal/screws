@@ -4,7 +4,7 @@
 
         <form action="" method="POST">
             <h3 class="title is-5">Саморезы</h3>
-            <span class="label">{{rus.config}}</span>
+            <span class="label">Тип</span>
             <div class="field configurator-radio is-grouped is-grouped-multiline">
                 <div class="control" v-for="(type, index) in config">
                     <input type="radio"
@@ -26,7 +26,7 @@
                             'is-slim': hideField(index),
                          }"
                     >
-                        <label :for="name" class="label">{{rus[name]}}</label>
+                        <label :for="name" class="label">{{name}}</label>
                         <div  :class="{
                                 'field configurator-radio is-grouped is-grouped-multiline': ! isInSelect(name)
                             }">
@@ -42,7 +42,7 @@
                                 </div>
                                 <template v-else v-for="(option, id) in parameter">
                                     <input type="radio"
-                                           name="config"
+                                           :name="name"
                                            :id="name + '_' + id"
                                            :value="id"
                                            v-model.number="values[name]"
@@ -71,11 +71,10 @@
         data() {
             return {
                 parameters: {
-                    default: {},
-                    individual: {}
+                    individual: {},
+                    standard: {}
                 },
                 config: {},
-                rus: {},
                 values: {},
                 inSelect: [],
                 loaded: false
@@ -83,7 +82,7 @@
         },
         methods: {
             hideField(type) {
-                return type === 'individual' && ! this.isIndividual;
+                return type === 'standard' && ! this.isNotStandard;
             },
             isInSelect(name) {
                 return this.inSelect.indexOf(name) !== -1;
@@ -94,38 +93,37 @@
             .then((response) => {
                 let data = response.data;
                 this.$set(this.values, 'config', -1);
-                Object.keys(data.parameters).forEach((key) => {
+                Object.keys(data.standard).forEach((key) => {
                     this.$set(this.values, key, -1);
                 });
                 Object.keys(data.individual).forEach((key) => {
                     this.$set(this.values, key, -1);
                 });
                 this.config = data.config;
-                this.rus = data.rus;
                 this.inSelect = data.inSelect;
-                this.parameters.default = data.parameters;
                 this.parameters.individual = data.individual;
+                this.parameters.standard = data.standard;
                 this.loaded = true;
             })
         },
         computed: {
-            isIndividual() {
+            isNotStandard() {
                 return this.values.config === 0;
             },
             isReady() {
                 if (this.values.config === -1) return false;
 
-                let def = Object.keys(this.parameters.default).every((key) => {
+                let def = Object.keys(this.parameters.individual).every((key) => {
                     return this.values[key] !== -1
                 });
-                if (! this.isIndividual) {
+                if (! this.isNotStandard) {
                     return def;
                 }
 
-                let individual = Object.keys(this.parameters.individual).every((key) => {
+                let standard = Object.keys(this.parameters.standard).every((key) => {
                     return this.values[key] !== -1;
                 });
-                return def && individual;
+                return def && standard;
             }
         }
     }

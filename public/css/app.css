@@ -1982,7 +1982,7 @@
           flex-direction: column-reverse;
 }
 
-/*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
+/*! bulma.io v0.8.1 | MIT License | github.com/jgthms/bulma */
 
 @keyframes spinAround {
   from {
@@ -7091,31 +7091,31 @@ a.tag:hover {
   background-color: white;
   border-color: #dbdbdb;
   border-radius: 4px;
-  color: #363636;
+  color: inherit;
 }
 
 .select select::-moz-placeholder,
 .textarea::-moz-placeholder,
 .input::-moz-placeholder {
-  color: rgba(54, 54, 54, 0.3);
+  color: inherit;
 }
 
 .select select::-webkit-input-placeholder,
 .textarea::-webkit-input-placeholder,
 .input::-webkit-input-placeholder {
-  color: rgba(54, 54, 54, 0.3);
+  color: inherit;
 }
 
 .select select:-moz-placeholder,
 .textarea:-moz-placeholder,
 .input:-moz-placeholder {
-  color: rgba(54, 54, 54, 0.3);
+  color: inherit;
 }
 
 .select select:-ms-input-placeholder,
 .textarea:-ms-input-placeholder,
 .input:-ms-input-placeholder {
-  color: rgba(54, 54, 54, 0.3);
+  color: inherit;
 }
 
 .select select:hover,
@@ -10397,7 +10397,6 @@ a.navbar-item.is-active,
 }
 
 .navbar-item {
-  display: block;
   -webkit-box-flex: 0;
           flex-grow: 0;
   flex-shrink: 0;
@@ -14693,21 +14692,18 @@ label.panel-block:hover {
 }
 
 .hero.is-small .hero-body {
-  padding-bottom: 1.5rem;
-  padding-top: 1.5rem;
+  padding: 1.5rem;
 }
 
 @media screen and (min-width: 769px), print {
   .hero.is-medium .hero-body {
-    padding-bottom: 9rem;
-    padding-top: 9rem;
+    padding: 9rem 1.5rem;
   }
 }
 
 @media screen and (min-width: 769px), print {
   .hero.is-large .hero-body {
-    padding-bottom: 18rem;
-    padding-top: 18rem;
+    padding: 18rem 1.5rem;
   }
 }
 
