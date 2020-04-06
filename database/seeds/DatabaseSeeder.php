@@ -11,16 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ScrewColorsTableSeeder::class);
-        $this->call(ScrewLengthsTableSeeder::class);
-        $this->call(ScrewManufacturersTableSeeder::class);
-        $this->call(ScrewDiametersTableSeeder::class);
-        $this->call(ScrewSlotsTableSeeder::class);
-        $this->call(ScrewTipsTableSeeder::class);
-        $this->call(ScrewTypesOfHeadTableSeeder::class);
-        $this->call(ScrewConfigsTableSeeder::class);
-        $this->call(ScrewsTableSeeder::class);
-        $this->call(OrderSeeder::class);
-        $this->call(IndividualOrderSeeder::class);
+        $this->call(ScrewParameterSeeder::class);
+        $this->call(ScrewParameterValueSeeder::class);
+        $this->call(ScrewConfigSeeder::class);
+        $this->call(ScrewSeeder::class);
     }
 }

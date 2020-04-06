@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScrewLengthsTable extends Migration
+class CreateScrewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateScrewLengthsTable extends Migration
      */
     public function up()
     {
-        Schema::create('screw_lengths', function (Blueprint $table) {
+        Schema::create('screws', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('name')->unique()->unsigned();
+            $table->unsignedBigInteger('screw_config_id')->nullable();
             $table->boolean('visible')->default(true);
+            $table->timestamps();
+
+            $table->foreign('screw_config_id')
+                ->references('id')
+                ->on('screw_configs');
         });
     }
 
@@ -27,6 +32,6 @@ class CreateScrewLengthsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('screw_lengths');
+        Schema::dropIfExists('screws');
     }
 }
