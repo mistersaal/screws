@@ -2657,6 +2657,46 @@ exports.svgPathData = svgPathData;
 
 /***/ }),
 
+/***/ "./node_modules/@fortawesome/free-regular-svg-icons/faQuestionCircle.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@fortawesome/free-regular-svg-icons/faQuestionCircle.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, '__esModule', { value: true });
+var prefix = 'far';
+var iconName = 'question-circle';
+var width = 512;
+var height = 512;
+var ligatures = [];
+var unicode = 'f059';
+var svgPathData = 'M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z';
+
+exports.definition = {
+  prefix: prefix,
+  iconName: iconName,
+  icon: [
+    width,
+    height,
+    ligatures,
+    unicode,
+    svgPathData
+  ]};
+
+exports.faQuestionCircle = exports.definition;
+exports.prefix = prefix;
+exports.iconName = iconName;
+exports.width = width;
+exports.height = height;
+exports.ligatures = ligatures;
+exports.unicode = unicode;
+exports.svgPathData = svgPathData;
+
+/***/ }),
+
 /***/ "./node_modules/@fortawesome/free-solid-svg-icons/faCartPlus.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@fortawesome/free-solid-svg-icons/faCartPlus.js ***!
@@ -4664,6 +4704,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Configurator",
@@ -4673,8 +4734,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       parameters: {
-        individual: {},
-        standard: {}
+        standard: {},
+        individual: {}
       },
       config: {},
       values: {},
@@ -22446,157 +22507,181 @@ var render = function() {
           0
         ),
         _vm._v(" "),
+        _c("div", { staticClass: "field configurator-radio" }, [
+          _c("div", { staticClass: "level" }, [
+            _c("div", { staticClass: "level-left" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "level-item" }, [
+                _c("div", { staticClass: "control" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model.number",
+                        value: _vm.values.config,
+                        expression: "values.config",
+                        modifiers: { number: true }
+                      }
+                    ],
+                    attrs: { type: "radio", name: "config", id: "config_0" },
+                    domProps: {
+                      value: 0,
+                      checked: _vm._q(_vm.values.config, _vm._n(0))
+                    },
+                    on: {
+                      change: function($event) {
+                        _vm.$set(_vm.values, "config", _vm._n(0))
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "config_0" } }, [
+                    _vm._v(
+                      "\n                                Конфигуратор\n                            "
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
         _vm._l(_vm.parameters, function(type, index) {
           return [
             _vm._l(type, function(parameter, name) {
               return [
                 _c(
+                  "label",
+                  {
+                    staticClass: "label",
+                    class: { "is-hidden": _vm.hideField(index) },
+                    attrs: { for: name }
+                  },
+                  [_vm._v(_vm._s(name))]
+                ),
+                _vm._v(" "),
+                _c(
                   "div",
                   {
-                    staticClass: "field configurator-field",
+                    staticClass: "field is-grouped is-grouped-multiline",
                     class: {
-                      "is-slim": _vm.hideField(index)
+                      "is-hidden": _vm.hideField(index),
+                      "configurator-radio": !_vm.isInSelect(name)
                     }
                   },
                   [
-                    _c(
-                      "label",
-                      { staticClass: "label", attrs: { for: name } },
-                      [_vm._v(_vm._s(name))]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        class: {
-                          "field configurator-radio is-grouped is-grouped-multiline": !_vm.isInSelect(
-                            name
-                          )
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "control" },
-                          [
-                            _vm.isInSelect(name)
-                              ? _c("div", { staticClass: "select" }, [
-                                  _c(
-                                    "select",
+                    _vm.isInSelect(name)
+                      ? _c("div", { staticClass: "control" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "select",
+                              class: { "is-selected": _vm.values[name] != -1 }
+                            },
+                            [
+                              _c(
+                                "select",
+                                {
+                                  directives: [
                                     {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model.number",
-                                          value: _vm.values[name],
-                                          expression: "values[name]",
-                                          modifiers: { number: true }
-                                        }
-                                      ],
-                                      attrs: { name: name, id: name },
-                                      on: {
-                                        change: function($event) {
-                                          var $$selectedVal = Array.prototype.filter
-                                            .call(
-                                              $event.target.options,
-                                              function(o) {
-                                                return o.selected
-                                              }
-                                            )
-                                            .map(function(o) {
-                                              var val =
-                                                "_value" in o
-                                                  ? o._value
-                                                  : o.value
-                                              return _vm._n(val)
-                                            })
-                                          _vm.$set(
-                                            _vm.values,
-                                            name,
-                                            $event.target.multiple
-                                              ? $$selectedVal
-                                              : $$selectedVal[0]
-                                          )
-                                        }
+                                      name: "model",
+                                      rawName: "v-model.number",
+                                      value: _vm.values[name],
+                                      expression: "values[name]",
+                                      modifiers: { number: true }
+                                    }
+                                  ],
+                                  attrs: { name: name, id: name },
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return _vm._n(val)
+                                        })
+                                      _vm.$set(
+                                        _vm.values,
+                                        name,
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "option",
+                                    {
+                                      attrs: {
+                                        disabled: "",
+                                        selected: "",
+                                        value: "-1"
                                       }
                                     },
-                                    [
-                                      _c(
-                                        "option",
-                                        {
-                                          attrs: {
-                                            disabled: "",
-                                            selected: "",
-                                            value: "-1"
-                                          }
-                                        },
-                                        [_vm._v("-- Выбор --")]
-                                      ),
-                                      _vm._v(" "),
-                                      _vm._l(parameter, function(option, id) {
-                                        return _c(
-                                          "option",
-                                          { domProps: { value: id } },
-                                          [_vm._v(_vm._s(option))]
-                                        )
-                                      })
-                                    ],
-                                    2
-                                  )
-                                ])
-                              : _vm._l(parameter, function(option, id) {
-                                  return [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model.number",
-                                          value: _vm.values[name],
-                                          expression: "values[name]",
-                                          modifiers: { number: true }
-                                        }
-                                      ],
-                                      attrs: {
-                                        type: "radio",
-                                        name: name,
-                                        id: name + "_" + id
-                                      },
-                                      domProps: {
-                                        value: id,
-                                        checked: _vm._q(
-                                          _vm.values[name],
-                                          _vm._n(id)
-                                        )
-                                      },
-                                      on: {
-                                        change: function($event) {
-                                          _vm.$set(_vm.values, name, _vm._n(id))
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "label",
-                                      { attrs: { for: name + "_" + id } },
-                                      [
-                                        _c("span", {
-                                          staticClass: "radio-dot"
-                                        }),
-                                        _vm._v(
-                                          "\n                                    " +
-                                            _vm._s(option) +
-                                            "\n                                "
-                                        )
-                                      ]
+                                    [_vm._v("-- Выбор --")]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._l(parameter, function(option, id) {
+                                    return _c(
+                                      "option",
+                                      { domProps: { value: id } },
+                                      [_vm._v(_vm._s(option))]
                                     )
-                                  ]
-                                })
-                          ],
-                          2
-                        )
-                      ]
-                    )
-                  ]
+                                  })
+                                ],
+                                2
+                              )
+                            ]
+                          )
+                        ])
+                      : _vm._l(parameter, function(option, id) {
+                          return _c("div", { staticClass: "control" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.number",
+                                  value: _vm.values[name],
+                                  expression: "values[name]",
+                                  modifiers: { number: true }
+                                }
+                              ],
+                              attrs: {
+                                type: "radio",
+                                name: name,
+                                id: name + "_" + id
+                              },
+                              domProps: {
+                                value: id,
+                                checked: _vm._q(_vm.values[name], _vm._n(id))
+                              },
+                              on: {
+                                change: function($event) {
+                                  _vm.$set(_vm.values, name, _vm._n(id))
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("label", { attrs: { for: name + "_" + id } }, [
+                              _c("span", { staticClass: "radio-dot" }),
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(option) +
+                                  "\n                        "
+                              )
+                            ])
+                          ])
+                        })
+                  ],
+                  2
                 )
               ]
             })
@@ -22607,7 +22692,20 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "level-item" }, [
+      _c("span", { staticClass: "icon is-medium has-text-info" }, [
+        _c("i", { staticClass: "far fa-question-circle fa-lg" })
+      ]),
+      _vm._v(" "),
+      _c("span", [_vm._v("Необходим индивидуальный заказ?")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -35171,6 +35269,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_free_solid_svg_icons_faCartPlus__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons_faCartPlus__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _fortawesome_free_solid_svg_icons_faCreditCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons/faCreditCard */ "./node_modules/@fortawesome/free-solid-svg-icons/faCreditCard.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons_faCreditCard__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons_faCreditCard__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _fortawesome_free_regular_svg_icons_faQuestionCircle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons/faQuestionCircle */ "./node_modules/@fortawesome/free-regular-svg-icons/faQuestionCircle.js");
+/* harmony import */ var _fortawesome_free_regular_svg_icons_faQuestionCircle__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_regular_svg_icons_faQuestionCircle__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
@@ -35180,7 +35281,7 @@ __webpack_require__.r(__webpack_exports__);
 
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_brands_svg_icons_faFacebook__WEBPACK_IMPORTED_MODULE_1__["faFacebook"], _fortawesome_free_brands_svg_icons_faInstagram__WEBPACK_IMPORTED_MODULE_2__["faInstagram"], _fortawesome_free_brands_svg_icons_faVk__WEBPACK_IMPORTED_MODULE_3__["faVk"]);
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons_faChevronDown__WEBPACK_IMPORTED_MODULE_4__["faChevronDown"]);
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons_faCartPlus__WEBPACK_IMPORTED_MODULE_5__["faCartPlus"], _fortawesome_free_solid_svg_icons_faCreditCard__WEBPACK_IMPORTED_MODULE_6__["faCreditCard"]);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons_faCartPlus__WEBPACK_IMPORTED_MODULE_5__["faCartPlus"], _fortawesome_free_solid_svg_icons_faCreditCard__WEBPACK_IMPORTED_MODULE_6__["faCreditCard"], _fortawesome_free_regular_svg_icons_faQuestionCircle__WEBPACK_IMPORTED_MODULE_7__["faQuestionCircle"]);
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["dom"].watch();
 
 /***/ }),

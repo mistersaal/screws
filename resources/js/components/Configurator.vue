@@ -19,47 +19,68 @@
                     </label>
                 </div>
             </div>
+            <div class="field configurator-radio">
+                <div class="level">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <span class="icon is-medium has-text-info">
+                                <i class="far fa-question-circle fa-lg"></i>
+                            </span>
+                            <span>Необходим индивидуальный заказ?</span>
+                        </div>
+                        <div class="level-item">
+                            <div class="control">
+                                <input type="radio"
+                                       name="config"
+                                       :value="0"
+                                       :id="'config_0'"
+                                       v-model.number="values.config"
+                                >
+                                <label :for="'config_0'">
+                                    Конфигуратор
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <template v-for="(type, index) in parameters">
                 <template v-for="(parameter, name) in type">
-                    <div class="field configurator-field"
+                    <label :for="name" class="label" :class="{'is-hidden': hideField(index)}">{{name}}</label>
+                    <div class="field is-grouped is-grouped-multiline"
                          :class="{
-                            'is-slim': hideField(index),
+                            'is-hidden': hideField(index),
+                            'configurator-radio': ! isInSelect(name)
                          }"
                     >
-                        <label :for="name" class="label">{{name}}</label>
-                        <div  :class="{
-                                'field configurator-radio is-grouped is-grouped-multiline': ! isInSelect(name)
-                            }">
-                            <div class="control">
-                                <div class="select" v-if="isInSelect(name)">
-                                    <select :name="name"
-                                            :id="name"
-                                            v-model.number="values[name]"
-                                    >
-                                        <option disabled selected value="-1">-- Выбор --</option>
-                                        <option :value="id" v-for="(option, id) in parameter">{{option}}</option>
-                                    </select>
-                                </div>
-                                <template v-else v-for="(option, id) in parameter">
-                                    <input type="radio"
-                                           :name="name"
-                                           :id="name + '_' + id"
-                                           :value="id"
-                                           v-model.number="values[name]"
-                                    >
-                                    <label :for="name + '_' + id">
-                                        <span class="radio-dot"></span>
-                                        {{option}}
-                                    </label>
-                                </template>
+                        <div class="control" v-if="isInSelect(name)">
+                            <div class="select" :class="{'is-selected': values[name] != -1}">
+                                <select :name="name"
+                                        :id="name"
+                                        v-model.number="values[name]"
+                                >
+                                    <option disabled selected value="-1">-- Выбор --</option>
+                                    <option :value="id" v-for="(option, id) in parameter">{{option}}</option>
+                                </select>
                             </div>
+                        </div>
+                        <div class="control" v-else v-for="(option, id) in parameter">
+                            <input type="radio"
+                                   :name="name"
+                                   :id="name + '_' + id"
+                                   :value="id"
+                                   v-model.number="values[name]"
+                            >
+                            <label :for="name + '_' + id">
+                                <span class="radio-dot"></span>
+                                {{option}}
+                            </label>
                         </div>
                     </div>
                 </template>
             </template>
         </form>
     </div>
-
 </template>
 
 <script>
@@ -71,8 +92,8 @@
         data() {
             return {
                 parameters: {
-                    individual: {},
-                    standard: {}
+                    standard: {},
+                    individual: {}
                 },
                 config: {},
                 values: {},

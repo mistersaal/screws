@@ -14875,16 +14875,9 @@ label.panel-block:hover {
   display: none;
 }
 
-.configurator-field {
-  max-height: 80px;
-  -webkit-transition: max-height 0.2s ease-out;
-  transition: max-height 0.2s ease-out;
-}
-
-.configurator-field.is-slim {
-  overflow: hidden;
-  max-height: 0;
-  margin-top: -0.75rem;
+.select.is-selected select {
+  border-color: #3273dc;
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
 }
 
 .configurator-radio label {
