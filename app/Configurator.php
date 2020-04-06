@@ -67,7 +67,7 @@ class Configurator
      */
     private function getConfigs()
     {
-        return $this->screwConfig->where('visible', true)->pluck('name');
+        return $this->screwConfig->where('visible', true)->pluck('name', 'id');
     }
 
     /**
