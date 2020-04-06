@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScrewManufacturersTable extends Migration
+class CreateScrewConfigsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateScrewManufacturersTable extends Migration
      */
     public function up()
     {
-        Schema::create('screw_manufacturers', function (Blueprint $table) {
+        Schema::create('screw_configs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
+            $table->string('name')->unique()->nullable();
             $table->boolean('visible')->default(true);
         });
     }
@@ -27,6 +27,6 @@ class CreateScrewManufacturersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('screw_manufacturers');
+        Schema::dropIfExists('screw_configs');
     }
 }

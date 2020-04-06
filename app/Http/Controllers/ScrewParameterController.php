@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\IndividualOrder;
+use App\ScrewParameter;
 use Illuminate\Http\Request;
 
-class IndividualOrderController extends Controller
+class ScrewParameterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class IndividualOrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\IndividualOrder  $individualOrder
+     * @param  \App\ScrewParameter  $screwParameter
      * @return \Illuminate\Http\Response
      */
-    public function show(IndividualOrder $individualOrder)
+    public function show(ScrewParameter $screwParameter)
     {
         //
     }
@@ -52,10 +52,10 @@ class IndividualOrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\IndividualOrder  $individualOrder
+     * @param  \App\ScrewParameter  $screwParameter
      * @return \Illuminate\Http\Response
      */
-    public function edit(IndividualOrder $individualOrder)
+    public function edit(ScrewParameter $screwParameter)
     {
         //
     }
@@ -64,10 +64,10 @@ class IndividualOrderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\IndividualOrder  $individualOrder
+     * @param  \App\ScrewParameter  $screwParameter
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IndividualOrder $individualOrder)
+    public function update(Request $request, ScrewParameter $screwParameter)
     {
         //
     }
@@ -75,10 +75,10 @@ class IndividualOrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\IndividualOrder  $individualOrder
+     * @param  \App\ScrewParameter  $screwParameter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IndividualOrder $individualOrder)
+    public function destroy(ScrewParameter $screwParameter)
     {
         //
     }

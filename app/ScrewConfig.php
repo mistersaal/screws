@@ -8,40 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class ScrewConfig extends Model
 {
     use HasVisibilityAttribute;
-
     public $timestamps = false;
 
-    public function color()
+    protected $fillable = [
+        'name',
+        'individual',
+        'visible',
+    ];
+
+    public function parameterValues()
     {
-        return $this->belongsTo(ScrewColor::class, 'screw_color_id');
+        return $this->belongsToMany(
+            ScrewParameterValue::class,
+            'screw_config_screw_parameter_value',
+            'screw_config_id',
+            'screw_parameter_value_id'
+        );
     }
 
-    public function diameter()
+    public function screws()
     {
-        return $this->belongsTo(ScrewDiameter::class, 'screw_diameter_id');
-    }
-
-    public function typeOfHead()
-    {
-        return $this->belongsTo(ScrewTypeOfHead::class, 'screw_type_of_head_id');
-    }
-
-    public function slot()
-    {
-        return $this->belongsTo(ScrewSlot::class, 'screw_slot_id');
-    }
-
-    public function tip()
-    {
-        return $this->belongsTo(ScrewTip::class, 'screw_tip_id');
-    }
-
-    public function getTypes(bool $all = false)
-    {
-        if ($all) {
-            return $this->where('individual', false)->get();
-        } else {
-            return $this->visibleItems()->where('individual', false)->get();
-        }
+        return $this->hasMany(Screw::class);
     }
 }

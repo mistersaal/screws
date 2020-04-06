@@ -9,14 +9,14 @@ class Screw extends Model
 {
     use HasVisibilityAttribute;
 
-    public function length()
+    public function parameterValues()
     {
-        return $this->belongsTo(ScrewLength::class, 'screw_length_id');
-    }
-
-    public function manufacturer()
-    {
-        return $this->belongsTo(ScrewManufacturer::class, 'screw_manufacturer_id');
+        return $this->belongsToMany(
+            ScrewParameterValue::class,
+            'screw_screw_parameter_value',
+            'screw_id',
+            'screw_parameter_value_id'
+        );
     }
 
     public function config()

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScrewColorsTable extends Migration
+class CreateScrewParameterValuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateScrewColorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('screw_colors', function (Blueprint $table) {
+        Schema::create('screw_parameter_values', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
+            $table->unsignedBigInteger('screw_parameter_id');
+            $table->string('value');
             $table->boolean('visible')->default(true);
         });
     }
@@ -27,6 +28,6 @@ class CreateScrewColorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('screw_colors');
+        Schema::dropIfExists('screw_parameter_values');
     }
 }
