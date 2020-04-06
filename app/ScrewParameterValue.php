@@ -2,12 +2,10 @@
 
 namespace App;
 
-use App\Traits\HasVisibilityAttribute;
 use Illuminate\Database\Eloquent\Model;
 
 class ScrewParameterValue extends Model
 {
-    use HasVisibilityAttribute;
     public $timestamps = false;
 
     protected $fillable = ['value', 'visible'];
