@@ -77,7 +77,7 @@ class Configurator
         foreach ($configs as $config) {
             $mappedConfigs->put($config->id, collect([
                 'name' => $config->name,
-                'individual' => $config->individualParameters->pluck('id'),
+                'individual' => $config->individualParameters->pluck('string_id'),
             ]));
         }
 
