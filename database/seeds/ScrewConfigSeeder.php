@@ -17,6 +17,10 @@ class ScrewConfigSeeder extends Seeder
         $diameterValues = \App\ScrewParameter::firstWhere('name', 'Диаметр')->values;
         $slotValues = \App\ScrewParameter::firstWhere('name', 'Паз')->values;
 
+        $length = \App\ScrewParameter::firstWhere('name', 'Длина');
+        $manufacturer = \App\ScrewParameter::firstWhere('name', 'Производитель');
+        $tip = \App\ScrewParameter::firstWhere('name', 'Наконечник');
+
         $config = App\ScrewConfig::create([
             'name' => 'Гипсокартон дерево'
         ]);
@@ -26,6 +30,10 @@ class ScrewConfigSeeder extends Seeder
             $tipValues->random()->id,
             $diameterValues->random()->id,
             $slotValues->random()->id,
+        ]);
+        $config->individualParameters()->attach([
+            $length->id,
+            $manufacturer->id,
         ]);
         $config = App\ScrewConfig::create([
             'name' => 'Гипсокартон металл'
@@ -37,6 +45,11 @@ class ScrewConfigSeeder extends Seeder
             $diameterValues->random()->id,
             $slotValues->random()->id,
         ]);
+        $config->individualParameters()->attach([
+            $length->id,
+            $manufacturer->id,
+            $tip->id,
+        ]);
         $config = App\ScrewConfig::create([
             'name' => 'Гипсоволокно'
         ]);
@@ -46,6 +59,12 @@ class ScrewConfigSeeder extends Seeder
             $tipValues->random()->id,
             $diameterValues->random()->id,
             $slotValues->random()->id,
+            $length->id,
+            $manufacturer->id,
+        ]);
+        $config->individualParameters()->attach([
+            $length->id,
+            $manufacturer->id,
         ]);
     }
 }

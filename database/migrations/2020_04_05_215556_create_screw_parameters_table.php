@@ -15,8 +15,8 @@ class CreateScrewParametersTable extends Migration
     {
         Schema::create('screw_parameters', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('string_id')->unique();
             $table->string('name')->unique();
-            $table->boolean('is_standard_field');
             $table->boolean('is_select_form')->default(false);
             $table->boolean('visible')->default(true);
         });

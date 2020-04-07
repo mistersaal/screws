@@ -28,4 +28,14 @@ class ScrewConfig extends Model
     {
         return $this->hasMany(Screw::class);
     }
+
+    public function individualParameters()
+    {
+        return $this->belongsToMany(
+            ScrewParameter::class,
+            'screw_config_screw_parameter',
+            'screw_config_id',
+            'screw_parameter_id'
+        );
+    }
 }

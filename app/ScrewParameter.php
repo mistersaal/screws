@@ -10,7 +10,7 @@ class ScrewParameter extends Model
 
     protected $fillable = [
         'name',
-        'is_standard_field',
+        'string_id',
         'is_select_form',
         'visible'
     ];
@@ -18,5 +18,15 @@ class ScrewParameter extends Model
     public function values()
     {
         return $this->hasMany(ScrewParameterValue::class);
+    }
+
+    public function configsWithThisIndividualParameter()
+    {
+        return $this->belongsToMany(
+            ScrewConfig::class,
+            'screw_config_screw_parameter',
+            'screw_parameter_id',
+            'screw_config_id'
+        );
     }
 }

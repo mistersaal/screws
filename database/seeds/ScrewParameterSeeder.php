@@ -14,37 +14,37 @@ class ScrewParameterSeeder extends Seeder
         \App\ScrewParameter::insert([
             [
                 'name' => 'Покрытие',
-                'is_standard_field' => true,
+                'string_id' => 'color',
                 'is_select_form' => false,
             ],
             [
                 'name' => 'Диаметр',
-                'is_standard_field' => true,
+                'string_id' => 'diameter',
                 'is_select_form' => true,
             ],
             [
                 'name' => 'Длина',
-                'is_standard_field' => false,
+                'string_id' => 'length',
                 'is_select_form' => true,
             ],
             [
                 'name' => 'Производитель',
-                'is_standard_field' => false,
+                'string_id' => 'manufacturer',
                 'is_select_form' => false,
             ],
             [
                 'name' => 'Паз',
-                'is_standard_field' => true,
+                'string_id' => 'slot',
                 'is_select_form' => false,
             ],
             [
                 'name' => 'Наконечник',
-                'is_standard_field' => true,
+                'string_id' => 'tip',
                 'is_select_form' => false,
             ],
             [
                 'name' => 'Тип головки',
-                'is_standard_field' => true,
+                'string_id' => 'type_of_head',
                 'is_select_form' => false,
             ],
         ]);
