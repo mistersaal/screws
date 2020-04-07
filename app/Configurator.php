@@ -8,7 +8,9 @@ use Illuminate\Support\Collection;
 
 class Configurator
 {
+    /** @var ScrewParameter */
     private $screwParameter;
+    /** @var ScrewConfig */
     private $screwConfig;
 
     /**
@@ -39,18 +41,18 @@ class Configurator
 
     /**
      * @param Collection|ScrewParameter[] $parameters
-     * @param bool $isStandard
      * @return Collection
      */
-    private function getParameters(Collection $parameters, bool $isStandard)
+    private function getMappedParameters(Collection $parameters)
     {
-        $individualParameters = new Collection();
+        $mappedParameters = new Collection();
         foreach ($parameters as $parameter) {
-            if ($isStandard == $parameter->is_standard_field) {
-                $individualParameters[$parameter->name] = $parameter->values->pluck('value', 'id');
-            }
+            $mappedParameters[$parameter->string_id] = collect([
+                'name' => $parameter->name,
+                'values' => $parameter->values->pluck('value', 'id')
+            ]);
         }
-        return $individualParameters;
+        return $mappedParameters;
     }
 
     /**
@@ -59,7 +61,7 @@ class Configurator
      */
     private function getParametersForSelectForm(Collection $parameters)
     {
-        return $parameters->where('is_select_form')->pluck('name');
+        return $parameters->where('is_select_form')->pluck('string_id');
     }
 
     /**
@@ -67,7 +69,19 @@ class Configurator
      */
     private function getConfigs()
     {
-        return $this->screwConfig->where('visible', true)->pluck('name', 'id');
+        $configs = $this->screwConfig
+            ->with('individualParameters')
+            ->where('visible', true)
+            ->get();
+        $mappedConfigs = new Collection();
+        foreach ($configs as $config) {
+            $mappedConfigs->put($config->id, collect([
+                'name' => $config->name,
+                'individual' => $config->individualParameters->pluck('id'),
+            ]));
+        }
+
+        return $mappedConfigs;
     }
 
     /**
@@ -76,16 +90,14 @@ class Configurator
     public function getDataForConfigurator()
     {
         $parameters = $this->getVisibleParametersWithValues();
-        $individualParameters = $this->getParameters($parameters, false);
-        $standardParameters = $this->getParameters($parameters, true);
+        $mappedParameters = $this->getMappedParameters($parameters);
         $inSelect = $this->getParametersForSelectForm($parameters);
         $configs = $this->getConfigs();
 
 
         return [
             'config' => $configs,
-            'individual' => $individualParameters,
-            'standard' => $standardParameters,
+            'parameters' => $mappedParameters,
             'inSelect' => $inSelect
         ];
     }
