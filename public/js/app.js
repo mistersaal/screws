@@ -4723,8 +4723,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Configurator",
@@ -4733,10 +4731,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      parameters: {
-        standard: {},
-        individual: {}
-      },
+      parameters: {},
       config: {},
       values: {},
       inSelect: [],
@@ -4744,8 +4739,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    hideField: function hideField(type) {
-      return type === 'standard' && !this.isNotStandard;
+    hideField: function hideField(id) {
+      return this.individual.indexOf(id) === -1 && !this.isNotStandard;
     },
     isInSelect: function isInSelect(name) {
       return this.inSelect.indexOf(name) !== -1;
@@ -4759,16 +4754,12 @@ __webpack_require__.r(__webpack_exports__);
 
       _this.$set(_this.values, 'config', -1);
 
-      Object.keys(data.standard).forEach(function (key) {
-        _this.$set(_this.values, key, -1);
-      });
-      Object.keys(data.individual).forEach(function (key) {
+      Object.keys(data.parameters).forEach(function (key) {
         _this.$set(_this.values, key, -1);
       });
       _this.config = data.config;
       _this.inSelect = data.inSelect;
-      _this.parameters.individual = data.individual;
-      _this.parameters.standard = data.standard;
+      _this.parameters = data.parameters;
       _this.loaded = true;
     });
   },
@@ -4780,18 +4771,16 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.values.config === -1) return false;
-      var def = Object.keys(this.parameters.individual).every(function (key) {
-        return _this2.values[key] !== -1;
+      return Object.keys(this.parameters).every(function (key) {
+        return _this2.values[key] !== -1 || _this2.hideField(key);
       });
-
-      if (!this.isNotStandard) {
-        return def;
+    },
+    individual: function individual() {
+      if (this.values.config <= 0) {
+        return [];
       }
 
-      var standard = Object.keys(this.parameters.standard).every(function (key) {
-        return _this2.values[key] !== -1;
-      });
-      return def && standard;
+      return this.config[this.values.config].individual;
     }
   }
 });
@@ -22499,7 +22488,9 @@ var render = function() {
               _c("label", { attrs: { for: "config_" + index } }, [
                 _c("span", { staticClass: "radio-dot" }),
                 _vm._v(
-                  "\n                    " + _vm._s(type) + "\n                "
+                  "\n                    " +
+                    _vm._s(type.name) +
+                    "\n                "
                 )
               ])
             ])
@@ -22547,144 +22538,138 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._l(_vm.parameters, function(type, index) {
+        _vm._l(_vm.parameters, function(parameter, id) {
           return [
-            _vm._l(type, function(parameter, name) {
-              return [
-                _c(
-                  "label",
-                  {
-                    staticClass: "label",
-                    class: { "is-hidden": _vm.hideField(index) },
-                    attrs: { for: name }
-                  },
-                  [_vm._v(_vm._s(name))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "field is-grouped is-grouped-multiline",
-                    class: {
-                      "is-hidden": _vm.hideField(index),
-                      "configurator-radio": !_vm.isInSelect(name)
-                    }
-                  },
-                  [
-                    _vm.isInSelect(name)
-                      ? _c("div", { staticClass: "control" }, [
+            _c(
+              "label",
+              {
+                staticClass: "label",
+                class: { "is-hidden": _vm.hideField(id) },
+                attrs: { for: id }
+              },
+              [_vm._v(_vm._s(parameter.name))]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "field is-grouped is-grouped-multiline",
+                class: {
+                  "is-hidden": _vm.hideField(id),
+                  "configurator-radio": !_vm.isInSelect(id)
+                }
+              },
+              [
+                _vm.isInSelect(id)
+                  ? _c("div", { staticClass: "control" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "select",
+                          class: { "is-selected": _vm.values[id] != -1 }
+                        },
+                        [
                           _c(
-                            "div",
+                            "select",
                             {
-                              staticClass: "select",
-                              class: { "is-selected": _vm.values[name] != -1 }
-                            },
-                            [
-                              _c(
-                                "select",
-                                {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model.number",
-                                      value: _vm.values[name],
-                                      expression: "values[name]",
-                                      modifiers: { number: true }
-                                    }
-                                  ],
-                                  attrs: { name: name, id: name },
-                                  on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return _vm._n(val)
-                                        })
-                                      _vm.$set(
-                                        _vm.values,
-                                        name,
-                                        $event.target.multiple
-                                          ? $$selectedVal
-                                          : $$selectedVal[0]
-                                      )
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "option",
-                                    {
-                                      attrs: {
-                                        disabled: "",
-                                        selected: "",
-                                        value: "-1"
-                                      }
-                                    },
-                                    [_vm._v("-- Выбор --")]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._l(parameter, function(option, id) {
-                                    return _c(
-                                      "option",
-                                      { domProps: { value: id } },
-                                      [_vm._v(_vm._s(option))]
-                                    )
-                                  })
-                                ],
-                                2
-                              )
-                            ]
-                          )
-                        ])
-                      : _vm._l(parameter, function(option, id) {
-                          return _c("div", { staticClass: "control" }, [
-                            _c("input", {
                               directives: [
                                 {
                                   name: "model",
                                   rawName: "v-model.number",
-                                  value: _vm.values[name],
-                                  expression: "values[name]",
+                                  value: _vm.values[id],
+                                  expression: "values[id]",
                                   modifiers: { number: true }
                                 }
                               ],
-                              attrs: {
-                                type: "radio",
-                                name: name,
-                                id: name + "_" + id
-                              },
-                              domProps: {
-                                value: id,
-                                checked: _vm._q(_vm.values[name], _vm._n(id))
-                              },
+                              attrs: { name: id, id: id },
                               on: {
                                 change: function($event) {
-                                  _vm.$set(_vm.values, name, _vm._n(id))
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return _vm._n(val)
+                                    })
+                                  _vm.$set(
+                                    _vm.values,
+                                    id,
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("label", { attrs: { for: name + "_" + id } }, [
-                              _c("span", { staticClass: "radio-dot" }),
-                              _vm._v(
-                                "\n                            " +
-                                  _vm._s(option) +
-                                  "\n                        "
-                              )
-                            ])
-                          ])
-                        })
-                  ],
-                  2
-                )
-              ]
-            })
+                            },
+                            [
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    disabled: "",
+                                    selected: "",
+                                    value: "-1"
+                                  }
+                                },
+                                [_vm._v("-- Выбор --")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(parameter.values, function(option, id) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: id } },
+                                  [_vm._v(_vm._s(option))]
+                                )
+                              })
+                            ],
+                            2
+                          )
+                        ]
+                      )
+                    ])
+                  : _vm._l(parameter.values, function(option, valueId) {
+                      return _c("div", { staticClass: "control" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model.number",
+                              value: _vm.values[id],
+                              expression: "values[id]",
+                              modifiers: { number: true }
+                            }
+                          ],
+                          attrs: {
+                            type: "radio",
+                            name: id,
+                            id: id + "_" + valueId
+                          },
+                          domProps: {
+                            value: valueId,
+                            checked: _vm._q(_vm.values[id], _vm._n(valueId))
+                          },
+                          on: {
+                            change: function($event) {
+                              _vm.$set(_vm.values, id, _vm._n(valueId))
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("label", { attrs: { for: id + "_" + valueId } }, [
+                          _c("span", { staticClass: "radio-dot" }),
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(option) +
+                              "\n                    "
+                          )
+                        ])
+                      ])
+                    })
+              ],
+              2
+            )
           ]
         })
       ],

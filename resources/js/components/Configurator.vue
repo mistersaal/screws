@@ -15,7 +15,7 @@
                     >
                     <label :for="'config_' + index">
                         <span class="radio-dot"></span>
-                        {{type}}
+                        {{type.name}}
                     </label>
                 </div>
             </div>
@@ -44,40 +44,38 @@
                     </div>
                 </div>
             </div>
-            <template v-for="(type, index) in parameters">
-                <template v-for="(parameter, name) in type">
-                    <label :for="name" class="label" :class="{'is-hidden': hideField(index)}">{{name}}</label>
-                    <div class="field is-grouped is-grouped-multiline"
-                         :class="{
-                            'is-hidden': hideField(index),
-                            'configurator-radio': ! isInSelect(name)
-                         }"
-                    >
-                        <div class="control" v-if="isInSelect(name)">
-                            <div class="select" :class="{'is-selected': values[name] != -1}">
-                                <select :name="name"
-                                        :id="name"
-                                        v-model.number="values[name]"
-                                >
-                                    <option disabled selected value="-1">-- Выбор --</option>
-                                    <option :value="id" v-for="(option, id) in parameter">{{option}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control" v-else v-for="(option, id) in parameter">
-                            <input type="radio"
-                                   :name="name"
-                                   :id="name + '_' + id"
-                                   :value="id"
-                                   v-model.number="values[name]"
+            <template v-for="(parameter, id) in parameters">
+                <label :for="id" class="label" :class="{'is-hidden': hideField(id)}">{{parameter.name}}</label>
+                <div class="field is-grouped is-grouped-multiline"
+                     :class="{
+                        'is-hidden': hideField(id),
+                        'configurator-radio': ! isInSelect(id)
+                     }"
+                >
+                    <div class="control" v-if="isInSelect(id)">
+                        <div class="select" :class="{'is-selected': values[id] != -1}">
+                            <select :name="id"
+                                    :id="id"
+                                    v-model.number="values[id]"
                             >
-                            <label :for="name + '_' + id">
-                                <span class="radio-dot"></span>
-                                {{option}}
-                            </label>
+                                <option disabled selected value="-1">-- Выбор --</option>
+                                <option :value="id" v-for="(option, id) in parameter.values">{{option}}</option>
+                            </select>
                         </div>
                     </div>
-                </template>
+                    <div class="control" v-else v-for="(option, valueId) in parameter.values">
+                        <input type="radio"
+                               :name="id"
+                               :id="id + '_' + valueId"
+                               :value="valueId"
+                               v-model.number="values[id]"
+                        >
+                        <label :for="id + '_' + valueId">
+                            <span class="radio-dot"></span>
+                            {{option}}
+                        </label>
+                    </div>
+                </div>
             </template>
         </form>
     </div>
@@ -91,10 +89,7 @@
         components: {ConfiguratorOrderForm},
         data() {
             return {
-                parameters: {
-                    standard: {},
-                    individual: {}
-                },
+                parameters: {},
                 config: {},
                 values: {},
                 inSelect: [],
@@ -102,8 +97,8 @@
             };
         },
         methods: {
-            hideField(type) {
-                return type === 'standard' && ! this.isNotStandard;
+            hideField(id) {
+                return this.individual.indexOf(id) === -1 && ! this.isNotStandard;
             },
             isInSelect(name) {
                 return this.inSelect.indexOf(name) !== -1;
@@ -114,16 +109,12 @@
             .then((response) => {
                 let data = response.data;
                 this.$set(this.values, 'config', -1);
-                Object.keys(data.standard).forEach((key) => {
-                    this.$set(this.values, key, -1);
-                });
-                Object.keys(data.individual).forEach((key) => {
+                Object.keys(data.parameters).forEach((key) => {
                     this.$set(this.values, key, -1);
                 });
                 this.config = data.config;
                 this.inSelect = data.inSelect;
-                this.parameters.individual = data.individual;
-                this.parameters.standard = data.standard;
+                this.parameters = data.parameters;
                 this.loaded = true;
             })
         },
@@ -134,17 +125,15 @@
             isReady() {
                 if (this.values.config === -1) return false;
 
-                let def = Object.keys(this.parameters.individual).every((key) => {
-                    return this.values[key] !== -1
+                return Object.keys(this.parameters).every((key) => {
+                    return this.values[key] !== -1 || this.hideField(key);
                 });
-                if (! this.isNotStandard) {
-                    return def;
+            },
+            individual() {
+                if (this.values.config <= 0) {
+                    return [];
                 }
-
-                let standard = Object.keys(this.parameters.standard).every((key) => {
-                    return this.values[key] !== -1;
-                });
-                return def && standard;
+                return this.config[this.values.config].individual;
             }
         }
     }
