@@ -18,6 +18,8 @@ class CreateScrewParameterValuesTable extends Migration
             $table->unsignedBigInteger('screw_parameter_id');
             $table->string('value');
             $table->boolean('visible')->default(true);
+
+            $table->foreign('screw_parameter_id')->references('id')->on('screw_parameters');
         });
     }
 
