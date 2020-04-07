@@ -32,3 +32,14 @@
         display: none;
     }
 }
+
+.level-item-left {
+    @extend .level-item;
+
+    justify-content: flex-start;
+}
+.level-item-right {
+    @extend .level-item;
+
+    justify-content: flex-end;
+}

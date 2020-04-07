@@ -22512,7 +22512,7 @@ var render = function() {
             _c("div", { staticClass: "level-left" }, [
               _vm._m(0),
               _vm._v(" "),
-              _c("div", { staticClass: "level-item" }, [
+              _c("div", { staticClass: "level-item-left" }, [
                 _c("div", { staticClass: "control" }, [
                   _c("input", {
                     directives: [
@@ -22538,7 +22538,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("label", { attrs: { for: "config_0" } }, [
                     _vm._v(
-                      "\n                                Конфигуратор\n                            "
+                      "\n                                Другое\n                            "
                     )
                   ])
                 ])
@@ -22697,12 +22697,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "level-item" }, [
+    return _c("div", { staticClass: "level-item-left" }, [
       _c("span", { staticClass: "icon is-medium has-text-info" }, [
         _c("i", { staticClass: "far fa-question-circle fa-lg" })
       ]),
       _vm._v(" "),
-      _c("span", [_vm._v("Необходим индивидуальный заказ?")])
+      _c("span", [_vm._v("Необходим другой тип саморезов?")])
     ])
   }
 ]

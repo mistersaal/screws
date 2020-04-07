@@ -22,13 +22,13 @@
             <div class="field configurator-radio">
                 <div class="level">
                     <div class="level-left">
-                        <div class="level-item">
+                        <div class="level-item-left">
                             <span class="icon is-medium has-text-info">
                                 <i class="far fa-question-circle fa-lg"></i>
                             </span>
-                            <span>Необходим индивидуальный заказ?</span>
+                            <span>Необходим другой тип саморезов?</span>
                         </div>
-                        <div class="level-item">
+                        <div class="level-item-left">
                             <div class="control">
                                 <input type="radio"
                                        name="config"
@@ -37,7 +37,7 @@
                                        v-model.number="values.config"
                                 >
                                 <label :for="'config_0'">
-                                    Конфигуратор
+                                    Другое
                                 </label>
                             </div>
                         </div>

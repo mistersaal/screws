@@ -8942,12 +8942,16 @@ button.dropdown-item.is-active {
   margin-top: 0;
 }
 
-.level.is-mobile .level-item:not(:last-child) {
+.level.is-mobile .level-item:not(:last-child),
+.level.is-mobile .level-item-right:not(:last-child),
+.level.is-mobile .level-item-left:not(:last-child) {
   margin-bottom: 0;
   margin-right: 0.75rem;
 }
 
-.level.is-mobile .level-item:not(.is-narrow) {
+.level.is-mobile .level-item:not(.is-narrow),
+.level.is-mobile .level-item-right:not(.is-narrow),
+.level.is-mobile .level-item-left:not(.is-narrow) {
   -webkit-box-flex: 1;
           flex-grow: 1;
 }
@@ -8958,13 +8962,17 @@ button.dropdown-item.is-active {
     display: flex;
   }
 
-  .level > .level-item:not(.is-narrow) {
+  .level > .level-item:not(.is-narrow),
+  .level > .level-item-right:not(.is-narrow),
+  .level > .level-item-left:not(.is-narrow) {
     -webkit-box-flex: 1;
             flex-grow: 1;
   }
 }
 
-.level-item {
+.level-item,
+.level-item-right,
+.level-item-left {
   -webkit-box-align: center;
           align-items: center;
   display: -webkit-box;
@@ -8978,12 +8986,18 @@ button.dropdown-item.is-active {
 }
 
 .level-item .title,
-.level-item .subtitle {
+.level-item-right .title,
+.level-item-left .title,
+.level-item .subtitle,
+.level-item-right .subtitle,
+.level-item-left .subtitle {
   margin-bottom: 0;
 }
 
 @media screen and (max-width: 768px) {
-  .level-item:not(:last-child) {
+  .level-item:not(:last-child),
+  .level-item-right:not(:last-child),
+  .level-item-left:not(:last-child) {
     margin-bottom: 0.75rem;
   }
 }
@@ -8997,14 +9011,22 @@ button.dropdown-item.is-active {
 }
 
 .level-left .level-item.is-flexible,
-.level-right .level-item.is-flexible {
+.level-left .is-flexible.level-item-right,
+.level-left .is-flexible.level-item-left,
+.level-right .level-item.is-flexible,
+.level-right .is-flexible.level-item-right,
+.level-right .is-flexible.level-item-left {
   -webkit-box-flex: 1;
           flex-grow: 1;
 }
 
 @media screen and (min-width: 769px), print {
   .level-left .level-item:not(:last-child),
-  .level-right .level-item:not(:last-child) {
+  .level-left .level-item-right:not(:last-child),
+  .level-left .level-item-left:not(:last-child),
+  .level-right .level-item:not(:last-child),
+  .level-right .level-item-right:not(:last-child),
+  .level-right .level-item-left:not(:last-child) {
     margin-right: 0.75rem;
   }
 }
@@ -14873,6 +14895,16 @@ label.panel-block:hover {
 [v-cloak] > *,
 .v-load > * {
   display: none;
+}
+
+.level-item-left {
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+}
+
+.level-item-right {
+  -webkit-box-pack: end;
+          justify-content: flex-end;
 }
 
 .select.is-selected select {
