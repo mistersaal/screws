@@ -59,8 +59,6 @@ class ScrewConfigSeeder extends Seeder
             $tipValues->random()->id,
             $diameterValues->random()->id,
             $slotValues->random()->id,
-            $length->id,
-            $manufacturer->id,
         ]);
         $config->individualParameters()->attach([
             $length->id,

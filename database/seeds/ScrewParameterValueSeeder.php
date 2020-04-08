@@ -11,7 +11,7 @@ class ScrewParameterValueSeeder extends Seeder
      */
     public function run()
     {
-        \App\ScrewParameter::find(1)->values()->createMany([
+        \App\ScrewParameter::find(4)->values()->createMany([
             ['value' => 'Белый цинк'],
             ['value' => 'Жёлтый цинк'],
             ['value' => 'Оксидированный']
@@ -24,7 +24,7 @@ class ScrewParameterValueSeeder extends Seeder
             ['value' => 4.2],
             ['value' => 4.5],
         ]);
-        \App\ScrewParameter::find(3)->values()->createMany([
+        \App\ScrewParameter::find(1)->values()->createMany([
             ['value' => 13],
             ['value' => 16],
             ['value' => 19],
@@ -43,20 +43,20 @@ class ScrewParameterValueSeeder extends Seeder
             ['value' => 70],
             ['value' => 75],
         ]);
-        \App\ScrewParameter::find(4)->values()->createMany([
+        \App\ScrewParameter::find(7)->values()->createMany([
             ['value' => 'Россия'],
             ['value' => 'Китай'],
             ['value' => 'Европа'],
         ]);
-        \App\ScrewParameter::find(5)->values()->createMany([
+        \App\ScrewParameter::find(6)->values()->createMany([
             ['value' => 'PH2'],
             ['value' => 'PZ2'],
         ]);
-        \App\ScrewParameter::find(6)->values()->createMany([
+        \App\ScrewParameter::find(3)->values()->createMany([
             ['value' => 'Остриё'],
             ['value' => 'Сверло'],
         ]);
-        \App\ScrewParameter::find(7)->values()->createMany([
+        \App\ScrewParameter::find(5)->values()->createMany([
             ['value' => 'Потайная'],
             ['value' => 'Полупотайная'],
         ]);
